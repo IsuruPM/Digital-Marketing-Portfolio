@@ -3,7 +3,7 @@
 <style>
   /* ============ TOKENS (light — the system's native theme) ============ */
   :root{
-    /* brand surfaces — fixed values, identical in both themes when shown as specimens */
+    /* brand surfaces */
     --ground:#F1F0EE;
     --surface:#FFFFFF;
     --surface-sunk:#EAE8E5;
@@ -17,7 +17,7 @@
     --cream:#F7F0DF;
     --mist:#E4EBF3;
 
-    /* page chrome tokens — these theme */
+    /* page chrome tokens */
     --pg:var(--ground);
     --pg-card:var(--surface);
     --pg-sunk:#EAE8E5;
@@ -35,37 +35,6 @@
     --container:1180px;
     --ease:cubic-bezier(.2,.7,.3,1);
   }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --pg:#131416;
-      --pg-card:#1B1D20;
-      --pg-sunk:#0F1012;
-      --pg-ink:#EDECEA;
-      --pg-ink-2:#A5A8AB;
-      --pg-ink-3:#75787C;
-      --pg-rule:#2C2F33;
-      --pg-rule-soft:#232629;
-      --pg-btn:#EDECEA;
-      --pg-btn-ink:#131416;
-      --pg-code:#0F1012;
-      --pg-focus:#EDECEA;
-    }
-  }
-  :root[data-theme="dark"]{
-    --pg:#131416;
-    --pg-card:#1B1D20;
-    --pg-sunk:#0F1012;
-    --pg-ink:#EDECEA;
-    --pg-ink-2:#A5A8AB;
-    --pg-ink-3:#75787C;
-    --pg-rule:#2C2F33;
-    --pg-rule-soft:#232629;
-    --pg-btn:#EDECEA;
-    --pg-btn-ink:#131416;
-    --pg-code:#0F1012;
-    --pg-focus:#EDECEA;
-  }
-
   *,*::before,*::after{box-sizing:border-box;}
   body{
     background:var(--pg);
