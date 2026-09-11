@@ -1,0 +1,117 @@
+/* Deck layout for the PDF export — 1440 × 810 pages on the Soft Ground tokens.
+   Shares ../assets/css/site.css for fonts, tokens and components. */
+*{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+@page{size:1440px 810px;margin:0;}
+html{scroll-behavior:auto;}
+body{background:var(--ground);}
+.page{
+  width:1440px;height:810px;overflow:hidden;position:relative;
+  padding:64px 72px;display:flex;flex-direction:column;gap:0;
+  page-break-after:always;break-after:page;background:var(--ground);
+}
+.page:last-child{page-break-after:auto;break-after:auto;}
+.page.surface{background:var(--surface);}
+.folio{position:absolute;left:72px;right:72px;bottom:30px;display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10.5px;color:var(--ink-3);letter-spacing:.04em;}
+.folio .rule{position:absolute;left:0;right:0;top:-12px;height:1px;background:var(--hairline);}
+.ph{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:28px;}
+.ph .t{display:flex;flex-direction:column;gap:10px;}
+.ph h2{font-size:40px;letter-spacing:-.024em;line-height:1.08;}
+.ph .lede{font-size:13.5px;max-width:46ch;}
+.fill{flex:1;min-height:0;display:flex;flex-direction:column;}
+
+/* cover */
+.cover-page{padding:0;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+.cover-page .left{padding:72px;display:flex;flex-direction:column;}
+.cover-page h1{font-size:72px;margin-top:22px;max-width:12ch;}
+.cover-page .who{margin-top:auto;display:grid;gap:8px;}
+.cover-page .who .name{font-family:var(--font-display);font-weight:400;font-size:24px;letter-spacing:-.014em;}
+.cover-page .who .cred{font-size:12.5px;color:var(--ink-2);max-width:56ch;line-height:1.55;}
+.cover-page .right{position:relative;background:var(--sunk);}
+.cover-page .right img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;filter:grayscale(1);}
+.cover-page .right .tag{position:absolute;left:24px;bottom:24px;}
+
+/* about */
+.about-page .grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;flex:1;min-height:0;}
+.about-page .about-copy{font-size:15px;gap:14px;}
+.about-page .quote{font-size:26px;}
+.about-page .statbar{margin-top:auto;}
+.about-page .help li{padding:12px 20px;font-size:13.5px;}
+
+/* expertise */
+.exp-page .tints{flex:1;grid-template-rows:1fr 1fr;}
+.exp-page .tint{min-height:0;padding:20px 22px;gap:12px;}
+.exp-page .tint .th p{font-size:12px;margin-top:5px;}
+.exp-page .tint ul{gap:6px;}
+.exp-page .tint li{font-size:12.5px;line-height:1.45;}
+
+/* results index */
+.index-page .work{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;flex:1;margin-bottom:34px;}
+.index-page .tile{cursor:default;}
+.index-page .tile:hover{transform:none;box-shadow:none;}
+.index-page .tile .cover{aspect-ratio:auto;height:112px;}
+.index-page .tile .body{padding:12px 16px 14px;gap:6px;}
+.index-page .tile .body h3{font-size:15.5px;}
+.index-page .tile .body p{font-size:11.5px;}
+.index-page .tile .kpis .v{font-size:18px;}
+.index-page .tile .kpis div{padding:9px 10px 8px;}
+.index-page .tile .kpis .l{font-size:9.5px;margin-top:4px;}
+.index-page .hero-like{grid-column:1 / -1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+.index-page .hero-like .tile{height:100%;}
+
+/* case pages */
+.case-page .grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:28px;flex:1;min-height:0;}
+.case-page .copy{display:flex;flex-direction:column;gap:18px;min-height:0;}
+.case-page .copy p{font-size:13.5px;color:var(--ink-2);line-height:1.6;}
+.case-page .statbar{grid-template-columns:repeat(2,minmax(0,1fr));}
+.case-page .statbar > div{padding:16px 18px;}
+.case-page .statbar .v{font-size:30px;}
+.case-page .facts{display:grid;gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:var(--r-md);overflow:hidden;font-size:12.5px;}
+.case-page .facts div{background:var(--surface);padding:9px 14px;display:grid;grid-template-columns:96px 1fr;gap:10px;}
+.case-page .facts .k{font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);}
+.case-page .shots{display:grid;gap:14px;min-height:0;align-content:start;}
+.case-page .shots figure{margin:0;border:1px solid var(--hairline);border-radius:var(--r-md);overflow:hidden;background:var(--surface);}
+.case-page .shots img{width:100%;height:auto;display:block;}
+.case-page .shots figcaption{padding:8px 12px;font-size:11px;color:var(--ink-2);border-top:1px solid var(--hairline);display:flex;justify-content:space-between;gap:10px;}
+.case-page .shots.two{grid-template-columns:1fr 1fr;}
+.case-page .table-wrap{margin-top:auto;}
+.case-page .case-table{font-size:12px;}
+.case-page .case-table th{padding:8px 10px;font-size:10px;}
+.case-page .case-table td{padding:7px 10px;}
+.case-page .shot-crop{height:300px;overflow:hidden;}
+.case-page .shot-crop img{height:100%;width:100%;object-fit:cover;object-position:0 0;}
+
+/* production */
+.prod-page .prod{flex:1;grid-template-columns:minmax(0,4fr) minmax(0,8fr);}
+.prod-page .prod .shots figure{aspect-ratio:auto;height:100%;}
+.prod-page .prod .copy p{font-size:13.5px;}
+
+/* clients */
+.clients-page .industries{flex:1;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-items:stretch;}
+.clients-page .ind{height:100%;}
+.clients-page .ind .hd{padding:11px 14px;}
+.clients-page .ind .hd h4{font-size:12.5px;}
+.clients-page .ind .cells{flex:1;align-content:start;}
+.clients-page .ind .cell{min-height:86px;padding:14px;}
+.clients-page .ind .cell img{filter:none;opacity:1;max-height:40px;}
+.clients-page .ind.dark .cell img{filter:none;}
+.clients-page .ind.tall{grid-row:span 2;}
+
+/* credentials */
+.cred-page .creds{flex:1;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:14px;}
+.cred-page .edu li{padding:11px 18px;font-size:13px;}
+.cred-page .badge-groups{gap:14px;}
+.cred-page .badges .hd{padding:10px 18px;}
+.cred-page .badges .cell{padding:14px 12px 12px;gap:8px;}
+.cred-page .badges .cell img{height:64px;}
+.cred-page .badges .cell span{font-size:11px;}
+.cred-page .badges .cell small{font-size:9.5px;}
+
+/* contact */
+.contact-page{padding:0;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+.contact-page .left{padding:72px;display:flex;flex-direction:column;}
+.contact-page h1{font-size:64px;}
+.contact-page .lede{margin-top:20px;max-width:44ch;}
+.contact-page .contact-list{margin-top:auto;background:var(--hairline);border-color:var(--hairline);}
+.contact-page .contact-list a,.contact-page .contact-list div{background:var(--surface);}
+.contact-page .right{position:relative;background:var(--sunk);}
+.contact-page .right img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;}
