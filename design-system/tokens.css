@@ -1,0 +1,91 @@
+/* ============================================================
+   Soft Ground — design tokens v1.0
+   Extracted from the digital-marketing reference layout.
+   Single light theme by design: the warm ground is the identity.
+   ============================================================ */
+
+:root {
+  /* ---- Surface ---- */
+  --sg-ground:        #F1F0EE;  /* page background, warm grey */
+  --sg-surface:       #FFFFFF;  /* cards, nav, stat cells */
+  --sg-sunk:          #EAE8E5;  /* image placeholders, ghost hover */
+  --sg-hairline:      #E4E2DF;  /* 1px separators and card borders */
+
+  /* ---- Ink ---- */
+  --sg-ink:           #17191B;  /* headings, primary text  (14.9:1 on ground) */
+  --sg-ink-2:         #5F6367;  /* paragraphs              ( 5.9:1 on ground) */
+  --sg-ink-3:         #8E9296;  /* eyebrows, captions — uppercase/large only */
+  --sg-action:        #101214;  /* filled pill buttons: the only action colour */
+
+  /* ---- Category tints (card fills only — never text/border/icon) ---- */
+  --sg-mint:          #E3EDE4;  /* search & organic: SEO, technical, local */
+  --sg-sage:          #E9EDE8;  /* build: web design, development */
+  --sg-blush:         #F8E7E2;  /* paid media: PPC, social ads, retargeting */
+  --sg-cream:         #F7F0DF;  /* reputation & content: reviews, email, copy */
+  --sg-mist:          #E4EBF3;  /* reserved: full-width conversion band */
+
+  /* ---- Typefaces ---- */
+  --sg-font-display:  "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --sg-font-body:     "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --sg-font-mono:     "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  /* ---- Type scale (shorthand: weight size/line family) ---- */
+  --sg-display-1:     300 68px/1.04 var(--sg-font-display);  /* ls -0.028em */
+  --sg-display-2:     300 44px/1.10 var(--sg-font-display);  /* ls -0.024em */
+  --sg-heading-1:     300 32px/1.15 var(--sg-font-display);  /* ls -0.020em */
+  --sg-heading-2:     400 22px/1.25 var(--sg-font-display);  /* ls -0.014em */
+  --sg-heading-3:     500 17px/1.35 var(--sg-font-body);     /* ls -0.008em */
+  --sg-body:          400 15px/1.65 var(--sg-font-body);
+  --sg-body-sm:       400 13px/1.60 var(--sg-font-body);
+  --sg-eyebrow:       500 11px/1.40 var(--sg-font-body);     /* ls +0.12em, uppercase */
+  --sg-metric:        300 44px/1.00 var(--sg-font-display);  /* ls -0.03em, tabular-nums */
+
+  /* ---- Letter-spacing (pair with the sizes above) ---- */
+  --sg-ls-display-1:  -0.028em;
+  --sg-ls-display-2:  -0.024em;
+  --sg-ls-heading-1:  -0.020em;
+  --sg-ls-heading-2:  -0.014em;
+  --sg-ls-heading-3:  -0.008em;
+  --sg-ls-eyebrow:     0.120em;
+
+  /* ---- Space (4px base) ---- */
+  --sg-1:  4px;
+  --sg-2:  8px;
+  --sg-3:  12px;
+  --sg-4:  16px;
+  --sg-5:  24px;
+  --sg-6:  32px;
+  --sg-7:  48px;
+  --sg-8:  64px;
+  --sg-9:  96px;
+  --sg-10: 128px;
+
+  /* ---- Layout ---- */
+  --sg-container:      1180px;
+  --sg-gutter:         24px;   /* 20px at <=480px */
+  --sg-columns:        12;
+  --sg-grid-gap:       24px;
+  --sg-section-y:      128px;  /* 64px at <=768px */
+  --sg-card-gap:       16px;
+  --sg-card-padding:   24px;   /* 20px on tint cards */
+
+  /* ---- Form ---- */
+  --sg-r-sm:     4px;    /* inline images, inputs */
+  --sg-r-md:     8px;    /* default: cards, tiles, stat cells */
+  --sg-r-lg:     12px;   /* full-bleed media, conversion band */
+  --sg-r-pill:   999px;  /* all buttons, tags, arrows, avatars */
+  --sg-border:   1px solid var(--sg-hairline);
+  --sg-lift:     0 8px 24px rgba(20, 22, 24, .06);  /* hover only — the system's only shadow */
+
+  /* ---- Controls ---- */
+  --sg-btn-height:     40px;
+  --sg-btn-height-sm:  34px;
+  --sg-btn-padding:    11px 22px;
+  --sg-btn-padding-sm: 8px 16px;
+  --sg-btn-font:       500 13px/1 var(--sg-font-body);
+
+  /* ---- Motion ---- */
+  --sg-ease:        cubic-bezier(.2, .7, .3, 1);
+  --sg-dur-hover:   180ms;
+  --sg-dur-reveal:  420ms;
+}

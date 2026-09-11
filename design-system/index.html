@@ -1,0 +1,568 @@
+<title>Soft Ground Design System</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+  /* ============ TOKENS (light — the system's native theme) ============ */
+  :root{
+    /* brand surfaces — fixed values, identical in both themes when shown as specimens */
+    --ground:#F1F0EE;
+    --surface:#FFFFFF;
+    --surface-sunk:#EAE8E5;
+    --ink:#17191B;
+    --ink-2:#5F6367;
+    --ink-3:#8E9296;
+    --hairline:#E4E2DF;
+    --mint:#E3EDE4;
+    --sage:#E9EDE8;
+    --blush:#F8E7E2;
+    --cream:#F7F0DF;
+    --mist:#E4EBF3;
+
+    /* page chrome tokens — these theme */
+    --pg:var(--ground);
+    --pg-card:var(--surface);
+    --pg-sunk:#EAE8E5;
+    --pg-ink:var(--ink);
+    --pg-ink-2:#5F6367;
+    --pg-ink-3:#8E9296;
+    --pg-rule:var(--hairline);
+    --pg-rule-soft:#EDEBE8;
+    --pg-btn:#101214;
+    --pg-btn-ink:#FFFFFF;
+    --pg-code:#F6F5F3;
+    --pg-focus:#17191B;
+
+    --r-sm:4px; --r-md:8px; --r-lg:12px; --r-pill:999px;
+    --container:1180px;
+    --ease:cubic-bezier(.2,.7,.3,1);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --pg:#131416;
+      --pg-card:#1B1D20;
+      --pg-sunk:#0F1012;
+      --pg-ink:#EDECEA;
+      --pg-ink-2:#A5A8AB;
+      --pg-ink-3:#75787C;
+      --pg-rule:#2C2F33;
+      --pg-rule-soft:#232629;
+      --pg-btn:#EDECEA;
+      --pg-btn-ink:#131416;
+      --pg-code:#0F1012;
+      --pg-focus:#EDECEA;
+    }
+  }
+  :root[data-theme="dark"]{
+    --pg:#131416;
+    --pg-card:#1B1D20;
+    --pg-sunk:#0F1012;
+    --pg-ink:#EDECEA;
+    --pg-ink-2:#A5A8AB;
+    --pg-ink-3:#75787C;
+    --pg-rule:#2C2F33;
+    --pg-rule-soft:#232629;
+    --pg-btn:#EDECEA;
+    --pg-btn-ink:#131416;
+    --pg-code:#0F1012;
+    --pg-focus:#EDECEA;
+  }
+
+  *,*::before,*::after{box-sizing:border-box;}
+  body{
+    background:var(--pg);
+    color:var(--pg-ink);
+    font-family:"Instrument Sans","Helvetica Neue",Arial,sans-serif;
+    font-size:15px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    margin:0;
+  }
+  .wrap{max-width:var(--container);margin:0 auto;padding-inline:24px;}
+
+  h1,h2,h3,h4{font-family:"Hanken Grotesk","Helvetica Neue",Arial,sans-serif;font-weight:300;margin:0;text-wrap:balance;}
+  h1{font-size:clamp(40px,6.4vw,68px);line-height:1.04;letter-spacing:-.028em;}
+  h2{font-size:clamp(28px,3.6vw,40px);line-height:1.12;letter-spacing:-.022em;}
+  h3{font-size:22px;line-height:1.25;letter-spacing:-.014em;font-weight:400;}
+  h4{font-size:17px;line-height:1.35;letter-spacing:-.008em;font-weight:500;font-family:"Instrument Sans",Arial,sans-serif;}
+  p{margin:0;}
+  a{color:inherit;}
+  :focus-visible{outline:2px solid var(--pg-focus);outline-offset:3px;border-radius:2px;}
+
+  .eyebrow{
+    font-size:11px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--pg-ink-3);font-family:"Instrument Sans",Arial,sans-serif;
+  }
+  .lede{color:var(--pg-ink-2);max-width:62ch;}
+  .mono{font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;letter-spacing:-.01em;}
+
+  /* ---------- masthead ---------- */
+  header.top{border-bottom:1px solid var(--pg-rule);}
+  .top-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:18px;flex-wrap:wrap;}
+  .mark{display:flex;align-items:center;gap:9px;font-size:13px;letter-spacing:.02em;font-weight:500;}
+  .mark .dot{width:18px;height:18px;border-radius:var(--r-pill);background:var(--pg-btn);display:block;}
+  .top-meta{display:flex;gap:20px;color:var(--pg-ink-3);font-size:12px;letter-spacing:.02em;}
+
+  .hero{padding-block:clamp(56px,9vw,104px) clamp(40px,6vw,72px);}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:48px;align-items:end;}
+  @media (max-width:820px){.hero-grid{grid-template-columns:1fr;gap:28px;align-items:start;}}
+  .hero h1{margin-top:18px;}
+  .facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--pg-rule);border:1px solid var(--pg-rule);border-radius:var(--r-md);overflow:hidden;}
+  .fact{background:var(--pg-card);padding:18px 20px;}
+  .fact .n{font-family:"Hanken Grotesk",Arial,sans-serif;font-weight:300;font-size:30px;letter-spacing:-.03em;line-height:1;font-variant-numeric:tabular-nums;}
+  .fact .n sup{font-size:11px;top:-1.1em;position:relative;letter-spacing:0;}
+  .fact .k{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pg-ink-3);margin-top:9px;}
+
+  /* ---------- sections ---------- */
+  section{padding-block:clamp(48px,7vw,88px);border-top:1px solid var(--pg-rule);}
+  .sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:36px;}
+  .sec-head .t{display:flex;flex-direction:column;gap:12px;}
+  .num{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--pg-ink-3);letter-spacing:.04em;}
+
+  /* ---------- color ---------- */
+  .swatch-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(168px,1fr));gap:16px;}
+  .sw{border:1px solid var(--pg-rule);border-radius:var(--r-md);overflow:hidden;background:var(--pg-card);}
+  .sw .chip{height:84px;border-bottom:1px solid var(--pg-rule);}
+  .sw .meta{padding:12px 14px 14px;display:flex;flex-direction:column;gap:3px;}
+  .sw .nm{font-size:13px;font-weight:500;}
+  .sw .hx{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--pg-ink-2);text-transform:uppercase;}
+  .sw .use{font-size:11.5px;color:var(--pg-ink-3);line-height:1.45;margin-top:4px;}
+  .group-label{display:flex;align-items:center;gap:14px;margin:34px 0 16px;}
+  .group-label .eyebrow{white-space:nowrap;}
+  .group-label .line{height:1px;background:var(--pg-rule);flex:1;}
+
+  /* ---------- type scale ---------- */
+  .scale{border-top:1px solid var(--pg-rule);}
+  .scale-row{
+    display:grid;grid-template-columns:132px minmax(0,1fr) 190px;gap:24px;align-items:baseline;
+    padding-block:22px;border-bottom:1px solid var(--pg-rule);
+  }
+  @media (max-width:760px){.scale-row{grid-template-columns:1fr;gap:8px;}}
+  .scale-row .spec{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--pg-ink-3);line-height:1.7;}
+  .samp{color:var(--pg-ink);overflow-wrap:anywhere;}
+  .s-d1{font-family:"Hanken Grotesk",Arial,sans-serif;font-weight:300;font-size:clamp(38px,5.4vw,64px);letter-spacing:-.028em;line-height:1.05;}
+  .s-d2{font-family:"Hanken Grotesk",Arial,sans-serif;font-weight:300;font-size:clamp(30px,4vw,44px);letter-spacing:-.024em;line-height:1.1;}
+  .s-h2{font-family:"Hanken Grotesk",Arial,sans-serif;font-weight:300;font-size:32px;letter-spacing:-.02em;line-height:1.15;}
+  .s-h3{font-family:"Hanken Grotesk",Arial,sans-serif;font-weight:400;font-size:22px;letter-spacing:-.014em;}
+  .s-h4{font-weight:500;font-size:17px;letter-spacing:-.008em;}
+  .s-body{font-size:15px;line-height:1.65;color:var(--pg-ink-2);}
+  .s-sm{font-size:13px;line-height:1.6;color:var(--pg-ink-2);}
+  .s-lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--pg-ink-3);font-weight:500;}
+
+  .pairing{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;margin-top:32px;}
+  .face{border:1px solid var(--pg-rule);border-radius:var(--r-md);padding:20px;background:var(--pg-card);}
+  .face .glyphs{font-size:38px;line-height:1.1;letter-spacing:-.02em;margin-bottom:14px;}
+
+  /* ---------- spacing / grid ---------- */
+  .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px;}
+  .step{display:flex;align-items:center;gap:14px;padding-block:7px;border-bottom:1px solid var(--pg-rule-soft);}
+  .step .bar{height:10px;background:var(--pg-ink);border-radius:1px;}
+  .step .lab{font-family:"JetBrains Mono",monospace;font-size:11px;color:var(--pg-ink-3);min-width:112px;}
+  .gridviz{border:1px solid var(--pg-rule);border-radius:var(--r-md);padding:14px;background:var(--pg-card);display:grid;grid-template-columns:repeat(12,1fr);gap:6px;}
+  .gridviz i{display:block;height:56px;background:var(--pg-sunk);border-radius:2px;}
+  .rhythm{margin-top:16px;display:flex;flex-direction:column;gap:10px;}
+  .rhythm .r{display:flex;justify-content:space-between;gap:16px;font-size:13px;padding-block:8px;border-bottom:1px solid var(--pg-rule-soft);color:var(--pg-ink-2);}
+  .rhythm .r b{font-weight:500;color:var(--pg-ink);}
+
+  /* ---------- components ---------- */
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;gap:8px;
+    font-family:"Instrument Sans",Arial,sans-serif;font-size:13px;font-weight:500;letter-spacing:.01em;
+    padding:11px 22px;border-radius:var(--r-pill);border:1px solid transparent;cursor:pointer;
+    transition:transform .18s var(--ease),background .18s var(--ease),color .18s var(--ease);
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn-primary{background:var(--pg-btn);color:var(--pg-btn-ink);}
+  .btn-ghost{background:transparent;color:var(--pg-ink);border-color:var(--pg-rule);}
+  .btn-ghost:hover{border-color:var(--pg-ink-3);}
+  .btn-sm{padding:8px 16px;font-size:12px;}
+  .tag{display:inline-flex;align-items:center;padding:5px 13px;border-radius:var(--r-pill);border:1px solid var(--pg-rule);font-size:11.5px;color:var(--pg-ink-2);background:var(--pg-card);}
+  .arrow{width:34px;height:34px;border-radius:var(--r-pill);border:1px solid var(--pg-rule);display:inline-flex;align-items:center;justify-content:center;background:transparent;color:var(--pg-ink);cursor:pointer;font-size:13px;transition:background .18s var(--ease);}
+  .arrow:hover{background:var(--pg-sunk);}
+
+  .comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:16px;}
+  .comp{border:1px solid var(--pg-rule);border-radius:var(--r-md);background:var(--pg-card);padding:22px;display:flex;flex-direction:column;gap:14px;}
+  .comp .cap{display:flex;flex-direction:column;gap:4px;}
+  .comp .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;}
+  .note{font-size:11.5px;color:var(--pg-ink-3);line-height:1.5;}
+
+  /* service tint cards — the reference's category system */
+  .tints{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:16px;}
+  .tint{border-radius:var(--r-md);padding:20px;min-height:186px;display:flex;flex-direction:column;justify-content:space-between;color:#17191B;border:1px solid rgba(23,25,27,.06);}
+  .tint h4{color:#17191B;}
+  .tint p{font-size:12.5px;line-height:1.5;color:#5F6367;margin-top:8px;}
+  .tint .lnk{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:500;color:#17191B;border-bottom:1px solid rgba(23,25,27,.3);padding-bottom:3px;align-self:flex-start;}
+
+  /* stat block spec */
+  .statbar{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--pg-rule);border:1px solid var(--pg-rule);border-radius:var(--r-md);overflow:hidden;}
+  .statbar div{background:var(--pg-card);padding:22px 20px;}
+  .statbar .v{font-family:"Hanken Grotesk",Arial,sans-serif;font-weight:300;font-size:38px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;}
+  .statbar .v sup{font-size:13px;position:relative;top:-1.1em;}
+  .statbar .l{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--pg-ink-3);margin-top:10px;}
+
+  /* ---------- rules table ---------- */
+  .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:16px;}
+  .rule{border:1px solid var(--pg-rule);border-radius:var(--r-md);padding:20px;background:var(--pg-card);}
+  .rule .hd{display:flex;align-items:center;gap:9px;font-size:12px;font-weight:600;letter-spacing:.02em;margin-bottom:10px;}
+  .badge{width:17px;height:17px;border-radius:var(--r-pill);display:inline-flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;}
+  .yes .badge{background:#1F3D2B;color:#E3EDE4;}
+  .no .badge{background:#5A2A24;color:#F8E7E2;}
+  .rule ul{margin:0;padding-left:17px;display:flex;flex-direction:column;gap:7px;}
+  .rule li{font-size:13px;color:var(--pg-ink-2);line-height:1.5;}
+
+  /* ---------- code ---------- */
+  pre{
+    background:var(--pg-code);border:1px solid var(--pg-rule);border-radius:var(--r-md);
+    padding:20px;overflow-x:auto;margin:0;
+    font-family:"JetBrains Mono",ui-monospace,monospace;font-size:12px;line-height:1.75;color:var(--pg-ink-2);
+  }
+  pre b{color:var(--pg-ink);font-weight:500;}
+  pre .c{color:var(--pg-ink-3);}
+
+  footer{border-top:1px solid var(--pg-rule);padding-block:34px 46px;color:var(--pg-ink-3);font-size:12px;}
+  .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+
+  @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
+</style>
+
+<header class="top">
+  <div class="wrap top-inner">
+    <span class="mark"><span class="dot"></span>SOFT GROUND</span>
+    <div class="top-meta">
+      <span>Design system v1.0</span>
+      <span class="mono">Digital Marketing Portfolio</span>
+    </div>
+  </div>
+</header>
+
+<div class="wrap hero">
+  <div class="hero-grid">
+    <div>
+      <span class="eyebrow">Extracted specification</span>
+      <h1>A quiet, off-white system for marketing work that has to look expensive.</h1>
+      <p class="lede" style="margin-top:22px;">Every value below is measured from the reference layout: a warm grey ground, white cards separated by hairlines rather than shadows, one near-black used for all actions, and five desaturated tints that do the categorising. Copy the tokens, keep the restraint.</p>
+      <div style="display:flex;gap:10px;margin-top:26px;flex-wrap:wrap;">
+        <a class="btn btn-primary" href="#tokens">Jump to tokens</a>
+        <a class="btn btn-ghost" href="#components">Component specs</a>
+      </div>
+    </div>
+    <div class="facts">
+      <div class="fact"><div class="n">5<sup>°</sup></div><div class="k">Tint fills</div></div>
+      <div class="fact"><div class="n">1<sup>°</sup></div><div class="k">Action colour</div></div>
+      <div class="fact"><div class="n">9<sup>°</sup></div><div class="k">Type steps</div></div>
+      <div class="fact"><div class="n">0<sup>°</sup></div><div class="k">Drop shadows</div></div>
+    </div>
+  </div>
+</div>
+
+<section id="color">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t"><span class="num">01 / Colour</span><h2>Ground, ink, hairline, tint</h2></div>
+      <p class="lede" style="max-width:40ch;font-size:13.5px;">Four neutrals carry 90% of the page. Tints appear only as full-bleed card fills — never as text, borders, or icons.</p>
+    </div>
+
+    <div class="group-label"><span class="eyebrow">Surfaces</span><span class="line"></span></div>
+    <div class="swatch-row">
+      <div class="sw"><div class="chip" style="background:#F1F0EE"></div><div class="meta"><span class="nm">Ground</span><span class="hx">#F1F0EE</span><span class="use">Page background. Warm grey — never pure white, never pure neutral.</span></div></div>
+      <div class="sw"><div class="chip" style="background:#FFFFFF"></div><div class="meta"><span class="nm">Surface</span><span class="hx">#FFFFFF</span><span class="use">Cards, stat cells, nav bar. Reads as a lift because the ground is warm.</span></div></div>
+      <div class="sw"><div class="chip" style="background:#EAE8E5"></div><div class="meta"><span class="nm">Sunk</span><span class="hx">#EAE8E5</span><span class="use">Image placeholders, disabled fields, hover on ghost controls.</span></div></div>
+      <div class="sw"><div class="chip" style="background:#E4E2DF"></div><div class="meta"><span class="nm">Hairline</span><span class="hx">#E4E2DF</span><span class="use">1px separators and card borders. Does the job a shadow would.</span></div></div>
+    </div>
+
+    <div class="group-label"><span class="eyebrow">Ink &amp; action</span><span class="line"></span></div>
+    <div class="swatch-row">
+      <div class="sw"><div class="chip" style="background:#17191B"></div><div class="meta"><span class="nm">Ink</span><span class="hx">#17191B</span><span class="use">Headings and primary body. 14.9:1 on ground.</span></div></div>
+      <div class="sw"><div class="chip" style="background:#5F6367"></div><div class="meta"><span class="nm">Ink 2</span><span class="hx">#5F6367</span><span class="use">Paragraphs, card descriptions. 5.9:1 on ground.</span></div></div>
+      <div class="sw"><div class="chip" style="background:#8E9296"></div><div class="meta"><span class="nm">Ink 3</span><span class="hx">#8E9296</span><span class="use">Eyebrows, metric labels, captions. Large/uppercase only.</span></div></div>
+      <div class="sw"><div class="chip" style="background:#101214"></div><div class="meta"><span class="nm">Action</span><span class="hx">#101214</span><span class="use">Filled pill buttons. The single colour a click ever gets.</span></div></div>
+    </div>
+
+    <div class="group-label"><span class="eyebrow">Category tints — fills only</span><span class="line"></span></div>
+    <div class="swatch-row">
+      <div class="sw"><div class="chip" style="background:#E3EDE4"></div><div class="meta"><span class="nm">Mint</span><span class="hx">#E3EDE4</span><span class="use">Search &amp; organic — SEO, technical, local.</span></div></div>
+      <div class="sw"><div class="chip" style="background:#E9EDE8"></div><div class="meta"><span class="nm">Sage</span><span class="hx">#E9EDE8</span><span class="use">Build services — web design, development.</span></div></div>
+      <div class="sw"><div class="chip" style="background:#F8E7E2"></div><div class="meta"><span class="nm">Blush</span><span class="hx">#F8E7E2</span><span class="use">Paid media — PPC, social ads, retargeting.</span></div></div>
+      <div class="sw"><div class="chip" style="background:#F7F0DF"></div><div class="meta"><span class="nm">Cream</span><span class="hx">#F7F0DF</span><span class="use">Reputation &amp; content — reviews, email, copy.</span></div></div>
+      <div class="sw"><div class="chip" style="background:#E4EBF3"></div><div class="meta"><span class="nm">Mist</span><span class="hx">#E4EBF3</span><span class="use">Reserved for the full-width conversion band. Nothing else.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="type">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t"><span class="num">02 / Typography</span><h2>Light grotesk, tight tracking</h2></div>
+      <p class="lede" style="max-width:40ch;font-size:13.5px;">Display sizes run at weight 300 with negative letter-spacing. Nothing above 20px is ever bold — the size does the shouting.</p>
+    </div>
+
+    <div class="pairing" style="margin-top:0;margin-bottom:36px;">
+      <div class="face">
+        <div class="glyphs" style="font-family:'Hanken Grotesk',Arial,sans-serif;font-weight:300;">Aa Gg 226</div>
+        <h4>Hanken Grotesk</h4>
+        <p class="note" style="margin-top:6px;">Display &amp; headings · 300, 400. Low-contrast neo-grotesk with open apertures — the closest free match to the reference's display face.</p>
+      </div>
+      <div class="face">
+        <div class="glyphs" style="font-family:'Instrument Sans',Arial,sans-serif;font-weight:400;">Aa Gg 226</div>
+        <h4>Instrument Sans</h4>
+        <p class="note" style="margin-top:6px;">Body, UI, eyebrows · 400, 500, 600. Slightly narrower than the display face, which keeps 13px copy compact without looking cramped.</p>
+      </div>
+      <div class="face">
+        <div class="glyphs" style="font-family:'JetBrains Mono',monospace;font-weight:400;font-size:32px;">Aa 226</div>
+        <h4>JetBrains Mono</h4>
+        <p class="note" style="margin-top:6px;">Data, token values, timestamps · 400, 500. Optional — use only where digits must align.</p>
+      </div>
+    </div>
+
+    <div class="scale">
+      <div class="scale-row">
+        <span class="spec">display-1</span>
+        <span class="samp s-d1">Digital Marketing Services</span>
+        <span class="spec">68 / 1.04<br>-0.028em · 300</span>
+      </div>
+      <div class="scale-row">
+        <span class="spec">display-2</span>
+        <span class="samp s-d2">Grow your client base</span>
+        <span class="spec">44 / 1.10<br>-0.024em · 300</span>
+      </div>
+      <div class="scale-row">
+        <span class="spec">heading-1</span>
+        <span class="samp s-h2">Driving business growth</span>
+        <span class="spec">32 / 1.15<br>-0.020em · 300</span>
+      </div>
+      <div class="scale-row">
+        <span class="spec">heading-2</span>
+        <span class="samp s-h3">Building brand recognition</span>
+        <span class="spec">22 / 1.25<br>-0.014em · 400</span>
+      </div>
+      <div class="scale-row">
+        <span class="spec">heading-3</span>
+        <span class="samp s-h4">Search Engine Optimisation</span>
+        <span class="spec">17 / 1.35<br>-0.008em · 500</span>
+      </div>
+      <div class="scale-row">
+        <span class="spec">body</span>
+        <span class="samp s-body">Digital marketing services give businesses of every size a way to reach their market around the clock, at a cost that scales from a single storefront to a multi-location group.</span>
+        <span class="spec">15 / 1.65<br>0em · 400</span>
+      </div>
+      <div class="scale-row">
+        <span class="spec">body-sm</span>
+        <span class="samp s-sm">Capture your target audience and interface with a professional custom web design.</span>
+        <span class="spec">13 / 1.60<br>0em · 400</span>
+      </div>
+      <div class="scale-row">
+        <span class="spec">eyebrow</span>
+        <span class="samp s-lbl">SEO / Digital marketing services</span>
+        <span class="spec">11 / 1.4<br>+0.12em · 500 · UC</span>
+      </div>
+      <div class="scale-row">
+        <span class="spec">metric</span>
+        <span class="samp" style="font-family:'Hanken Grotesk',Arial,sans-serif;font-weight:300;font-size:44px;letter-spacing:-.03em;font-variant-numeric:tabular-nums;">+1,110<sup style="font-size:14px;position:relative;top:-1.2em;">°</sup></span>
+        <span class="spec">44 / 1.0 · 300<br>sup at 0.3em, top -1.1em</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="layout">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t"><span class="num">03 / Space &amp; grid</span><h2>4px base, 12 columns, long rests</h2></div>
+      <p class="lede" style="max-width:40ch;font-size:13.5px;">The reference's signature is vertical air: sections rest ~128px apart on desktop and never collapse below 64px.</p>
+    </div>
+
+    <div class="two">
+      <div>
+        <div class="eyebrow" style="margin-bottom:14px;">Spacing scale</div>
+        <div class="step"><span class="lab">space-1 · 4px</span><span class="bar" style="width:4px"></span></div>
+        <div class="step"><span class="lab">space-2 · 8px</span><span class="bar" style="width:8px"></span></div>
+        <div class="step"><span class="lab">space-3 · 12px</span><span class="bar" style="width:12px"></span></div>
+        <div class="step"><span class="lab">space-4 · 16px</span><span class="bar" style="width:16px"></span></div>
+        <div class="step"><span class="lab">space-5 · 24px</span><span class="bar" style="width:24px"></span></div>
+        <div class="step"><span class="lab">space-6 · 32px</span><span class="bar" style="width:32px"></span></div>
+        <div class="step"><span class="lab">space-7 · 48px</span><span class="bar" style="width:48px"></span></div>
+        <div class="step"><span class="lab">space-8 · 64px</span><span class="bar" style="width:64px"></span></div>
+        <div class="step"><span class="lab">space-9 · 96px</span><span class="bar" style="width:96px"></span></div>
+        <div class="step"><span class="lab">space-10 · 128px</span><span class="bar" style="width:128px"></span></div>
+      </div>
+      <div>
+        <div class="eyebrow" style="margin-bottom:14px;">Grid — 1180 / 12 col / 24 gutter</div>
+        <div class="gridviz">
+          <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+        </div>
+        <div class="rhythm">
+          <div class="r"><span>Section padding-block</span><b>128px → 64px @ 768</b></div>
+          <div class="r"><span>Heading to content</span><b>36px</b></div>
+          <div class="r"><span>Card inner padding</span><b>20–24px</b></div>
+          <div class="r"><span>Card gap</span><b>16px</b></div>
+          <div class="r"><span>Page gutter</span><b>24px → 20px @ 480</b></div>
+          <div class="r"><span>Work grid</span><b>2 col → 1 col @ 640</b></div>
+          <div class="r"><span>Service grid</span><b>3 col → 2 → 1</b></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="group-label"><span class="eyebrow">Radius &amp; depth</span><span class="line"></span></div>
+    <div class="swatch-row">
+      <div class="sw" style="padding:18px;"><div style="height:52px;background:var(--pg-sunk);border-radius:4px;margin-bottom:12px;"></div><span class="nm">radius-sm · 4px</span><div class="use">Inline images, thumbnails, input fields.</div></div>
+      <div class="sw" style="padding:18px;"><div style="height:52px;background:var(--pg-sunk);border-radius:8px;margin-bottom:12px;"></div><span class="nm">radius-md · 8px</span><div class="use">Every card, tile, and stat cell. The default.</div></div>
+      <div class="sw" style="padding:18px;"><div style="height:52px;background:var(--pg-sunk);border-radius:12px;margin-bottom:12px;"></div><span class="nm">radius-lg · 12px</span><div class="use">Full-bleed media blocks and the conversion band.</div></div>
+      <div class="sw" style="padding:18px;"><div style="height:52px;background:var(--pg-sunk);border-radius:999px;margin-bottom:12px;"></div><span class="nm">radius-pill · 999px</span><div class="use">All buttons, tags, arrows, avatars. No exceptions.</div></div>
+    </div>
+    <p class="note" style="margin-top:18px;max-width:70ch;">Depth is carried by <b style="color:var(--pg-ink);font-weight:500;">1px hairlines</b>, not shadow. One shadow exists in the whole system — <span class="mono">0 8px 24px rgba(20,22,24,.06)</span> — and only on hover for clickable cards.</p>
+  </div>
+</section>
+
+<section id="components">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t"><span class="num">04 / Components</span><h2>Pills, tints, hairline cards</h2></div>
+      <p class="lede" style="max-width:40ch;font-size:13.5px;">Six patterns rebuild the entire reference page. Everything else is a composition of them.</p>
+    </div>
+
+    <div class="comp-grid">
+      <div class="comp">
+        <div class="cap"><h4>Buttons</h4><span class="note">Height 40 (sm 34). Pill radius. Hover lifts 1px — no colour change.</span></div>
+        <div class="row"><button class="btn btn-primary">Get started</button><button class="btn btn-ghost">Explore more</button></div>
+        <div class="row"><button class="btn btn-primary btn-sm">Let's talk</button><button class="btn btn-ghost btn-sm">Learn more</button></div>
+      </div>
+
+      <div class="comp">
+        <div class="cap"><h4>Tags &amp; controls</h4><span class="note">Tags sit bottom-right of work tiles. Arrows pair at section-head right.</span></div>
+        <div class="row"><span class="tag">Marketing</span><span class="tag">SEO</span><span class="tag">Social media</span></div>
+        <div class="row"><button class="arrow" aria-label="Previous">←</button><button class="arrow" aria-label="Next">→</button></div>
+      </div>
+
+      <div class="comp">
+        <div class="cap"><h4>Text link</h4><span class="note">Uppercase 11px with a 1px underline offset 3px. Used inside tint cards.</span></div>
+        <div class="row"><a href="#components" class="s-lbl" style="border-bottom:1px solid var(--pg-rule);padding-bottom:3px;color:var(--pg-ink);">Learn more</a></div>
+        <div class="row"><span class="eyebrow">Eyebrow label</span></div>
+      </div>
+    </div>
+
+    <div class="group-label"><span class="eyebrow">Service card — tint set</span><span class="line"></span></div>
+    <div class="tints">
+      <div class="tint" style="background:#E3EDE4;">
+        <div><h4>Search Engine Optimisation</h4><p>Rank for the searches your buyers actually make, then keep the position.</p></div>
+        <span class="lnk">Learn more</span>
+      </div>
+      <div class="tint" style="background:#E9EDE8;">
+        <div><h4>Custom Website Design</h4><p>Capture your target audience and interface with a professional custom build.</p></div>
+        <span class="lnk">Learn more</span>
+      </div>
+      <div class="tint" style="background:#F8E7E2;">
+        <div><h4>Pay Per Click (PPC)</h4><p>Put spend where intent is highest and cut the rest of the budget loose.</p></div>
+        <span class="lnk">Learn more</span>
+      </div>
+      <div class="tint" style="background:#F7F0DF;">
+        <div><h4>Online Reputation</h4><p>Turn reviews and local listings into the reason a stranger picks you.</p></div>
+        <span class="lnk">Learn more</span>
+      </div>
+    </div>
+    <p class="note" style="margin-top:14px;">Tints hold <span class="mono">#17191B</span> headings and <span class="mono">#5F6367</span> body — ink tokens never change on a tint. Leave at least one white card in a tint row; a fully tinted grid loses the ground.</p>
+
+    <div class="group-label"><span class="eyebrow">Metric bar</span><span class="line"></span></div>
+    <div class="statbar">
+      <div><div class="v">+226<sup>°</sup></div><div class="l">Organic sessions</div></div>
+      <div><div class="v">+122<sup>°</sup></div><div class="l">Monthly leads</div></div>
+      <div><div class="v">+546<sup>°</sup></div><div class="l">Conversion rate</div></div>
+      <div><div class="v">+350<sup>°</sup></div><div class="l">Keywords ranked</div></div>
+    </div>
+    <p class="note" style="margin-top:14px;">Cells are joined by a 1px hairline achieved with a grid gap over a hairline background — not per-cell borders, which double at the seams. Always <span class="mono">tabular-nums</span>.</p>
+  </div>
+</section>
+
+<section id="rules">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t"><span class="num">05 / Usage</span><h2>What keeps it from drifting</h2></div>
+    </div>
+    <div class="rules">
+      <div class="rule yes">
+        <div class="hd"><span class="badge">✓</span>DO</div>
+        <ul>
+          <li>Let white cards float on the warm ground — the contrast between them is the whole visual idea.</li>
+          <li>Set display type at 300 and pull tracking to -0.028em. Light and tight, always together.</li>
+          <li>Give every section an uppercase eyebrow. It is the system's structural signal, not decoration.</li>
+          <li>Keep tints at fill-only saturation (L ≈ 92–95%). If a tint reads as a colour, it is too strong.</li>
+          <li>Use full-bleed photography with a 12px radius; let product colour supply all the vibrancy.</li>
+        </ul>
+      </div>
+      <div class="rule no">
+        <div class="hd"><span class="badge">✕</span>DON'T</div>
+        <ul>
+          <li>Add a brand accent colour. The near-black button is the accent.</li>
+          <li>Bold a heading. Weight 600+ appears only at 13px and below.</li>
+          <li>Stack drop shadows on cards — hairlines carry separation here.</li>
+          <li>Mix radii inside one row, or round a button to anything but a pill.</li>
+          <li>Tighten section padding to fit more in. Cutting the air is what makes it look cheap.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="tokens">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="t"><span class="num">06 / Tokens</span><h2>Drop-in CSS variables</h2></div>
+      <p class="lede" style="max-width:40ch;font-size:13.5px;">Also shipped as <span class="mono">tokens.json</span> and a Tailwind theme extension in the repo.</p>
+    </div>
+<pre><span class="c">/* Soft Ground — design tokens v1.0 */</span>
+<b>:root</b> {
+  <span class="c">/* surface */</span>
+  --sg-ground:      <b>#F1F0EE</b>;
+  --sg-surface:     <b>#FFFFFF</b>;
+  --sg-sunk:        <b>#EAE8E5</b>;
+  --sg-hairline:    <b>#E4E2DF</b>;
+
+  <span class="c">/* ink */</span>
+  --sg-ink:         <b>#17191B</b>;
+  --sg-ink-2:       <b>#5F6367</b>;
+  --sg-ink-3:       <b>#8E9296</b>;
+  --sg-action:      <b>#101214</b>;
+
+  <span class="c">/* category tints — fills only */</span>
+  --sg-mint:        <b>#E3EDE4</b>;
+  --sg-sage:        <b>#E9EDE8</b>;
+  --sg-blush:       <b>#F8E7E2</b>;
+  --sg-cream:       <b>#F7F0DF</b>;
+  --sg-mist:        <b>#E4EBF3</b>;
+
+  <span class="c">/* type */</span>
+  --sg-font-display: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --sg-font-body:    "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --sg-font-mono:    "JetBrains Mono", ui-monospace, monospace;
+
+  --sg-display-1: 300 68px/1.04 var(--sg-font-display);   <span class="c">/* ls -0.028em */</span>
+  --sg-display-2: 300 44px/1.10 var(--sg-font-display);   <span class="c">/* ls -0.024em */</span>
+  --sg-heading-1: 300 32px/1.15 var(--sg-font-display);   <span class="c">/* ls -0.020em */</span>
+  --sg-heading-2: 400 22px/1.25 var(--sg-font-display);   <span class="c">/* ls -0.014em */</span>
+  --sg-heading-3: 500 17px/1.35 var(--sg-font-body);
+  --sg-body:      400 15px/1.65 var(--sg-font-body);
+  --sg-body-sm:   400 13px/1.60 var(--sg-font-body);
+  --sg-eyebrow:   500 11px/1.40 var(--sg-font-body);      <span class="c">/* ls +0.12em, uppercase */</span>
+
+  <span class="c">/* space — 4px base */</span>
+  --sg-1:4px;  --sg-2:8px;   --sg-3:12px; --sg-4:16px; --sg-5:24px;
+  --sg-6:32px; --sg-7:48px;  --sg-8:64px; --sg-9:96px; --sg-10:128px;
+
+  <span class="c">/* form */</span>
+  --sg-r-sm:4px; --sg-r-md:8px; --sg-r-lg:12px; --sg-r-pill:999px;
+  --sg-border: 1px solid var(--sg-hairline);
+  --sg-lift:   0 8px 24px rgba(20,22,24,.06);    <span class="c">/* hover only */</span>
+  --sg-container: 1180px;
+  --sg-gutter:    24px;
+
+  <span class="c">/* motion */</span>
+  --sg-ease:       cubic-bezier(.2,.7,.3,1);
+  --sg-dur-hover:  180ms;
+  --sg-dur-reveal: 420ms;
+}</pre>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <span>Soft Ground · extracted specification for the Digital Marketing Portfolio</span>
+    <span class="mono">v1.0 · 11 Sep 2026</span>
+  </div>
+</footer>
