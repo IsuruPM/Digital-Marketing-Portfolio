@@ -79,7 +79,7 @@
   var lastTrigger = null;
   var meta = {
     'leads':     { eyebrow: 'Case 01 · Meta Ads · UAE real estate', title: '5,364 property leads from one Meta account' },
-    'closings':  { eyebrow: 'Case 02 · CRM · UAE real estate', title: 'From lead to closing' },
+    'closings':  { eyebrow: 'Case 02 · CRM · UAE real estate', title: 'From lead to closing: USD 22.1M in closed deals' },
     'meta-ecom': { eyebrow: 'Case 03 · Meta Ads · E-commerce', title: 'Purchase-optimised growth on Meta' },
     'google':    { eyebrow: 'Case 04 · Google Ads · E-commerce', title: 'Search and Shopping that pays for itself' },
     'klaviyo':   { eyebrow: 'Case 05 · Klaviyo · Lifecycle', title: 'Email revenue that grew while the list grew' }

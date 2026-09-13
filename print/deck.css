@@ -1,62 +1,60 @@
-/* Deck layout for the PDF export — 1440 × 810 pages on the Soft Ground tokens.
+/* Deck layout for the PDF export — 1440 × 810 pages on the Soft Ground tokens (monochrome).
    Shares ../assets/css/site.css for fonts, tokens and components. */
 *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
 @page{size:1440px 810px;margin:0;}
 html{scroll-behavior:auto;}
 body{background:var(--ground);}
-.page{
-  width:1440px;height:810px;overflow:hidden;position:relative;
-  padding:64px 72px;display:flex;flex-direction:column;gap:0;
-  page-break-after:always;break-after:page;background:var(--ground);
-}
+.page{width:1440px;height:810px;overflow:hidden;position:relative;padding:64px 72px;display:flex;flex-direction:column;gap:0;page-break-after:always;break-after:page;background:var(--ground);}
 .page:last-child{page-break-after:auto;break-after:auto;}
-.page.surface{background:var(--surface);}
 .folio{position:absolute;left:72px;right:72px;bottom:30px;display:flex;justify-content:space-between;font-family:var(--font-mono);font-size:10.5px;color:var(--ink-3);letter-spacing:.04em;}
 .folio .rule{position:absolute;left:0;right:0;top:-12px;height:1px;background:var(--hairline);}
 .ph{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;margin-bottom:28px;}
 .ph .t{display:flex;flex-direction:column;gap:10px;}
 .ph h2{font-size:40px;letter-spacing:-.024em;line-height:1.08;}
 .ph .lede{font-size:13.5px;max-width:46ch;}
-.fill{flex:1;min-height:0;display:flex;flex-direction:column;}
 
 /* cover */
 .cover-page{padding:0;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
 .cover-page .left{padding:72px;display:flex;flex-direction:column;}
-.cover-page h1{font-size:72px;margin-top:22px;max-width:12ch;}
-.cover-page .who{margin-top:auto;display:grid;gap:8px;}
-.cover-page .who .name{font-family:var(--font-display);font-weight:400;font-size:24px;letter-spacing:-.014em;}
-.cover-page .who .cred{font-size:12.5px;color:var(--ink-2);max-width:56ch;line-height:1.55;}
+.cover-page h1{font-size:84px;margin-top:22px;}
+.cover-page .sub{margin-top:10px;font-size:30px;}
+.cover-page .who{margin-top:auto;display:grid;gap:10px;}
+.cover-page .who .cred{font-family:var(--font-mono);font-size:12px;color:var(--ink-2);max-width:60ch;line-height:1.7;}
 .cover-page .right{position:relative;background:var(--sunk);}
 .cover-page .right img{width:100%;height:100%;object-fit:cover;object-position:50% 15%;filter:grayscale(1);}
-.cover-page .right .tag{position:absolute;left:24px;bottom:24px;}
 
 /* about */
-.about-page .grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;flex:1;min-height:0;}
-.about-page .about-copy{font-size:15px;gap:14px;}
-.about-page .quote{font-size:26px;}
+.about-page .grid{display:grid;grid-template-columns:300px minmax(0,1fr);gap:40px;flex:1;min-height:0;}
+.about-page .about-photo{aspect-ratio:auto;height:100%;}
+.about-page .about-copy{font-size:14.5px;gap:14px;max-width:none;}
+.about-page .quote{font-size:25px;}
 .about-page .statbar{margin-top:auto;}
-.about-page .help li{padding:12px 20px;font-size:13.5px;}
+.about-page .outcomes{margin-top:0;}
+.about-page .outcomes li{padding:14px 16px;font-size:12.5px;gap:8px;}
 
 /* expertise */
-.exp-page .tints{flex:1;grid-template-rows:1fr 1fr;}
-.exp-page .tint{min-height:0;padding:20px 22px;gap:12px;}
-.exp-page .tint .th p{font-size:12px;margin-top:5px;}
-.exp-page .tint ul{gap:6px;}
-.exp-page .tint li{font-size:12.5px;line-height:1.45;}
+.exp-page .disciplines{flex:1;grid-template-rows:1fr 1fr;}
+.exp-page .disc{padding:20px 22px;gap:12px;}
+.exp-page .disc .ic{width:36px;height:36px;}
+.exp-page .disc .ic svg{width:17px;height:17px;}
+.exp-page .disc .th p{font-size:12px;margin-top:4px;}
+.exp-page .disc ul{gap:6px;padding-top:12px;}
+.exp-page .disc li{font-size:12.3px;line-height:1.45;}
+.exp-page .disc li::before{margin-top:7px;}
 
 /* results index */
 .index-page .work{grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;flex:1;margin-bottom:34px;}
 .index-page .tile{cursor:default;}
 .index-page .tile:hover{transform:none;box-shadow:none;}
-.index-page .tile .cover{aspect-ratio:auto;height:112px;}
+.index-page .tile .cover{aspect-ratio:auto;height:118px;}
+.index-page .tile .cover img{object-fit:contain;padding:6px 0;}
+.index-page .tile .cover img[src$=".jpg"]{object-fit:cover;padding:0;}
 .index-page .tile .body{padding:12px 16px 14px;gap:6px;}
 .index-page .tile .body h3{font-size:15.5px;}
 .index-page .tile .body p{font-size:11.5px;}
 .index-page .tile .kpis .v{font-size:18px;}
 .index-page .tile .kpis div{padding:9px 10px 8px;}
 .index-page .tile .kpis .l{font-size:9.5px;margin-top:4px;}
-.index-page .hero-like{grid-column:1 / -1;display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
-.index-page .hero-like .tile{height:100%;}
 
 /* case pages */
 .case-page .grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:28px;flex:1;min-height:0;}
@@ -79,6 +77,8 @@ body{background:var(--ground);}
 .case-page .case-table td{padding:7px 10px;}
 .case-page .shot-crop{height:300px;overflow:hidden;}
 .case-page .shot-crop img{height:100%;width:100%;object-fit:cover;object-position:0 0;}
+.case-page .art{border-radius:var(--r-md);overflow:hidden;border:1px solid var(--hairline);}
+.case-page .art img{width:100%;display:block;}
 
 /* production */
 .prod-page .prod{flex:1;grid-template-columns:minmax(0,4fr) minmax(0,8fr);}
@@ -86,19 +86,18 @@ body{background:var(--ground);}
 .prod-page .prod .copy p{font-size:13.5px;}
 
 /* clients */
-.clients-page .industries{flex:1;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;align-items:stretch;}
-.clients-page .ind{height:100%;}
-.clients-page .ind .hd{padding:11px 14px;}
-.clients-page .ind .hd h4{font-size:12.5px;}
-.clients-page .ind .cells{flex:1;align-content:start;}
-.clients-page .ind .cell{min-height:86px;padding:14px;}
-.clients-page .ind .cell img{filter:none;opacity:1;max-height:40px;}
-.clients-page .ind.dark .cell img{filter:none;}
-.clients-page .ind.tall{grid-row:span 2;}
+.clients-page .logo-grid{flex:1;display:grid;grid-template-columns:repeat(6,minmax(0,1fr));grid-auto-rows:1fr;border:1px solid var(--hairline);border-radius:var(--r-md);background:var(--surface);overflow:hidden;}
+.clients-page .logo-grid li{display:flex;align-items:center;justify-content:center;padding:22px;box-shadow:1px 1px 0 0 var(--hairline);}
+.clients-page .logo-grid img{max-height:48px;max-width:70%;width:auto;object-fit:contain;}
+.clients-page .industry-tags{margin-top:16px;}
+
+/* stack */
+.stack-page .platforms{flex:none;}
+.stack-page .stack-note{flex:1;margin-top:14px;}
 
 /* credentials */
 .cred-page .creds{flex:1;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:14px;}
-.cred-page .edu li{padding:11px 18px;font-size:13px;}
+.cred-page .edu li{padding:10px 18px;font-size:12.5px;}
 .cred-page .badge-groups{gap:14px;}
 .cred-page .badges .hd{padding:10px 18px;}
 .cred-page .badges .cell{padding:14px 12px 12px;gap:8px;}
@@ -106,12 +105,12 @@ body{background:var(--ground);}
 .cred-page .badges .cell span{font-size:11px;}
 .cred-page .badges .cell small{font-size:9.5px;}
 
-/* contact */
-.contact-page{padding:0;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);}
+/* contact — ink page */
+.contact-page{padding:0;display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);background:var(--ink);color:#fff;}
 .contact-page .left{padding:72px;display:flex;flex-direction:column;}
-.contact-page h1{font-size:64px;}
-.contact-page .lede{margin-top:20px;max-width:44ch;}
-.contact-page .contact-list{margin-top:auto;background:var(--hairline);border-color:var(--hairline);}
-.contact-page .contact-list a,.contact-page .contact-list div{background:var(--surface);}
-.contact-page .right{position:relative;background:var(--sunk);}
+.contact-page .eyebrow{color:rgba(255,255,255,.55);}
+.contact-page h1{font-size:64px;color:#fff;}
+.contact-page .lede{margin-top:20px;max-width:44ch;color:rgba(255,255,255,.72);}
+.contact-page .contact-list{margin-top:auto;}
+.contact-page .right{position:relative;background:#25282B;}
 .contact-page .right img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;}
