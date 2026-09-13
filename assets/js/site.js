@@ -63,6 +63,24 @@
     });
   }
 
+  /* ---------- rotating role in the hero ---------- */
+  var roles = [].slice.call(document.querySelectorAll('#role-rotator .roles span'));
+  if (roles.length > 1 && !reduce) {
+    var ri = 0, rolesBox = roles[0].parentNode;
+    function fitRole() {                       // size the box to the active word so the text after it hugs it
+      rolesBox.style.width = roles[ri].getBoundingClientRect().width + 'px';
+    }
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitRole); else fitRole();
+    window.addEventListener('resize', fitRole);
+    setInterval(function () {
+      roles[ri].classList.remove('on'); roles[ri].classList.add('off');
+      var prev = ri; ri = (ri + 1) % roles.length;
+      roles[ri].classList.remove('off'); roles[ri].classList.add('on');
+      fitRole();
+      setTimeout(function () { roles[prev].classList.remove('off'); }, 520);
+    }, 2800);
+  }
+
   /* ---------- current section in the nav ---------- */
   var navLinks = [].slice.call(document.querySelectorAll('.nav a'));
   var sections = navLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
