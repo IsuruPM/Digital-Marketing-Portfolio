@@ -34,7 +34,7 @@
     var target = parseFloat(el.getAttribute('data-count'));
     var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
     var animDecimals = parseInt(el.getAttribute('data-anim-decimals') || String(decimals), 10);
-    var dur = 2000, start = null;
+    var dur = 2200, start = null;
     el.textContent = fmt(0, animDecimals);
     function step(ts) {
       if (start === null) start = ts;
@@ -45,7 +45,8 @@
     }
     setTimeout(function () { requestAnimationFrame(step); }, delay || 0);
   }
-  if (counters.length && 'IntersectionObserver' in window && !reduce) {
+  /* numbers ticking up is content, not motion, so this also runs under prefers-reduced-motion */
+  if (counters.length && 'IntersectionObserver' in window) {
     var cio = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
         if (!e.isIntersecting) return;
@@ -61,6 +62,8 @@
       var g = el.closest('.statbar') || el;
       if (groups.indexOf(g) === -1) { groups.push(g); cio.observe(g); }
     });
+  } else if (counters.length) {
+    counters.forEach(function (el, i) { countUp(el, 300 + i * 160); });
   }
 
   /* ---------- rotating role in the hero ---------- */
