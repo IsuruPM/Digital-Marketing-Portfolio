@@ -97,9 +97,6 @@ presents full-screen like a slide deck.
   inside the case dialog.
 * **Wordmark**: the nav uses `assets/img/wordmark.svg` (the signature SVG, viewBox tightened and
   fill set to `currentColor`).
-* **Kingsford College of Business and Technology** is a text placeholder in the marquee
-  (`li.wm-fallback`) until the logo file is added as `assets/img/logos/kingsford.png`; then
-  replace that `<li>` with an `<img>` like the others (in both marquee copies and in the deck).
 * **PDF**: the deck is no longer linked from the site; `Isuru-Marasinghe-Portfolio.pdf` stays in
   the repository for sharing by hand.
 * **Client logos** run in two opposite-direction marquees on white and pause on hover.
