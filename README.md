@@ -39,15 +39,16 @@ presents full-screen like a slide deck.
 
 | # | Section | What it holds |
 |---|---------|---------------|
-| — | Hero | Thesis line, intro, four headline metrics with count-up |
+| — | Hero | "Hey, I'm Isuru Marasinghe", intro, qualifications, four headline metrics with count-up |
 | 01 | About | Positioning, philosophy, the five outcomes |
 | 02 | Expertise | Four white cards with line icons: creative, paid media, measurement, lifecycle |
 | 03 | Results | Five cases from live accounts; each opens a dialog with tables and screenshots |
 | 04 | Production | Fortune 500 event coverage (Zoom, CNBC) |
-| 05 | Clients | 22 brands in a colour logo marquee, with industry tags |
-| 06 | Stack | Platform logos and tools, with a note on creative direction |
-| 07 | Credentials | Education, Meta licences, CIM Level 7 awards, memberships |
-| 08 | Contact | Ink band with WhatsApp, email, LinkedIn and portrait |
+| 05 | Clients | Colour logo marquee on white, with industry tags |
+| 06 | Testimonials | Six client quotes (drafted, awaiting each person's sign-off) |
+| 07 | Stack | Platform logos and tools, with a note on creative direction |
+| 08 | Credentials | Education, Meta licences, CIM Level 7 awards, memberships |
+| 09 | Contact | Ink band with WhatsApp, email, LinkedIn and portrait |
 
 ## Editing content
 
@@ -61,6 +62,11 @@ presents full-screen like a slide deck.
   pipeline, product cards, search-and-chart, email flows). Replace any of them with a
   4:3 photograph of the same name to swap in a photographic cover; the screenshots stay
   inside the case dialog.
+* **Wordmark**: the nav uses `assets/img/wordmark.svg` (the signature SVG, viewBox tightened and
+  fill set to `currentColor`).
+* **Kingsford College of Business and Technology** is a text placeholder in the marquee
+  (`li.wm-fallback`) until the logo file is added as `assets/img/logos/kingsford.png`; then
+  replace that `<li>` with an `<img>` like the others (in both marquee copies and in the deck).
 * **Client logos** run in two opposite-direction marquees on white and pause on hover.
   Logos designed for dark backgrounds had their white pixels mapped to ink so they read
   on white. Under `prefers-reduced-motion` the marquee becomes a static wrapped row.
