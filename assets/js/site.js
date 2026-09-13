@@ -121,4 +121,52 @@
       if (lastTrigger) lastTrigger.focus();
     });
   }
+
+  /* ---------- inquiry form (Netlify Forms, with a mailto fallback) ---------- */
+  var form = document.getElementById('inquiry-form');
+  if (form) {
+    var status = document.getElementById('inquiry-status');
+    var submit = document.getElementById('inquiry-submit');
+    var TO = 'isurupm1997@gmail.com';
+    function fieldsOk() {
+      var ok = true;
+      [].slice.call(form.querySelectorAll('[required]')).forEach(function (el) {
+        var valid = el.checkValidity();
+        el.classList.toggle('invalid', !valid);
+        if (!valid && ok) { el.focus(); ok = false; }
+      });
+      return ok;
+    }
+    function mailtoFallback(data) {
+      var body = 'Name: ' + data.get('name') + '\nEmail: ' + data.get('email') + '\nContact number: ' + data.get('phone') + '\n\n' + data.get('inquiry');
+      window.location.href = 'mailto:' + TO + '?subject=' + encodeURIComponent('Website inquiry from ' + data.get('name')) + '&body=' + encodeURIComponent(body);
+    }
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      status.className = 'form-status';
+      if (!fieldsOk()) { status.textContent = 'Please complete the highlighted fields.'; status.classList.add('err'); return; }
+      var data = new FormData(form);
+      submit.disabled = true; status.textContent = 'Sending…';
+      var onNetlify = /netlify\.app$/.test(location.hostname) || (location.protocol === 'https:' && !/claude\.ai$/.test(location.hostname) && location.hostname !== 'localhost');
+      if (!onNetlify) { submit.disabled = false; status.textContent = 'Opening your email app…'; mailtoFallback(data); return; }
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); form.reset(); status.textContent = 'Thanks, your inquiry is on its way. I\'ll reply within one working day.'; status.classList.add('ok'); })
+        .catch(function () { status.textContent = 'Sending failed, so I\'ve opened your email app instead.'; status.classList.add('err'); mailtoFallback(data); })
+        .then(function () { submit.disabled = false; });
+    });
+    form.addEventListener('input', function (e) { if (e.target.classList) e.target.classList.remove('invalid'); });
+  }
+
+  /* ---------- WhatsApp widget ---------- */
+  var bubble = document.getElementById('wa-bubble');
+  var waClose = document.getElementById('wa-close');
+  if (bubble) {
+    var dismissed = false;
+    try { dismissed = sessionStorage.getItem('wa-dismissed') === '1'; } catch (err) {}
+    if (!dismissed) setTimeout(function () { if (!dialog || !dialog.open) bubble.hidden = false; }, 4000);
+    waClose.addEventListener('click', function () {
+      bubble.hidden = true;
+      try { sessionStorage.setItem('wa-dismissed', '1'); } catch (err) {}
+    });
+  }
 })();

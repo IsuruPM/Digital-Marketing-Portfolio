@@ -24,6 +24,33 @@ Any static server works. Fonts are loaded with `@font-face`, so open it over HTT
 npx serve .            # or: python3 -m http.server 8080
 ```
 
+## Deploy to Netlify
+
+The site is static, so there is nothing to build. Two ways to publish:
+
+1. **Connect the repository** (recommended). In Netlify choose *Add new site → Import an
+   existing project*, pick this GitHub repository and the branch you want to publish. Leave the
+   build command empty and the publish directory as `.` (both are already set in
+   `netlify.toml`). Every push then redeploys.
+2. **Drag and drop.** Upload the `netlify-site.zip` produced by `npm run zip` (or the folder
+   itself) at https://app.netlify.com/drop.
+
+After the first deploy, turn on the inquiry form:
+
+* *Site configuration → Forms → Enable form detection*, then redeploy once so Netlify registers
+  the form named `inquiry`.
+* *Forms → Form notifications → Add notification → Email notification*, and enter
+  `isurupm1997@gmail.com`. Every submission (name, email, contact number, inquiry) is then
+  emailed there and also listed under *Forms* in the Netlify dashboard.
+* Spam is filtered by Netlify's honeypot field plus its built-in Akismet check.
+
+If the site is ever hosted somewhere other than Netlify, the form falls back to opening the
+visitor's email app with the message pre-filled and addressed to the same inbox.
+
+Other integrations on the page: the "Book a discovery call" buttons open
+https://calendly.com/isurumarasinghe/30min, and the floating WhatsApp widget opens a chat with
++971 52 912 7002.
+
 ## Rebuild the PDF
 
 ```sh
@@ -48,7 +75,7 @@ presents full-screen like a slide deck.
 | 06 | Testimonials | Six client quotes (drafted, awaiting each person's sign-off) |
 | 07 | Stack | Platform logos and tools, with a note on creative direction |
 | 08 | Credentials | Education, Meta licences, CIM Level 7 awards, memberships |
-| 09 | Contact | Ink band with WhatsApp, email, LinkedIn and portrait |
+| 09 | Contact | Ink band with discovery-call CTA, inquiry form, contact details and portrait |
 
 ## Editing content
 
