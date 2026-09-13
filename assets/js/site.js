@@ -30,27 +30,37 @@
     parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ',');
     return parts.join('.');
   }
-  function countUp(el) {
+  function countUp(el, delay) {
     var target = parseFloat(el.getAttribute('data-count'));
     var decimals = parseInt(el.getAttribute('data-decimals') || '0', 10);
-    var dur = 1100, start = null;
+    var animDecimals = parseInt(el.getAttribute('data-anim-decimals') || String(decimals), 10);
+    var dur = 2000, start = null;
+    el.textContent = fmt(0, animDecimals);
     function step(ts) {
       if (start === null) start = ts;
       var p = Math.min(1, (ts - start) / dur);
-      var eased = 1 - Math.pow(1 - p, 3);
-      el.textContent = fmt(target * eased, decimals);
-      if (p < 1) requestAnimationFrame(step);
-      else el.textContent = fmt(target, decimals);
+      var eased = 1 - Math.pow(1 - p, 4);           // fast start, long settle
+      if (p < 1) { el.textContent = fmt(target * eased, animDecimals); requestAnimationFrame(step); }
+      else { el.textContent = fmt(target, decimals); el.classList.add('counted'); }
     }
-    requestAnimationFrame(step);
+    setTimeout(function () { requestAnimationFrame(step); }, delay || 0);
   }
   if (counters.length && 'IntersectionObserver' in window && !reduce) {
     var cio = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
-        if (e.isIntersecting) { countUp(e.target); cio.unobserve(e.target); }
+        if (!e.isIntersecting) return;
+        var group = e.target;
+        cio.unobserve(group);
+        var els = [].slice.call(group.querySelectorAll('[data-count]'));
+        var base = group.classList.contains('hero-stats') ? 500 : 100;   // let the hero entrance land first
+        els.forEach(function (el, i) { countUp(el, base + i * 160); });
       });
-    }, { threshold: 0.4 });
-    counters.forEach(function (el) { cio.observe(el); });
+    }, { threshold: 0.35 });
+    var groups = [];
+    counters.forEach(function (el) {
+      var g = el.closest('.statbar') || el;
+      if (groups.indexOf(g) === -1) { groups.push(g); cio.observe(g); }
+    });
   }
 
   /* ---------- current section in the nav ---------- */
