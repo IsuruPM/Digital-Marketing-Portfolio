@@ -57,8 +57,6 @@ presents full-screen like a slide deck.
 * **Screenshots** in `assets/img/results/` are cropped to exactly what the original deck
   showed (campaign names and client columns stay hidden). Replace a file with the same name
   to update both the site and the deck.
-* **Logos** are transparent PNGs. Logos designed for dark backgrounds sit inside an
-  `.ind.dark` card; everything else renders greyscale and reveals colour on hover.
 * **Tile covers** are monochrome SVG illustrations in `assets/img/covers/` (funnel,
   pipeline, product cards, search-and-chart, email flows). Replace any of them with a
   4:3 photograph of the same name to swap in a photographic cover; the screenshots stay
