@@ -24,31 +24,37 @@ Any static server works. Fonts are loaded with `@font-face`, so open it over HTT
 npx serve .            # or: python3 -m http.server 8080
 ```
 
-## Deploy to Netlify
+## Deploying
 
-The site is static, so there is nothing to build. Two ways to publish:
+`npm run package` builds two ready-to-upload file sets in `dist/`:
 
-1. **Connect the repository** (recommended). In Netlify choose *Add new site → Import an
-   existing project*, pick this GitHub repository and the branch you want to publish. Leave the
-   build command empty and the publish directory as `.` (both are already set in
-   `netlify.toml`). Every push then redeploys.
-2. **Drag and drop.** Upload the `netlify-site.zip` produced by `npm run zip` (or the folder
-   itself) at https://app.netlify.com/drop.
+| Package | Use it when | Inquiry form |
+|---------|-------------|--------------|
+| `dist/netlify-site.zip` | Hosting on Netlify | Netlify Forms (no server code) |
+| `dist/shared-hosting-site.zip` | Any ordinary web host with PHP (cPanel, Plesk, Hostinger, GoDaddy, etc.) | `contact.php` sends the email with PHP `mail()` |
 
-After the first deploy, turn on the inquiry form:
+### Netlify
 
-* *Site configuration → Forms → Enable form detection*, then redeploy once so Netlify registers
-  the form named `inquiry`.
-* *Forms → Form notifications → Add notification → Email notification*, and enter
-  `isurupm1997@gmail.com`. Every submission (name, email, contact number, inquiry) is then
-  emailed there and also listed under *Forms* in the Netlify dashboard.
-* Spam is filtered by Netlify's honeypot field plus its built-in Akismet check.
+1. Either connect this GitHub repository (*Add new site → Import an existing project*; build
+   command empty, publish directory `.`, both preset in `netlify.toml`) or drag
+   `dist/netlify-site.zip` onto https://app.netlify.com/drop.
+2. *Site configuration → Forms → Enable form detection*, then redeploy once.
+3. *Forms → Form notifications → Add notification → Email*, address `isurupm1997@gmail.com`.
 
-If the site is ever hosted somewhere other than Netlify, the form falls back to opening the
-visitor's email app with the message pre-filled and addressed to the same inbox.
+### Shared hosting
 
-Other integrations on the page: the "Book a discovery call" buttons open
-https://calendly.com/isurumarasinghe/30min, and the floating WhatsApp widget opens a chat with
+1. Unzip `dist/shared-hosting-site.zip` and upload its contents to the web root
+   (usually `public_html`). Keep the folder structure; `.htaccess` is a hidden file.
+2. Send one test inquiry. If nothing arrives, open `contact.php` and set `$from` to an
+   address on your own domain (for example `no-reply@yourdomain.com`); many hosts only
+   deliver mail sent from their own domain. Check the spam folder once.
+3. Once SSL is active, uncomment the three HTTPS lines in `.htaccess`.
+
+Wherever the form cannot reach a mail backend (for example the preview link, or a plain
+`file://` open), it falls back to opening the visitor's email app with the message pre-filled.
+
+Other integrations: the "Book a discovery call" buttons open
+https://calendly.com/isurumarasinghe/30min and the floating WhatsApp icon opens a chat with
 +971 52 912 7002.
 
 ## Rebuild the PDF
@@ -94,6 +100,8 @@ presents full-screen like a slide deck.
 * **Kingsford College of Business and Technology** is a text placeholder in the marquee
   (`li.wm-fallback`) until the logo file is added as `assets/img/logos/kingsford.png`; then
   replace that `<li>` with an `<img>` like the others (in both marquee copies and in the deck).
+* **PDF**: the deck is no longer linked from the site; `Isuru-Marasinghe-Portfolio.pdf` stays in
+  the repository for sharing by hand.
 * **Client logos** run in two opposite-direction marquees on white and pause on hover.
   Logos designed for dark backgrounds had their white pixels mapped to ink so they read
   on white. Under `prefers-reduced-motion` the marquee becomes a static wrapped row.

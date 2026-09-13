@@ -147,26 +147,24 @@
       if (!fieldsOk()) { status.textContent = 'Please complete the highlighted fields.'; status.classList.add('err'); return; }
       var data = new FormData(form);
       submit.disabled = true; status.textContent = 'Sending…';
-      var onNetlify = /netlify\.app$/.test(location.hostname) || (location.protocol === 'https:' && !/claude\.ai$/.test(location.hostname) && location.hostname !== 'localhost');
-      if (!onNetlify) { submit.disabled = false; status.textContent = 'Opening your email app…'; mailtoFallback(data); return; }
-      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() })
-        .then(function (r) { if (!r.ok) throw new Error(r.status); form.reset(); status.textContent = 'Thanks, your inquiry is on its way. I\'ll reply within one working day.'; status.classList.add('ok'); })
+      var action = form.getAttribute('action') || '/';
+      var isPhp = /\.php$/.test(action);
+      var hosted = location.protocol === 'https:' || location.protocol === 'http:';
+      var isPreview = /claude\.ai$/.test(location.hostname) || location.hostname === 'localhost' || location.hostname === '127.0.0.1';
+      if (!hosted || (isPreview && !isPhp)) { submit.disabled = false; status.textContent = 'Opening your email app…'; mailtoFallback(data); return; }
+      fetch(action, { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded', 'Accept': 'application/json' }, body: new URLSearchParams(data).toString() })
+        .then(function (r) {
+          if (!r.ok) throw new Error(r.status);
+          return isPhp ? r.json() : { ok: true };
+        })
+        .then(function (res) {
+          if (!res || res.ok === false) throw new Error('rejected');
+          form.reset(); status.textContent = 'Thanks, your inquiry is on its way. I\'ll reply within one working day.'; status.classList.add('ok');
+        })
         .catch(function () { status.textContent = 'Sending failed, so I\'ve opened your email app instead.'; status.classList.add('err'); mailtoFallback(data); })
         .then(function () { submit.disabled = false; });
     });
     form.addEventListener('input', function (e) { if (e.target.classList) e.target.classList.remove('invalid'); });
   }
 
-  /* ---------- WhatsApp widget ---------- */
-  var bubble = document.getElementById('wa-bubble');
-  var waClose = document.getElementById('wa-close');
-  if (bubble) {
-    var dismissed = false;
-    try { dismissed = sessionStorage.getItem('wa-dismissed') === '1'; } catch (err) {}
-    if (!dismissed) setTimeout(function () { if (!dialog || !dialog.open) bubble.hidden = false; }, 4000);
-    waClose.addEventListener('click', function () {
-      bubble.hidden = true;
-      try { sessionStorage.setItem('wa-dismissed', '1'); } catch (err) {}
-    });
-  }
 })();
