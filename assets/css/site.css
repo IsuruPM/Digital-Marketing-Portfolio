@@ -93,6 +93,7 @@ h4{font-family:var(--font-body);font-size:17px;line-height:1.35;letter-spacing:-
 .hero{padding-block:clamp(36px,5vw,64px) clamp(44px,6vw,80px);}
 .hero-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:48px;align-items:center;}
 .hero h1{margin-top:18px;}
+.hero h1 .ln{display:block;}
 .hero h1 .hey{display:block;font-size:.5em;color:var(--ink-2);letter-spacing:-.02em;line-height:1.2;margin-bottom:.12em;}
 .hero .sub{margin-top:10px;}
 /* rotating role: words stacked in one grid cell so the line never reflows */
@@ -114,13 +115,13 @@ h4{font-family:var(--font-body);font-size:17px;line-height:1.35;letter-spacing:-
 
 /* stat bar */
 .statbar{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:var(--r-md);overflow:hidden;}
-.statbar > div{background:var(--surface);padding:22px 20px;min-width:0;}
+.statbar > div{background:var(--surface);padding:24px 22px;min-width:0;display:flex;flex-direction:column;align-items:flex-start;}
 .statbar .v{font-size:clamp(30px,3.4vw,40px);}
 .statbar [data-count]{display:inline-block;min-width:1.2ch;transition:transform 260ms var(--ease);}
 .statbar [data-count].counted{transform:none;}
 .statbar .l{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-top:10px;line-height:1.4;}
 .statbar .c{font-size:12px;color:var(--ink-3);margin-top:4px;line-height:1.45;}
-@media (max-width:760px){.statbar{grid-template-columns:repeat(2,minmax(0,1fr));}.statbar > div{padding:18px 16px;}}
+@media (max-width:760px){.statbar{grid-template-columns:repeat(2,minmax(0,1fr));}.statbar > div{padding:20px 18px;}}
 .hero-stats{margin-top:clamp(28px,4vw,40px);}
 
 /* ---------- sections ---------- */

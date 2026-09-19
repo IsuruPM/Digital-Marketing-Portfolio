@@ -45,6 +45,7 @@
     }
     setTimeout(function () { requestAnimationFrame(step); }, delay || 0);
   }
+  var narrow = window.matchMedia && window.matchMedia('(max-width: 760px)').matches;
   /* numbers ticking up is content, not motion, so this also runs under prefers-reduced-motion */
   if (counters.length && 'IntersectionObserver' in window) {
     var cio = new IntersectionObserver(function (entries) {
@@ -56,7 +57,8 @@
         var base = group.classList.contains('hero-stats') ? 500 : 100;   // let the hero entrance land first
         els.forEach(function (el, i) { countUp(el, base + i * 160); });
       });
-    }, { threshold: 0.35 });
+    }, narrow ? { rootMargin: '0px 0px -22% 0px', threshold: 0.2 }   // phones: wait until it is properly on screen
+              : { threshold: 0.35 });
     var groups = [];
     counters.forEach(function (el) {
       var g = el.closest('.statbar') || el;
