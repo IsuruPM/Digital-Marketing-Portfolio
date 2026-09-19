@@ -191,7 +191,7 @@ CASES = [
  "shots": [("assets/img/results/tiktok-account.jpg",
             "TikTok Ads Manager campaign report for the UAE real estate account managed by Isuru Marasinghe",
             "TikTok Ads Manager · 35 campaigns",
-            "What you are looking at: the campaign table with the account totals along the bottom. AED 123,179.61 of cost, 9,665,499 impressions, 30,457 destination clicks at a 0.32% click-through rate, and 857 conversions at AED 143.73 each. Campaign names are cropped because the account is under NDA.")],
+            "What you are looking at: the TikTok Ads Manager campaign table, cropped to the metric columns, with the account totals on the bold row at the bottom. Reading that row: AED 123,179.61 of cost, AED 4.04 cost per click, a AED 12.74 CPM, 9,665,499 impressions, 30,457 destination clicks at a 0.32% click-through rate, and 857 conversions at AED 143.73 each. The conversions column counts property enquiry forms, which is why this case calls them leads. Campaign names and the account name are cropped out because the account is under NDA.")],
  "table": {"head": ["Campaign","Cost","Impressions","Clicks","CTR","Leads","Cost / lead"],
   "rows": [["Tower launch · UAE","AED 49,998.69","4,738,265","13,198","0.28%","307","AED 162.86"],
            ["Community launch · Smart+ · UAE","AED 20,813.45","1,022,629","2,912","0.28%","143","AED 145.55"],
