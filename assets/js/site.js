@@ -6,6 +6,24 @@
   root.classList.add('js');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* ---------- always land at the top of a freshly opened page ----------
+     A normal browser already does this. Inside a preview or embed frame the
+     surrounding page keeps its own scroll position, so the new document looks
+     as if it opened half way down; scrollIntoView asks every ancestor
+     scrollport, including the host page, to bring this document into view. */
+  function toTop() {
+    try { window.scrollTo({ top: 0, left: 0, behavior: 'instant' }); }
+    catch (e) { window.scrollTo(0, 0); }
+    if (window.self !== window.top) {
+      try { root.scrollIntoView({ block: 'start', behavior: 'instant' }); } catch (e) {}
+    }
+  }
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  if (!location.hash) {
+    toTop();
+    window.addEventListener('load', toTop);          // again once images have taken their space
+  }
+
   /* ---------- reveal on scroll ---------- */
   var revealEls = [].slice.call(document.querySelectorAll('.reveal'));
   if ('IntersectionObserver' in window && !reduce) {

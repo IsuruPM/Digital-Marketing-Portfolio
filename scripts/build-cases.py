@@ -13,13 +13,14 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CASES = [
 {
  "slug": "case-meta-leads",
+ "stitle": "5,364 property leads from one Meta account",
  "num": "Case 01",
  "kicker": "Meta Ads · UAE real estate",
  "title": "5,364 property leads from one Meta account",
  "tag": "Meta Ads · Lead generation",
  "cover": "assets/img/covers/lead-gen.svg",
  "lede": "Lead-form and website-conversion campaigns for property developers and brokerages in the UAE, scaled from AED 40 to AED 500 a day per ad set while holding the account-wide cost per lead at AED 43.75.",
- "desc": "How Isuru Marasinghe generated 5,364 property leads from one Meta Ads account in the UAE at an average cost per lead of USD 11.91, with the Ads Manager report behind it.",
+ "desc": "5,364 property leads from one Meta Ads account in the UAE at USD 11.91 average cost per lead, with the Ads Manager report shown in full.",
  "facts": [("Platform","Meta Ads · lead forms and website conversions"),
            ("Market","United Arab Emirates"),
            ("Structure","CBO and ABO, broad and interest stacks, retargeting sequences"),
@@ -54,13 +55,14 @@ CASES = [
 },
 {
  "slug": "case-crm-closings",
+ "stitle": "USD 22.1M closed from direct leads",
  "num": "Case 02",
  "kicker": "CRM · UAE real estate",
  "title": "From lead to closing: USD 22.1M in property sold",
  "tag": "CRM · Closed deals",
  "cover": "assets/img/covers/closings.svg",
  "lede": "The same real-estate pipeline followed past the lead form and into the CRM, where 75 deals closed for a combined AED 81,317,569 on roughly AED 260K of media spend.",
- "desc": "The CRM snapshot behind Isuru Marasinghe's UAE real estate media buying: 75 deals closed worth USD 22.1M from direct leads on about USD 71K of ad spend.",
+ "desc": "The CRM snapshot behind Isuru Marasinghe's UAE real estate media buying: 75 deals worth USD 22.1M on about USD 71K of ad spend.",
  "facts": [("Source","CRM closed-deals dashboard"),
            ("Market","UAE real estate"),
            ("Media spend","Roughly AED 260,000, about USD 71K, behind the closed pipeline"),
@@ -88,13 +90,14 @@ CASES = [
 },
 {
  "slug": "case-meta-ecom",
+ "stitle": "Purchase-optimised growth on Meta",
  "num": "Case 03",
  "kicker": "Meta Ads · E-commerce",
  "title": "Purchase-optimised growth on Meta",
  "tag": "Meta Ads · Advantage+",
  "cover": "assets/img/covers/ecom-meta.svg",
  "lede": "Advantage+ shopping mixed with creative-led prospecting and retargeting for UAE e-commerce brands, read on a seven-day click window and judged on purchase ROAS rather than clicks.",
- "desc": "Meta Ads case study by Isuru Marasinghe: purchase-optimised e-commerce campaigns reaching 3.55x top ad-set ROAS at a 3.02% click-through rate and USD 0.35 cost per click.",
+ "desc": "Purchase-optimised Meta Ads for UAE e-commerce: 3.55x top ad-set ROAS, 3.02% CTR and USD 0.35 cost per click, with three account views in full.",
  "facts": [("Platform","Meta Ads · Advantage+ shopping and manual campaigns"),
            ("Objective","Purchases, seven-day click attribution"),
            ("Store","Shopify"),
@@ -128,13 +131,14 @@ CASES = [
 },
 {
  "slug": "case-google-ads",
+ "stitle": "Google Ads at a 15.73x return",
  "num": "Case 04",
  "kicker": "Google Ads · E-commerce",
  "title": "Search and Shopping that paid for itself fifteen times over",
  "tag": "Google Ads",
  "cover": "assets/img/covers/ecom-google.svg",
  "lede": "Search and Performance Max campaigns for an online store, built on a tight keyword architecture and a clean product feed, shown as four monthly snapshots straight from the Google Ads overview.",
- "desc": "Google Ads case study by Isuru Marasinghe: Search and Performance Max campaigns returning 15.73x in the best month, with four monthly account snapshots shown in full.",
+ "desc": "Google Ads Search and Performance Max returning 15.73x in the best month, with four monthly account snapshots shown in full.",
  "facts": [("Platform","Google Ads · Search and Performance Max"),
            ("Currency","USD, as reported in the account"),
            ("Best month","September 2024, a 15.73× return"),
@@ -162,13 +166,14 @@ CASES = [
 },
 {
  "slug": "case-tiktok-leads",
+ "stitle": "857 property leads from TikTok",
  "num": "Case 06",
  "kicker": "TikTok Ads · UAE real estate",
  "title": "857 property leads from TikTok at USD 39 each",
  "tag": "TikTok Ads · Lead generation",
  "cover": "assets/img/covers/tiktok-leads.svg",
  "lede": "Eighteen months of always-on TikTok buying for a Dubai brokerage: 35 campaigns across the UAE, Canada, the UK, Pakistan and the wider Arabic-speaking market, at a USD 3.47 CPM.",
- "desc": "TikTok Ads case study by Isuru Marasinghe: 35 campaigns, 9.67M impressions and 857 property leads at USD 39.14 each for a Dubai real estate brokerage.",
+ "desc": "TikTok Ads case study: 35 campaigns, 9.67M impressions and 857 property leads at USD 39.14 each for a Dubai real estate brokerage.",
  "facts": [("Platform","TikTok Ads Manager"),
            ("Period","23 October 2024 to 21 April 2026"),
            ("Scope","35 campaigns, Smart+ and manual, CBO and daily-budget"),
@@ -201,13 +206,14 @@ CASES = [
 },
 {
  "slug": "case-klaviyo",
+ "stitle": "Klaviyo email revenue up 55% year on year",
  "num": "Case 05",
  "kicker": "Klaviyo · Lifecycle",
  "title": "Email revenue that grew while the list grew",
  "tag": "Klaviyo · Shopify",
  "cover": "assets/img/covers/email.svg",
  "lede": "Automated flows and a campaign calendar for a Shopify store in Klaviyo. Over twelve months, attributed placed-order value grew 55% and add-to-cart value grew 141% against the year before.",
- "desc": "Klaviyo lifecycle case study by Isuru Marasinghe: placed-order value up 55% and add-to-cart value up 141% year on year for a Shopify store, with both dashboards shown.",
+ "desc": "Klaviyo flows and campaigns for a Shopify store: placed-order value up 55% and add-to-cart value up 141% year on year, both dashboards shown.",
  "facts": [("Platform","Klaviyo on Shopify"),
            ("Period","20 April 2025 to 21 April 2026, against the previous period"),
            ("Split","Flows carried 60% of order value, campaigns 40%"),
@@ -284,6 +290,15 @@ def build(case):
     rows = "\n".join("<tr>" + "".join(
         "<td%s>%s</td>" % (NC if i else "", c) for i, c in enumerate(r)) + "</tr>" for r in t["rows"])
 
+    crumbs = {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE},
+        {"@type": "ListItem", "position": 2, "name": "Results", "item": SITE + "#work"},
+        {"@type": "ListItem", "position": 3, "name": case["stitle"], "item": SITE + case["slug"] + ".html"}
+      ]
+    }
     ld = {
       "@context": "https://schema.org",
       "@type": "Article",
@@ -301,7 +316,7 @@ def build(case):
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{case['title']} — Isuru Marasinghe</title>
+<title>{case['stitle']} — Isuru Marasinghe</title>
 <meta name="google-site-verification" content="DIW5ROwDRpi_2F6pmTCKQRL050cAkq0UAVs_hDUr6RQ" />
 <meta name="description" content="{html.escape(case['desc'])}">
 <meta name="author" content="Isuru Marasinghe">
@@ -310,14 +325,14 @@ def build(case):
 <meta property="og:url" content="{SITE}{case['slug']}.html">
 <meta property="og:site_name" content="Isuru Marasinghe">
 <meta property="og:locale" content="en_US">
-<meta property="og:title" content="{case['title']} — Isuru Marasinghe">
+<meta property="og:title" content="{case['stitle']} — Isuru Marasinghe">
 <meta property="og:description" content="{html.escape(case['desc'])}">
 <meta property="og:type" content="article">
 <meta property="og:image" content="{SITE}assets/img/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="{case['title']} — Isuru Marasinghe">
+<meta name="twitter:title" content="{case['stitle']} — Isuru Marasinghe">
 <meta name="twitter:description" content="{html.escape(case['desc'])}">
 <meta name="twitter:image" content="{SITE}assets/img/og-cover.jpg">
 <meta name="theme-color" content="#F1F0EE">
@@ -331,6 +346,9 @@ def build(case):
 <link rel="stylesheet" href="assets/css/site.css">
 <script type="application/ld+json">
 {json.dumps(ld, indent=2)}
+</script>
+<script type="application/ld+json">
+{json.dumps(crumbs, indent=2)}
 </script>
 </head>
 <body>
