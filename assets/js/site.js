@@ -158,7 +158,7 @@
   if (form) {
     var status = document.getElementById('inquiry-status');
     var submit = document.getElementById('inquiry-submit');
-    var TO = 'isurupm1997@gmail.com';
+    var TO = 'hello@isurumarasinghe.com';
     function fieldsOk() {
       var ok = true;
       [].slice.call(form.querySelectorAll('[required]')).forEach(function (el) {

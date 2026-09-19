@@ -16,6 +16,7 @@ function base(dir) {
   mkdirSync(dir, { recursive: true });
   cpSync(join(root, 'assets'), join(dir, 'assets'), { recursive: true, filter: (src) => !src.endsWith('.gitkeep') });
   cpSync(join(root, 'robots.txt'), join(dir, 'robots.txt'));
+  cpSync(join(root, 'sitemap.xml'), join(dir, 'sitemap.xml'));
 }
 
 // 1. Netlify: the page as-is (form action "/", data-netlify attributes) plus netlify.toml.

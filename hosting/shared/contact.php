@@ -3,7 +3,7 @@
 // Sends each submission to the address below using the server's mail() function.
 // Returns JSON for the site's JavaScript, or redirects to thanks.html without JavaScript.
 
-$to      = 'isurupm1997@gmail.com';
+$to      = 'hello@isurumarasinghe.com';
 $subject = 'Website inquiry';
 // Some hosts only deliver mail sent "from" an address on your own domain.
 // If replies never arrive, set this to something like 'no-reply@yourdomain.com'.

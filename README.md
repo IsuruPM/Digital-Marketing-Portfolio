@@ -39,7 +39,7 @@ npx serve .            # or: python3 -m http.server 8080
    command empty, publish directory `.`, both preset in `netlify.toml`) or drag
    `dist/netlify-site.zip` onto https://app.netlify.com/drop.
 2. *Site configuration → Forms → Enable form detection*, then redeploy once.
-3. *Forms → Form notifications → Add notification → Email*, address `isurupm1997@gmail.com`.
+3. *Forms → Form notifications → Add notification → Email*, address `hello@isurumarasinghe.com`.
 
 ### Shared hosting
 
@@ -104,6 +104,15 @@ presents full-screen like a slide deck.
   on white. Under `prefers-reduced-motion` the marquee becomes a static wrapped row.
 * **Currency**: headline figures are USD; AED platform figures are converted at the
   pegged 3.6725 and the AED original is kept in the tables.
+* **SEO**: `index.html` carries the description, Open Graph and Twitter cards, a canonical
+  link and a JSON-LD graph (Person, ProfilePage, ProfessionalService). All of these use
+  `https://isurumarasinghe.com/`; if the site goes live on a different domain, change that
+  string in `index.html`, `robots.txt` and `sitemap.xml`. Update `<lastmod>` in
+  `sitemap.xml` when the content changes, and submit the sitemap in Google Search Console.
+* **Contact address**: the form delivers to `hello@isurumarasinghe.com`, set in
+  `assets/js/site.js` (mailto fallback), `hosting/shared/contact.php` (`$to`) and the
+  contact section of `index.html`. That mailbox must exist on the domain before the
+  shared-hosting form can deliver.
 
 ## Design tokens
 

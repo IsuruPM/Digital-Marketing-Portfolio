@@ -2,3 +2,5 @@ User-agent: *
 Allow: /
 Disallow: /print/
 Disallow: /scripts/
+
+Sitemap: https://isurumarasinghe.com/sitemap.xml
