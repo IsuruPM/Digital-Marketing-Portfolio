@@ -39,7 +39,7 @@ img{max-width:100%;display:block;}
 a{color:inherit;text-decoration:none;}
 button{font:inherit;color:inherit;}
 p{margin:0;}
-ul{margin:0;padding:0;list-style:none;}
+ul,ol{margin:0;padding:0;list-style:none;}
 :focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px;}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;}
 
@@ -202,6 +202,15 @@ h4{font-family:var(--font-body);font-size:17px;line-height:1.35;letter-spacing:-
 .prod .shots figure:hover img{transform:scale(1.02);}
 @media (max-width:860px){.prod{grid-template-columns:1fr;}.prod .shots figure{aspect-ratio:4/3;height:auto;}}
 @media (max-width:520px){.prod .shots{grid-template-columns:1fr;}.prod .shots figure{aspect-ratio:3/2;}}
+
+/* ---------- process ---------- */
+.process{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:var(--r-md);overflow:hidden;counter-reset:step;}
+.process li{background:var(--surface);padding:24px 24px 26px;display:flex;flex-direction:column;gap:10px;min-width:0;}
+.process .n{font-family:var(--font-mono);font-size:11px;color:var(--ink-3);letter-spacing:.04em;}
+.process h3{font-size:19px;}
+.process p{font-size:13.5px;line-height:1.55;color:var(--ink-2);}
+@media (max-width:900px){.process{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media (max-width:560px){.process{grid-template-columns:1fr;}.process li{padding:20px 18px 22px;}}
 
 /* ---------- clients: logo marquee on white ---------- */
 .marquee-wrap{border:1px solid var(--hairline);border-radius:var(--r-md);background:var(--surface);padding-block:26px;display:grid;gap:26px;overflow:hidden;}
