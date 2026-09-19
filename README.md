@@ -112,6 +112,10 @@ presents full-screen like a slide deck.
   `https://isurumarasinghe.com/`; if the site goes live on a different domain, change that
   string in `index.html`, `robots.txt` and `sitemap.xml`. Update `<lastmod>` in
   `sitemap.xml` when the content changes, and submit the sitemap in Google Search Console.
+* **Analytics**: the Google tag for `G-307CN46RYD` sits immediately after `<head>` on
+  `index.html`, every `case-*.html` and `hosting/shared/thanks.html`, one per page. The case
+  pages get it from `scripts/build-cases.py`, so it survives a regeneration. The preview
+  artifact does not carry it, which keeps preview traffic out of the property.
 * **Social share card**: `assets/img/og-cover.jpg` is the 1200×630 thumbnail every page
   shares. It is rendered from `print/og-card.html`, which lays the hero portrait beside the
   name and the headline figures; edit that file and run `npm run og` (with the local server
