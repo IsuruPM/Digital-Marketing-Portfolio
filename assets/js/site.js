@@ -115,7 +115,8 @@
     'closings':  { eyebrow: 'Case 02 · CRM · UAE real estate', title: 'From lead to closing: USD 22.1M in closed deals' },
     'meta-ecom': { eyebrow: 'Case 03 · Meta Ads · E-commerce', title: 'Purchase-optimised growth on Meta' },
     'google':    { eyebrow: 'Case 04 · Google Ads · E-commerce', title: 'Search and Shopping that pays for itself' },
-    'klaviyo':   { eyebrow: 'Case 05 · Klaviyo · Lifecycle', title: 'Email revenue that grew while the list grew' }
+    'klaviyo':   { eyebrow: 'Case 05 · Klaviyo · Lifecycle', title: 'Email revenue that grew while the list grew' },
+    'tiktok':    { eyebrow: 'Case 06 · TikTok Ads · UAE real estate', title: '857 property enquiries from TikTok' }
   };
   function openCase(id, trigger) {
     var tpl = document.getElementById('tpl-' + id);
