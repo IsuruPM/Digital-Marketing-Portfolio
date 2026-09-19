@@ -17,6 +17,7 @@ function base(dir) {
   cpSync(join(root, 'assets'), join(dir, 'assets'), { recursive: true, filter: (src) => !src.endsWith('.gitkeep') });
   cpSync(join(root, 'robots.txt'), join(dir, 'robots.txt'));
   cpSync(join(root, 'sitemap.xml'), join(dir, 'sitemap.xml'));
+  for (const f of ['favicon.ico','favicon-16x16.png','favicon-32x32.png','apple-touch-icon.png','android-chrome-192x192.png','android-chrome-512x512.png','site.webmanifest']) cpSync(join(root, f), join(dir, f));
 }
 
 // 1. Netlify: the page as-is (form action "/", data-netlify attributes) plus netlify.toml.
