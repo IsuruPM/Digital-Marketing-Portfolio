@@ -103,57 +103,32 @@
     sections.forEach(function (s) { nio.observe(s); });
   }
 
-  /* ---------- case dialog ---------- */
-  var dialog = document.getElementById('case-dialog');
-  var body = document.getElementById('case-body');
-  var title = document.getElementById('case-title');
-  var eyebrow = document.getElementById('case-eyebrow');
-  var closeBtn = document.getElementById('case-close');
-  var lastTrigger = null;
-  var meta = {
-    'leads':     { eyebrow: 'Case 01 · Meta Ads · UAE real estate', title: '5,364 property leads from one Meta account' },
-    'closings':  { eyebrow: 'Case 02 · CRM · UAE real estate', title: 'From lead to closing: USD 22.1M in closed deals' },
-    'meta-ecom': { eyebrow: 'Case 03 · Meta Ads · E-commerce', title: 'Purchase-optimised growth on Meta' },
-    'google':    { eyebrow: 'Case 04 · Google Ads · E-commerce', title: 'Search and Shopping that pays for itself' },
-    'klaviyo':   { eyebrow: 'Case 05 · Klaviyo · Lifecycle', title: 'Email revenue that grew while the list grew' },
-    'tiktok':    { eyebrow: 'Case 06 · TikTok Ads · UAE real estate', title: '857 property enquiries from TikTok' }
-  };
-  function openCase(id, trigger) {
-    var tpl = document.getElementById('tpl-' + id);
-    if (!tpl || !dialog) return;
-    body.innerHTML = '';
-    body.appendChild(tpl.content.cloneNode(true));
-    title.textContent = (meta[id] || {}).title || '';
-    eyebrow.textContent = (meta[id] || {}).eyebrow || '';
-    lastTrigger = trigger || null;
-    if (typeof dialog.showModal === 'function') {
-      dialog.showModal();
-    } else {
-      dialog.setAttribute('open', '');
+  /* ---------- full-size report viewer ---------- */
+  var zoomers = [].slice.call(document.querySelectorAll('[data-zoom]'));
+  if (zoomers.length) {
+    var box = document.createElement('div');
+    box.className = 'lightbox';
+    box.innerHTML = '<div class="frame"><img alt=""></div><span class="hint">Scroll to read · Esc to close</span><button class="close" type="button" aria-label="Close">\u2715</button>';
+    document.body.appendChild(box);
+    var bimg = box.querySelector('img'), lastZoom = null;
+    function openZoom(btn) {
+      var src = btn.getAttribute('data-zoom');
+      var inner = btn.querySelector('img');
+      bimg.src = src;
+      bimg.alt = inner ? inner.alt : '';
+      box.classList.add('on');
+      document.documentElement.style.overflow = 'hidden';
+      lastZoom = btn;
+      box.querySelector('.close').focus();
     }
-    dialog.querySelector('.case-inner').scrollTop = 0;
-    closeBtn.focus();
-    root.style.overflow = 'hidden';
-  }
-  function closeCase() {
-    if (!dialog) return;
-    if (dialog.open) dialog.close(); else dialog.removeAttribute('open');
-  }
-  if (dialog) {
-    [].slice.call(document.querySelectorAll('[data-case]')).forEach(function (btn) {
-      btn.addEventListener('click', function () { openCase(btn.getAttribute('data-case'), btn); });
-    });
-    closeBtn.addEventListener('click', closeCase);
-    dialog.addEventListener('click', function (e) {
-      // click on the backdrop (outside the inner panel) closes
-      var r = dialog.getBoundingClientRect();
-      var inside = e.clientX >= r.left && e.clientX <= r.right && e.clientY >= r.top && e.clientY <= r.bottom;
-      if (!inside) closeCase();
-    });
-    dialog.addEventListener('close', function () {
-      root.style.overflow = '';
-      if (lastTrigger) lastTrigger.focus();
-    });
+    function closeZoom() {
+      box.classList.remove('on');
+      document.documentElement.style.overflow = '';
+      if (lastZoom) lastZoom.focus();
+    }
+    zoomers.forEach(function (btn) { btn.addEventListener('click', function () { openZoom(btn); }); });
+    box.addEventListener('click', function (e) { if (e.target === box || e.target.className === 'frame' || e.target.className === 'close') closeZoom(); });
+    document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && box.classList.contains('on')) closeZoom(); });
   }
 
   /* ---------- inquiry form (Netlify Forms, with a mailto fallback) ---------- */

@@ -85,9 +85,12 @@ presents full-screen like a slide deck.
 
 ## Editing content
 
-* **Case studies** live twice in `index.html`: the tile in the `.work` grid and a
-  `<template id="tpl-…">` with the full detail. The dialog title and eyebrow are in the
-  `meta` object at the bottom of `assets/js/site.js`.
+* **Case studies** are six standalone pages, `case-*.html`, generated from the data at the
+  top of `scripts/build-cases.py`. Edit the copy, stats, table or shot captions there and run
+  `python3 scripts/build-cases.py` to rewrite the pages, or edit the HTML directly. The tiles
+  in the `.work` grid of `index.html` link to them. Every report image opens full size in a
+  viewer; a case with no image yet shows a "Report image to be added" placeholder, so dropping
+  the file at the path named in the generator is all that is needed to fill it.
 * **Screenshots** in `assets/img/results/` are cropped to exactly what the original deck
   showed (campaign names and client columns stay hidden). Replace a file with the same name
   to update both the site and the deck.

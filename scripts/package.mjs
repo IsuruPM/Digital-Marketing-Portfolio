@@ -1,7 +1,7 @@
 // Builds the two deployable file sets:
 //   dist/netlify/         + netlify-site.zip          (Netlify Forms handles the inquiry form)
 //   dist/shared-hosting/  + shared-hosting-site.zip   (contact.php handles it on any PHP host)
-import { cpSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { cpSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
 import { execSync } from 'node:child_process';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -11,6 +11,7 @@ const dist = join(root, 'dist');
 rmSync(dist, { recursive: true, force: true });
 
 const html = readFileSync(join(root, 'index.html'), 'utf8');
+const caseFiles = readdirSync(root).filter((f) => /^case-[a-z-]+\.html$/.test(f));
 
 function base(dir) {
   mkdirSync(dir, { recursive: true });
@@ -24,6 +25,7 @@ function base(dir) {
 const netlify = join(dist, 'netlify');
 base(netlify);
 writeFileSync(join(netlify, 'index.html'), html);
+for (const f of caseFiles) cpSync(join(root, f), join(netlify, f));
 cpSync(join(root, 'netlify.toml'), join(netlify, 'netlify.toml'));
 
 // 2. Shared hosting: form posts to contact.php; Netlify attributes removed.
@@ -34,6 +36,7 @@ const sharedHtml = html
   .replace('<input type="hidden" name="form-name" value="inquiry">\n', '');
 if (sharedHtml === html) throw new Error('form markup not found; packaging aborted');
 writeFileSync(join(shared, 'index.html'), sharedHtml);
+for (const f of caseFiles) cpSync(join(root, f), join(shared, f));
 for (const f of ['contact.php', 'thanks.html', '.htaccess']) cpSync(join(root, 'hosting', 'shared', f), join(shared, f));
 
 for (const [name, dir] of [['netlify-site.zip', netlify], ['shared-hosting-site.zip', shared]]) {
