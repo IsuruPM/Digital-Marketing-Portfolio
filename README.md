@@ -112,6 +112,10 @@ presents full-screen like a slide deck.
   `https://isurumarasinghe.com/`; if the site goes live on a different domain, change that
   string in `index.html`, `robots.txt` and `sitemap.xml`. Update `<lastmod>` in
   `sitemap.xml` when the content changes, and submit the sitemap in Google Search Console.
+* **Social share card**: `assets/img/og-cover.jpg` is the 1200×630 thumbnail every page
+  shares. It is rendered from `print/og-card.html`, which lays the hero portrait beside the
+  name and the headline figures; edit that file and run `npm run og` (with the local server
+  running) to rebuild the JPEG and WebP.
 * **Contact address**: the form delivers to `hello@isurumarasinghe.com`, set in
   `assets/js/site.js` (mailto fallback), `hosting/shared/contact.php` (`$to`) and the
   contact section of `index.html`. That mailbox must exist on the domain before the

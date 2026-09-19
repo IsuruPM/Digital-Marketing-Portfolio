@@ -331,6 +331,7 @@ def build(case):
 <meta property="og:image" content="{SITE}assets/img/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Isuru Marasinghe, full stack digital marketer, with USD 4.5M+ ad spend managed and USD 47.1M+ in closed deal value">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{case['stitle']} — Isuru Marasinghe">
 <meta name="twitter:description" content="{html.escape(case['desc'])}">

@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Social card</title>
+<link rel="stylesheet" href="../assets/css/site.css">
+<style>
+  html,body{margin:0;padding:0;background:var(--ground);}
+  .card{width:1200px;height:630px;display:grid;grid-template-columns:minmax(0,1fr) 470px;overflow:hidden;background:var(--ground);}
+  .left{padding:66px 56px 60px 72px;display:flex;flex-direction:column;justify-content:center;gap:0;}
+  .left .eyebrow{font-size:15px;letter-spacing:.16em;}
+  .left h1{font-size:76px;line-height:1.02;letter-spacing:-.03em;margin-top:20px;}
+  .left .sub{font-size:31px;margin-top:16px;color:var(--ink-2);}
+  .left .rule{height:1px;background:var(--hairline);margin:36px 0 22px;}
+  .left .stats{display:flex;gap:44px;}
+  .left .stats div{display:flex;flex-direction:column;gap:7px;}
+  .left .stats .v{font-family:var(--font-display);font-weight:300;font-size:34px;letter-spacing:-.03em;line-height:1;}
+  .left .stats .v small{font-size:.44em;margin-left:.1em;}
+  .left .stats .l{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);}
+  .right{position:relative;background:var(--sunk);}
+  .right img{width:100%;height:100%;object-fit:cover;object-position:50% 16%;filter:grayscale(1) contrast(1.02);}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="left">
+    <span class="eyebrow">Full Stack Digital Marketer</span>
+    <h1>Isuru Marasinghe</h1>
+    <p class="sub">Performance marketer &amp; media buyer.</p>
+    <div class="rule"></div>
+    <div class="stats">
+      <div><span class="v"><small>USD</small>4.5<small>Mn+</small></span><span class="l">Ad spend managed</span></div>
+      <div><span class="v"><small>USD</small>47.1<small>Mn+</small></span><span class="l">Closed deal value</span></div>
+      <div><span class="v">5,364<small>+</small></span><span class="l">Leads generated</span></div>
+    </div>
+  </div>
+  <div class="right"><img src="../assets/img/portrait-cover.jpg" alt="Isuru Marasinghe"></div>
+</div>
+</body>
+</html>
