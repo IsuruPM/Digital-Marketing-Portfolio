@@ -112,6 +112,13 @@ presents full-screen like a slide deck.
   `https://isurumarasinghe.com/`; if the site goes live on a different domain, change that
   string in `index.html`, `robots.txt` and `sitemap.xml`. Update `<lastmod>` in
   `sitemap.xml` when the content changes, and submit the sitemap in Google Search Console.
+* **Favicon**: the small sizes (`favicon.ico`, `favicon-16x16.png`, `favicon-32x32.png`,
+  `favicon-96x96.png`) carry the IM monogram alone, cropped from the full lockup, because the
+  name underneath turns to mush below about 48px. The large sizes (`apple-touch-icon.png`,
+  `icon-192.png`, `icon-512.png`) carry the full lockup, and `icon-maskable-512.png` is the
+  same lockup with 22% padding so Android's circular mask does not clip it. `favicon.svg` ships
+  but is deliberately not linked, because it contains the full lockup and browsers would
+  prefer it in the tab.
 * **Analytics**: the Google tag for `G-307CN46RYD` sits immediately after `<head>` on
   `index.html`, every `case-*.html` and `hosting/shared/thanks.html`, one per page. The case
   pages get it from `scripts/build-cases.py`, so it survives a regeneration. The preview
