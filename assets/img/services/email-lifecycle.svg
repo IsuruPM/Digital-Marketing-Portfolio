@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" fill="none" stroke="#17191B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A triggered email flow branching into three sends over time">
+  <rect width="800" height="360" fill="#F3F3F2" stroke="none"/>
+  <rect x="64" y="142" width="128" height="80" rx="10" fill="#FFFFFF"/>
+  <path d="M64 150 L128 194 L192 150" stroke="#17191B" stroke-width="1.6"/>
+  <g stroke="#8E9296" stroke-width="1.25"><path d="M192 182 H268"/></g>
+  <circle cx="288" cy="182" r="20" fill="#FFFFFF" stroke="#17191B" stroke-width="1.6"/>
+  <path d="M288 172 v10 l8 6" stroke="#17191B" stroke-width="1.6"/>
+  <g stroke="#8E9296" stroke-width="1.25">
+    <path d="M308 182 C352 182 352 74 396 74"/>
+    <path d="M308 182 H396"/>
+    <path d="M308 182 C352 182 352 290 396 290"/>
+  </g>
+  <rect x="396" y="40" width="152" height="68" rx="10" fill="#FFFFFF"/>
+  <path d="M396 48 L472 84 L548 48" stroke="#8E9296" stroke-width="1.3"/>
+  <rect x="396" y="148" width="152" height="68" rx="10" fill="#FFFFFF"/>
+  <path d="M396 156 L472 192 L548 156" stroke="#8E9296" stroke-width="1.3"/>
+  <rect x="396" y="256" width="152" height="68" rx="10" fill="#FFFFFF"/>
+  <path d="M396 264 L472 300 L548 264" stroke="#8E9296" stroke-width="1.3"/>
+  <g stroke="#8E9296" stroke-width="1.25">
+    <path d="M548 74 C592 74 592 164 628 164"/>
+    <path d="M548 182 H628"/>
+    <path d="M548 290 C592 290 592 200 628 200"/>
+  </g>
+  <rect x="628" y="126" width="112" height="112" rx="12" fill="#F3F3F2"/>
+  <path d="M652 206 l20 -24 18 16 26 -40" stroke="#17191B" stroke-width="2"/>
+  <circle cx="716" cy="158" r="6" fill="#FFFFFF" stroke="#17191B" stroke-width="2"/>
+  <g stroke="#8E9296" stroke-width="4" opacity=".55">
+    <line x1="652" y1="226" x2="716" y2="226"/>
+  </g>
+</svg>

@@ -241,13 +241,25 @@ CASES = [
 ORDER = ["case-meta-leads","case-crm-closings","case-meta-ecom","case-google-ads","case-klaviyo","case-tiktok-leads"]
 BY_SLUG = {c["slug"]: c for c in CASES}
 
-NAV = """      <a href="index.html#about">About</a>
-      <a href="index.html#expertise">Expertise</a>
+NAV = """      <div class="has-menu">
+        <a class="menu-top" href="services/">Services</a>
+        <div class="menu" role="group" aria-label="Services">
+          <a href="services/meta-ads-management.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>Meta ads</a>
+          <a href="services/google-ads-management.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M15.8 15.8 20.5 20.5"/></svg>Google Ads</a>
+          <a href="services/tiktok-ads-management.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="14" rx="3"/><path d="M10.5 9.5 15 12l-4.5 2.5Z"/></svg>TikTok ads</a>
+          <a href="services/linkedin-ads-management.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 20.5 7.5 12 12 3.5 7.5Z"/><path d="M3.5 12 12 16.5 20.5 12"/><path d="M3.5 16.5 12 21l8.5-4.5"/></svg>LinkedIn ads</a>
+          <a href="services/creative-direction-production.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3.2 13.7 9l5.8 1.7-5.8 1.7L12 18.2l-1.7-5.8L4.5 10.7 10.3 9Z"/><path d="M18.5 16.5l.7 2.3 2.3.7-2.3.7-.7 2.3-.7-2.3-2.3-.7 2.3-.7Z"/></svg>Creative direction</a>
+          <a href="services/conversion-tracking-ga4.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M6 8.5v3a2 2 0 0 0 2 2h2.2M18 8.5v3a2 2 0 0 1-2 2h-2.2"/></svg>Tracking &amp; GA4</a>
+          <a href="services/email-lifecycle-klaviyo.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.4 7 12 13l8.6-6"/></svg>Lifecycle &amp; email</a>
+          <a href="services/photography-video-production.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5h3.2l1.6-2.4h7.4l1.6 2.4h3.2v10h-17Z"/><circle cx="12" cy="13" r="3.6"/></svg>Photo &amp; video</a>
+          <a href="services/fractional-performance-lead.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M15 9l-1.8 4.2L9 15l1.8-4.2Z"/></svg>Fractional lead</a>
+          <a class="menu-all" href="services/">All services<span class="arrow" aria-hidden="true">&rarr;</span></a>
+        </div>
+      </div>
       <a href="index.html#work">Results</a>
       <a href="index.html#clients">Clients</a>
-      <a href="index.html#testimonials">Testimonials</a>
       <a href="index.html#credentials">Credentials</a>
-      <a href="index.html#process">Process</a>
+      <a href="about.html">About</a>
       <a href="index.html#contact">Contact</a>"""
 
 
@@ -458,6 +470,34 @@ def build(case):
 </div>
 
 <footer>
+  <div class="wrap foot-grid">
+    <div class="foot-col">
+      <span class="h">Services</span>
+      <a href="services/meta-ads-management.html">Meta ads</a>
+      <a href="services/google-ads-management.html">Google Ads</a>
+      <a href="services/tiktok-ads-management.html">TikTok ads</a>
+      <a href="services/linkedin-ads-management.html">LinkedIn ads</a>
+      <a href="services/creative-direction-production.html">Creative direction</a>
+      <a href="services/conversion-tracking-ga4.html">Tracking & GA4</a>
+      <a href="services/email-lifecycle-klaviyo.html">Lifecycle & email</a>
+      <a href="services/photography-video-production.html">Photo & video</a>
+      <a href="services/fractional-performance-lead.html">Fractional lead</a>
+    </div>
+    <div class="foot-col">
+      <span class="h">Work</span>
+      <a href="index.html#work">Case studies</a>
+      <a href="index.html#clients">Clients</a>
+      <a href="index.html#credentials">Credentials</a>
+      <a href="about.html">About Isuru</a>
+    </div>
+    <div class="foot-col">
+      <span class="h">Contact</span>
+      <a href="mailto:hello@isurumarasinghe.com">hello@isurumarasinghe.com</a>
+      <a href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
+      <a href="https://wa.me/971529127002" target="_blank" rel="noopener">WhatsApp</a>
+      <span class="q">Dubai, UAE &middot; working worldwide</span>
+    </div>
+  </div>
   <div class="wrap foot">
     <span>© 2026 Isuru Marasinghe · Full Stack Digital Marketer</span>
     <span class="links">

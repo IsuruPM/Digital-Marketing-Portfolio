@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" fill="none" stroke="#17191B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="A search bar above sponsored results and a rising return curve">
+  <rect width="800" height="360" fill="#F3F3F2" stroke="none"/>
+  <rect x="80" y="48" width="420" height="44" rx="22" fill="#FFFFFF"/>
+  <circle cx="112" cy="70" r="9" stroke="#17191B"/>
+  <line x1="119" y1="77" x2="127" y2="85" stroke="#17191B"/>
+  <g stroke="#8E9296" stroke-width="4" opacity=".55">
+    <line x1="148" y1="70" x2="336" y2="70"/>
+  </g>
+  <rect x="432" y="56" width="56" height="28" rx="14" fill="#17191B"/>
+  <rect x="80" y="116" width="420" height="64" rx="10" fill="#FFFFFF"/>
+  <rect x="100" y="134" width="30" height="13" rx="6" fill="none" stroke="#8E9296" stroke-width="1.2"/>
+  <g stroke="#17191B" stroke-width="5" opacity=".55">
+    <line x1="146" y1="141" x2="296" y2="141"/>
+  </g>
+  <g stroke="#8E9296" stroke-width="4" opacity=".55">
+    <line x1="100" y1="164" x2="420" y2="164"/>
+  </g>
+  <rect x="80" y="196" width="420" height="64" rx="10" fill="#FFFFFF"/>
+  <rect x="100" y="214" width="30" height="13" rx="6" fill="none" stroke="#8E9296" stroke-width="1.2"/>
+  <g stroke="#17191B" stroke-width="5" opacity=".55">
+    <line x1="146" y1="221" x2="266" y2="221"/>
+  </g>
+  <g stroke="#8E9296" stroke-width="4" opacity=".55">
+    <line x1="100" y1="244" x2="380" y2="244"/>
+  </g>
+  <rect x="80" y="276" width="420" height="44" rx="10" fill="#F3F3F2"/>
+  <g stroke="#8E9296" stroke-width="4" opacity=".55">
+    <line x1="100" y1="298" x2="290" y2="298"/>
+  </g>
+  <g stroke="#D8D6D3" stroke-width="1" opacity=".6">
+    <line x1="548" y1="92" x2="740" y2="92"/>
+    <line x1="548" y1="148" x2="740" y2="148"/>
+    <line x1="548" y1="204" x2="740" y2="204"/>
+    <line x1="548" y1="260" x2="740" y2="260"/>
+  </g>
+  <path d="M548 274 L596 252 L644 204 L692 164 L740 84" stroke="#17191B" stroke-width="2"/>
+  <circle cx="740" cy="84" r="7" fill="#FFFFFF" stroke="#17191B" stroke-width="2"/>
+  <line x1="548" y1="300" x2="740" y2="300" stroke="#8E9296"/>
+</svg>

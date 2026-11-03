@@ -91,13 +91,26 @@ presents full-screen like a slide deck.
   in the `.work` grid of `index.html` link to them. Every report image opens full size in a
   viewer; a case with no image yet shows a "Report image to be added" placeholder, so dropping
   the file at the path named in the generator is all that is needed to fill it.
-* **Service pages** are five standalone pages generated from the data at the top of
-  `scripts/build-services.py`: `digital-marketer-dubai`, `meta-ads-dubai`, `google-ads-dubai`,
-  `tiktok-ads-dubai` and `digital-marketer-sri-lanka`. Each one targets a search intent the
-  single-page home page cannot rank for on its own, and each carries Service, FAQPage and
-  BreadcrumbList structured data. Run `python3 scripts/build-services.py` after editing.
-  Every figure quoted on them comes from the case studies; if one changes there it has to
-  change here too. They are linked from the services row in the process section.
+* **Service pages** live in `services/` and are generated, with `services/index.html` and
+  `about.html`, from the data at the top of `scripts/build-services.py`. Nine pages, one per
+  discipline rather than per city: deliberately global, because the client base is. Each
+  carries Service, FAQPage and BreadcrumbList structured data. Run
+  `python3 scripts/build-services.py` after editing. Every figure quoted on them comes from
+  the case studies; if one changes there it has to change here too.
+  * **Page titles follow the keyword data**, not the service names. The Google Ads page leads
+    on PPC and the strategy page on "digital marketing strategy consultant", because those are
+    the terms with volume and beatable competition. Head terms like "meta ads" (673k) are
+    navigational traffic looking for the platform, not buyers, and are not worth targeting.
+  * **No city landing pages.** Location intent is carried by the home page title, by
+    `about.html`, and by the Person entity's address and work locations, rather than by a page
+    per market.
+  * **The nav dropdown and the footer columns** are generated from the same `SERVICES` list by
+    `nav()` and `footer_services()`. `scripts/build-cases.py` imports nothing, so when that
+    list changes, both generators have to be re-run and `index.html`'s nav and footer updated
+    to match.
+* **Hero illustrations** for the service pages are drawn by `scripts/build-service-art.py`
+  into `assets/img/services/`. Same vocabulary as the case tile covers: sunk ground, white
+  fills, ink line work, a mid grey for anything secondary. Edit the drawing data and re-run.
 * **Entity markup**: the Person node at `#isuru` is the canonical entity for the whole site.
   The case pages reference it as their author, the service pages as their provider, and the
   ProfilePage as its `mainEntity`. Keep the name, job title, location and `sameAs` profile

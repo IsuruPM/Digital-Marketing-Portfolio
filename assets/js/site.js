@@ -104,8 +104,40 @@
     }, 2800);
   }
 
+  /* ---------- services menu ----------
+     Hover opens it on a pointer device, CSS only. This adds what hover cannot do:
+     keyboard access, a tap target on touch, and closing on Escape or an outside click.
+     Without JS the "Services" label is still a plain link to the hub, so nothing is lost. */
+  var menus = [].slice.call(document.querySelectorAll('.has-menu'));
+  menus.forEach(function (box) {
+    var top = box.querySelector('.menu-top');
+    if (!top) return;
+    var canHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+    function open(on) {
+      box.classList.toggle('open', on);
+      top.setAttribute('aria-expanded', on ? 'true' : 'false');
+    }
+    top.setAttribute('aria-expanded', 'false');
+    top.addEventListener('click', function (e) {
+      if (canHover) return;                       // on a mouse, the label still navigates
+      e.preventDefault();
+      open(!box.classList.contains('open'));
+    });
+    box.addEventListener('focusin', function () { open(true); });
+    box.addEventListener('focusout', function () {
+      setTimeout(function () { if (!box.contains(document.activeElement)) open(false); }, 0);
+    });
+    document.addEventListener('click', function (e) { if (!box.contains(e.target)) open(false); });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && box.classList.contains('open')) { open(false); top.focus(); }
+    });
+  });
+
   /* ---------- current section in the nav ---------- */
-  var navLinks = [].slice.call(document.querySelectorAll('.nav a'));
+  /* only the in-page anchors; the nav also holds links to other documents now */
+  var navLinks = [].slice.call(document.querySelectorAll('.nav a')).filter(function (a) {
+    return (a.getAttribute('href') || '').charAt(0) === '#';
+  });
   var sections = navLinks.map(function (a) { return document.querySelector(a.getAttribute('href')); }).filter(Boolean);
   if (sections.length && 'IntersectionObserver' in window) {
     var current = null;

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 360" fill="none" stroke="#17191B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="The Dubai skyline above a funnel resolving into closed deals">
+  <rect width="800" height="360" fill="#F3F3F2" stroke="none"/>
+  <g stroke="#D8D6D3" stroke-width="1" opacity=".55"><line x1="56" y1="296" x2="744" y2="296"/></g>
+  <rect x="96" y="196" width="54" height="100" rx="4" fill="#FFFFFF"/>
+  <rect x="164" y="148" width="44" height="148" rx="4" fill="#F3F3F2"/>
+  <path d="M236 296 V96 l26 -44 26 44 v200 Z" fill="#FFFFFF" stroke="#17191B" stroke-width="1.6"/>
+  <line x1="262" y1="52" x2="262" y2="28" stroke="#17191B" stroke-width="1.6"/>
+  <g stroke="#8E9296" stroke-width="1" opacity=".7">
+    <line x1="240" y1="116" x2="284" y2="116"/>
+    <line x1="240" y1="138" x2="284" y2="138"/>
+    <line x1="240" y1="160" x2="284" y2="160"/>
+    <line x1="240" y1="182" x2="284" y2="182"/>
+    <line x1="240" y1="204" x2="284" y2="204"/>
+    <line x1="240" y1="226" x2="284" y2="226"/>
+    <line x1="240" y1="248" x2="284" y2="248"/>
+    <line x1="240" y1="270" x2="284" y2="270"/>
+  </g>
+  <rect x="312" y="168" width="48" height="128" rx="4" fill="#FFFFFF"/>
+  <rect x="376" y="212" width="58" height="84" rx="4" fill="#F3F3F2"/>
+  <g stroke="#8E9296" stroke-width="1" opacity=".5">
+    <line x1="326" y1="214" x2="326" y2="288"/>
+    <line x1="342" y1="214" x2="342" y2="288"/>
+    <line x1="396" y1="232" x2="396" y2="288"/>
+    <line x1="414" y1="232" x2="414" y2="288"/>
+  </g>
+  <g stroke="#17191B" stroke-width="1.3">
+    <path d="M506 68 H744 L698 128 H552 Z" fill="#FFFFFF"/>
+    <path d="M552 146 H698 L666 202 H584 Z" fill="#FFFFFF"/>
+    <path d="M584 220 H666 L648 268 H602 Z" fill="#F3F3F2"/>
+  </g>
+  <g stroke="#8E9296" stroke-width="4" opacity=".55">
+    <line x1="538" y1="98" x2="712" y2="98"/>
+  </g>
+  <g stroke="#8E9296" stroke-width="4" opacity=".55">
+    <line x1="590" y1="174" x2="660" y2="174"/>
+  </g>
+  <circle cx="625" cy="300" r="7" fill="#17191B" stroke="none"/>
+  <line x1="625" y1="268" x2="625" y2="292" stroke="#8E9296" stroke-width="1.25"/>
+</svg>
