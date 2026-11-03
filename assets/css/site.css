@@ -695,7 +695,7 @@ footer .foot{padding-top:26px;}
 /* height:auto matters: the intrinsic height attribute is a presentational hint, and with
    no CSS height the box is definite, so aspect-ratio is ignored and the image renders at
    its natural height. */
-.shot-p img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block;
+.shot-p img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;display:block;
   transition:transform var(--dur-hover) var(--ease);}
 .shot-p:hover img{transform:scale(1.015);}
 .shot-p figcaption{margin-top:11px;display:flex;flex-direction:column;gap:3px;}
