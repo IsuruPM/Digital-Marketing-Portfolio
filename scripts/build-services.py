@@ -628,9 +628,12 @@ def nav(prefix=""):
 
 
 def footer_services(prefix=""):
-    return "\n".join(
-        '      <a href="%sservices/%s.html">%s</a>' % (prefix, s["slug"], strip(s["nav"]))
-        for s in SERVICES)
+    """Ten services plus the hub: eleven flows as six and five in two sub-columns,
+    which matches the other footer columns instead of ending well above them."""
+    links = ['      <a href="%sservices/%s.html">%s</a>' % (prefix, s["slug"], strip(s["nav"]))
+             for s in SERVICES]
+    links.append('      <a href="%sservices/">All services</a>' % prefix)
+    return "\n".join(links)
 
 
 SOCIALS = """      <a class="soc" href="https://www.linkedin.com/in/isuru-marasinghe/" target="_blank" rel="noopener me" aria-label="Isuru Marasinghe on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4v11H3v-11Zm6.5 0h3.83v1.5h.05c.53-.95 1.84-1.95 3.78-1.95 4.04 0 4.79 2.5 4.79 5.76v5.69h-4v-5.05c0-1.2-.02-2.75-1.73-2.75-1.73 0-2 1.31-2 2.66v5.14h-4v-11Z"/></svg></a>
@@ -726,22 +729,28 @@ def shell(prefix, title, desc, canon, body, extra_ld, crumb_label):
 
 <footer>
   <div class="wrap foot-grid">
-    <div class="foot-col">
+    <div class="foot-col wide">
       <span class="h">Services</span>
+      <div class="foot-split">
 {footer_services(prefix)}
+      </div>
     </div>
     <div class="foot-col">
       <span class="h">Work</span>
       <a href="{prefix}index.html#work">Case studies</a>
       <a href="{prefix}index.html#clients">Clients</a>
+      <a href="{prefix}index.html#testimonials">Testimonials</a>
       <a href="{prefix}index.html#credentials">Credentials</a>
+      <a href="{prefix}index.html#process">How I work</a>
       <a href="{prefix}about.html">About Isuru</a>
     </div>
     <div class="foot-col">
       <span class="h">Contact</span>
       <a href="mailto:hello@isurumarasinghe.com">hello@isurumarasinghe.com</a>
       <a href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
-      <a href="https://wa.me/971529127002" target="_blank" rel="noopener">WhatsApp</a>
+      <a href="https://wa.me/971529127002" target="_blank" rel="noopener">WhatsApp &middot; +971 52 912 7002</a>
+      <a href="https://www.linkedin.com/in/isuru-marasinghe/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="{prefix}index.html#contact">Send an inquiry</a>
       <span class="q">Dubai, UAE &middot; working worldwide</span>
     </div>
   </div>

@@ -519,8 +519,11 @@ to{opacity:1;transform:none;}}
 }
 
 /* ---------- footer columns ---------- */
-.foot-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;
+/* Services carries ten links against four or five in the other columns, so it takes two
+   tracks and flows in two sub-columns. Otherwise the footer ends on three ragged heights. */
+.foot-grid{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1fr) minmax(0,1.1fr);gap:32px;
   padding-block:44px 34px;border-bottom:1px solid var(--hairline);}
+.foot-split{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px 24px;}
 .foot-col{display:flex;flex-direction:column;gap:9px;min-width:0;}
 .foot-col .h{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;
   color:var(--ink);margin-bottom:4px;}
@@ -528,7 +531,10 @@ to{opacity:1;transform:none;}}
 .foot-col a:hover{color:var(--ink);}
 .foot-col .q{font-size:13px;color:var(--ink-3);margin-top:4px;}
 footer .foot{padding-top:26px;}
-@media (max-width:760px){.foot-grid{grid-template-columns:1fr;gap:28px;}}
+@media (max-width:980px){.foot-grid{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:28px 32px;}
+  .foot-col.wide{grid-row:span 2;}}
+@media (max-width:620px){.foot-grid{grid-template-columns:1fr;gap:28px;}
+  .foot-col.wide{grid-row:auto;}}
 
 /* ---------- service landing pages ---------- */
 .svc-art{margin:clamp(32px,5vw,52px) 0 0;border:1px solid var(--hairline);border-radius:var(--r-md);overflow:hidden;background:var(--sunk);}
