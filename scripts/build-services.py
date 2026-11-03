@@ -81,7 +81,9 @@ SERVICES = [
           ("flow", "Conversions API", "Server-side events, deduplication and event match quality, "
            "usually the biggest single lift on a neglected account."),
           ("shield", "Audience hygiene", "Exclusions and overlap control so prospecting and "
-           "retargeting stop bidding against each other.")],
+           "retargeting stop bidding against each other."),
+          ("chart", "Budget structure and scaling", "Consolidation, campaign budget decisions and "
+           "a scaling cadence that adds spend without resetting the learning.")],
  "proof": [("case-meta-leads.html", "5,364 property leads from one account",
             "An eight-times spread between the best and worst ad set, at AED 43.75 blended."),
            ("case-meta-ecom.html", "Purchase-optimised growth on Meta",
@@ -134,7 +136,9 @@ SERVICES = [
           ("compass", "Landing pages", "Message match and conversion rate work, because the "
            "cheapest improvement is usually not in the auction."),
           ("flow", "Remarketing", "Lists built from real behaviour rather than from everyone who "
-           "ever landed.")],
+           "ever landed."),
+          ("globe", "Auction analysis", "Impression share, and share lost to budget against share "
+           "lost to rank, read before any bid moves.")],
  "proof": [("case-google-ads.html", "Google Ads at a 15.73x return",
             "Four monthly snapshots, double digits held in three of them."),
            ("case-meta-ecom.html", "The Meta half of the same funnel",
@@ -187,7 +191,9 @@ SERVICES = [
           ("flow", "Pixel and Events API", "Clean event setup so optimisation has something real "
            "to aim at."),
           ("spark", "Spark ads and creator content", "Running creative from real accounts where "
-           "that beats brand-handle delivery.")],
+           "that beats brand-handle delivery."),
+          ("chart", "Budget allocation", "Moving spend toward the markets and ad groups the cost "
+           "spread actually favours, rather than holding an even split.")],
  "proof": [("case-tiktok-leads.html", "TikTok lead generation across 35 campaigns",
             "AED 143.73 blended cost per lead, best market at AED 3.50."),
            ("case-meta-leads.html", "The same offer on Meta",
@@ -241,7 +247,9 @@ SERVICES = [
           ("chart", "Pipeline reporting", "Cost per lead read against contract value rather than "
            "against a Meta benchmark."),
           ("flow", "Retargeting", "Sequencing across website visitors, video viewers and form "
-           "openers.")],
+           "openers."),
+          ("mail", "Conversation and message ads", "Direct formats, where the offer and the "
+           "sender are strong enough to earn the inbox.")],
  "proof": [("case-crm-closings.html", "Reporting that runs to closed value",
             "The method, shown on a real-estate pipeline: USD 36.6M closed, tracked by stage."),
            ("case-meta-leads.html", "Lead quality scored past the form",
@@ -292,7 +300,9 @@ SERVICES = [
           ("layers", "Iteration systems", "Variants built so one element changes at a time and "
            "the result means something."),
           ("chart", "Creative reporting", "Performance read by angle and format, so the next "
-           "round starts from evidence.")],
+           "round starts from evidence."),
+          ("layers", "Placement versions", "One idea cut for every placement it has to run in, "
+           "framed on set rather than rescued in the edit.")],
  "proof": [("case-meta-ecom.html", "A dedicated test lane against a scaling set",
             "The test set beat scaling on return while losing on click-through rate."),
            ("case-tiktok-leads.html", "Native production at platform pace",
@@ -344,7 +354,9 @@ SERVICES = [
           ("shield", "Conversions API", "Meta CAPI, TikTok Events API and Google enhanced "
            "conversions, with deduplication and match quality checked rather than assumed."),
           ("target", "Offline and CRM events", "Closed deals fed back to the platforms so "
-           "optimisation aims at revenue instead of form fills.")],
+           "optimisation aims at revenue instead of form fills."),
+          ("shield", "Consent Mode and privacy", "Compliant collection set up so modelling stays "
+           "usable rather than collapsing at the first consent banner.")],
  "proof": [("case-crm-closings.html", "CRM stages matched back to ad sets",
             "Which is how closings became attributable rather than guessed."),
            ("case-meta-leads.html", "Lead quality read past the form",
@@ -398,7 +410,9 @@ SERVICES = [
           ("shield", "Deliverability", "Sunset policies, list hygiene and authentication so the "
            "sends reach the inbox."),
           ("chart", "Reporting", "Revenue per recipient and flow contribution, read against the "
-           "paid media rather than beside it.")],
+           "paid media rather than beside it."),
+          ("target", "List growth", "Pop-ups, forms and incentives that build the list without "
+           "training everyone to wait for a discount.")],
  "proof": [("case-klaviyo.html", "Flows out-earning campaigns on placed orders",
             "Recipients past 144,000 without revenue per send collapsing."),
            ("case-meta-ecom.html", "The acquisition side of the same store",
@@ -449,7 +463,9 @@ SERVICES = [
           ("layers", "Asset libraries", "Delivered in the crops and formats each placement "
            "actually takes."),
           ("compass", "Creative direction on set", "Direction of talent and framing against the "
-           "angles the account is testing.")],
+           "angles the account is testing."),
+          ("spark", "Post-production", "Edit, grade and sound, delivered in the formats each "
+           "placement takes rather than as one master to cut down later.")],
  "proof": [("case-tiktok-leads.html", "Native vertical production at pace",
             "35 campaigns, produced for the platform rather than cropped to it."),
            ("case-meta-ecom.html", "Creative lane feeding the scaling set",
@@ -499,7 +515,9 @@ SERVICES = [
           ("flow", "Vendor management", "Agency and freelancer selection, scoping and "
            "accountability."),
           ("compass", "Board and investor reporting", "The numbers framed so they survive a "
-           "board meeting.")],
+           "board meeting."),
+          ("layers", "Martech and tooling", "What to buy, what to drop and what to integrate, "
+           "judged on what the team will actually use.")],
  "proof": [("case-crm-closings.html", "Reporting that runs to revenue",
             "Media spend read against USD 36.6M of closed deals."),
            ("case-google-ads.html", "Performance held over time",

@@ -514,11 +514,16 @@ footer .foot{padding-top:26px;}
   .service .svc-sec{grid-template-columns:1fr;gap:16px;}
   .service .svc-sec h2{position:static;}
 }
-.svc-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:var(--r-md);overflow:hidden;margin-top:24px;}
+/* Six columns with each cell spanning two gives three per row, and lets a short last
+   row widen to fill instead of leaving the ground showing through a missing cell. */
+.svc-list{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:1px;background:var(--hairline);border:1px solid var(--hairline);border-radius:var(--r-md);overflow:hidden;margin-top:24px;}
+.svc-list li{grid-column:span 2;}
+.svc-list li:last-child:nth-child(3n+1){grid-column:span 6;}
+.svc-list li:nth-last-child(2):nth-child(3n+1),
+.svc-list li:nth-last-child(2):nth-child(3n+1) ~ li{grid-column:span 3;}
 .svc-list li{background:var(--surface);padding:22px 22px 24px;min-width:0;}
 .svc-list h3{font-size:15px;font-weight:500;margin:0 0 8px;}
 .svc-list p{color:var(--ink-2);font-size:14px;margin:0;}
-.svc-list li:last-child:nth-child(3n+1){grid-column:1 / -1;}
 .svc-proofs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:24px;}
 .svc-proof{border:1px solid var(--hairline);border-radius:var(--r-md);background:var(--surface);padding:20px 20px 18px;display:flex;flex-direction:column;gap:9px;min-width:0;transition:transform var(--dur-hover) var(--ease),box-shadow var(--dur-hover) var(--ease);}
 .svc-proof:hover{transform:translateY(-2px);box-shadow:var(--lift);}
@@ -534,8 +539,12 @@ footer .foot{padding-top:26px;}
 .faq p{margin:12px 0 2px;color:var(--ink-2);font-size:14.5px;max-width:66ch;}
 .service .industry-tags a.tag{transition:color var(--dur-hover) var(--ease),border-color var(--dur-hover) var(--ease);}
 .service .industry-tags a.tag:hover{color:var(--ink);border-color:var(--ink);}
-@media (max-width:1180px){.svc-list{grid-template-columns:repeat(2,minmax(0,1fr));}
-  .svc-list li:last-child:nth-child(3n+1){grid-column:auto;}
+@media (max-width:1180px){
+  .svc-list{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .svc-list li,
+  .svc-list li:last-child:nth-child(3n+1),
+  .svc-list li:nth-last-child(2):nth-child(3n+1),
+  .svc-list li:nth-last-child(2):nth-child(3n+1) ~ li{grid-column:auto;}
   .svc-list li:last-child:nth-child(odd){grid-column:1 / -1;}}
 @media (max-width:760px){
   .svc-list{grid-template-columns:1fr;}
