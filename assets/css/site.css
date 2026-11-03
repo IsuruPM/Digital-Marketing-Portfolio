@@ -571,7 +571,7 @@ footer .foot{padding-top:26px;}
 /* ---------- about page portraits ---------- */
 .about-hero{margin:clamp(32px,5vw,52px) 0 0;display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);
   gap:clamp(20px,3vw,44px);align-items:center;}
-.about-hero picture{display:block;border-radius:var(--r-lg);overflow:hidden;background:var(--sunk);}
+.about-hero picture{display:block;border:1px solid var(--hairline);border-radius:var(--r-lg);overflow:hidden;background:var(--sunk);}
 .about-hero img{width:100%;height:auto;display:block;}
 .about-hero figcaption{display:flex;flex-direction:column;gap:12px;
   color:var(--ink-2);font-size:17px;line-height:1.5;max-width:40ch;}
@@ -580,7 +580,7 @@ footer .foot{padding-top:26px;}
 
 .photo-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
 .shot-p{margin:0;min-width:0;}
-.shot-p picture{display:block;border-radius:var(--r-md);overflow:hidden;background:var(--sunk);}
+.shot-p picture{display:block;border:1px solid var(--hairline);border-radius:var(--r-md);overflow:hidden;background:var(--sunk);}
 .shot-p img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;
   transition:transform var(--dur-hover) var(--ease);}
 .shot-p:hover img{transform:scale(1.02);}

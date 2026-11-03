@@ -882,12 +882,15 @@ def hub_page():
 # Portraits for the about page. Each entry renders only if the file is on disk, so
 # dropping a new photograph at one of these paths is all it takes to add it.
 ABOUT_PHOTOS = [
-    ("assets/img/portrait-cover.jpg", "Isuru Marasinghe, studio portrait", "Studio"),
-    ("assets/img/portrait-profile.jpg", "Isuru Marasinghe in profile", "Profile"),
-    ("assets/img/portrait-contact.jpg", "Isuru Marasinghe, portrait", "Portrait"),
-    ("assets/img/about/graduation-1.jpg", "Isuru Marasinghe at his graduation", "Graduation"),
-    ("assets/img/about/graduation-2.jpg", "Isuru Marasinghe at his graduation", "Graduation"),
-    ("assets/img/about/graduation-3.jpg", "Isuru Marasinghe at his graduation", "Graduation"),
+    ("assets/img/about/graduation-horizon.jpg",
+     "Isuru Marasinghe graduating from Horizon Campus, Sri Lanka",
+     "Horizon Campus &middot; BM (Hons) in Marketing, First Class"),
+    ("assets/img/about/graduation-cim.jpg",
+     "Isuru Marasinghe graduating from the Chartered Institute of Marketing",
+     "Chartered Institute of Marketing &middot; PgDip.M, Level 7"),
+    ("assets/img/about/graduation-esm.jpg",
+     "Isuru Marasinghe at the ESM Business School and AIPQ graduation ceremony",
+     "ESM Business School &middot; AIPQ, Certified Digital Marketing Practitioner"),
 ]
 
 
@@ -906,7 +909,7 @@ def photo_strip(prefix=""):
     if not out:
         return ""
     return ('    <section class="svc-sec reveal" aria-labelledby="ab-photos">\n'
-            '      <div class="h"><h2 id="ab-photos">In person</h2></div>\n'
+            '      <div class="h"><h2 id="ab-photos">Where they came from</h2></div>\n'
             '      <div class="c">\n'
             '        <div class="photo-strip">\n' + "\n".join(out) + '\n'
             '        </div>\n'
@@ -943,7 +946,7 @@ def about_page():
     </header>
 
     <figure class="about-hero reveal">
-      <picture><source srcset="assets/img/portrait-cover.webp" type="image/webp"><img src="assets/img/portrait-cover.jpg" alt="Isuru Marasinghe, full stack digital marketer" width="672" height="672" decoding="async"></picture>
+      <picture><source srcset="assets/img/about/headshot.webp" type="image/webp"><img src="assets/img/about/headshot.jpg" alt="Isuru Marasinghe, full stack digital marketer" width="900" height="900" decoding="async"></picture>
       <figcaption>
         <span class="k">Isuru Marasinghe</span>
         <span>Performance marketing, creative direction and the measurement that ties the two together.</span>
@@ -989,7 +992,6 @@ def about_page():
       </div>
     </section>
 
-{photo_strip()}
     <section class="svc-sec reveal" aria-labelledby="ab-where">
       <div class="h"><h2 id="ab-where">Where the work happens</h2></div>
       <div class="c">
@@ -1006,6 +1008,7 @@ def about_page():
       </div>
     </section>
 
+{photo_strip()}
     <div class="cs-cta reveal">
       <div>
         <h2>Let's talk.</h2>
