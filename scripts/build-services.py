@@ -896,8 +896,8 @@ ABOUT_PHOTOS = [
      "ESM Business School &middot; AIPQ, Certified Digital Marketing Practitioner"),
     ("assets/img/about/graduation-esm-pair.jpg",
      "Isuru Marasinghe and his wife at the ESM Business School and AIPQ graduation ceremony",
-     "With my wife &middot; MBA, University of Sunderland, and AIPQ Certified Digital Marketing "
-     "Practitioner"),
+     "A shared ceremony &middot; ESM Business School and AIPQ, alongside my wife, an MBA of the "
+     "University of Sunderland and a fellow Certified Digital Marketing Practitioner"),
 ]
 
 
@@ -955,8 +955,17 @@ def about_page():
     <figure class="about-hero reveal">
       <picture><source srcset="assets/img/about/headshot.webp" type="image/webp"><img src="assets/img/about/headshot.jpg" alt="Isuru Marasinghe, full stack digital marketer" width="900" height="900" decoding="async"></picture>
       <figcaption>
-        <span class="k">Isuru Marasinghe</span>
-        <span>Performance marketing, creative direction and the measurement that ties the two together.</span>
+        <span class="nm">Isuru Marasinghe</span>
+        <span class="post">MBA (UK) &middot; ACIM (UK) &middot; PgDip.M (UK) &middot; AMSLIM (SL) &middot; CLSSWB &middot; CDMP (USA) &middot; BM (Hons)</span>
+        <ul class="quals-rows">
+          <li><em>MBA (UK)</em><span>Master of Business Administration<small>University of Gloucestershire, United Kingdom</small></span></li>
+          <li><em>ACIM (UK)</em><span>Associate, Chartered Institute of Marketing<small>United Kingdom</small></span></li>
+          <li><em>PgDip.M (UK)</em><span>Postgraduate Diploma in Professional Marketing<small>Chartered Institute of Marketing &middot; Level 7</small></span></li>
+          <li><em>AMSLIM (SL)</em><span>Associate Member, Sri Lanka Institute of Marketing</span></li>
+          <li><em>CLSSWB</em><span>Certified Lean Six Sigma White Belt</span></li>
+          <li><em>CDMP (USA)</em><span>Certified Digital Marketing Practitioner<small>American Institute of Professional Qualification</small></span></li>
+          <li><em>BM (Hons)</em><span>BM (Hons) in Marketing, First Class<small>Horizon Campus, Sri Lanka</small></span></li>
+        </ul>
       </figcaption>
     </figure>
 
