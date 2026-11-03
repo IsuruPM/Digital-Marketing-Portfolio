@@ -1,6 +1,6 @@
 /* ==========================================================================
    Soft Ground — Isuru M. portfolio
-   Monochrome edition: ground, surface, ink and hairline only.
+   Monochrome edition: white ground, hairline structure, ink and one action colour.
    ========================================================================== */
 
 @font-face{font-family:"Hanken Grotesk";font-style:normal;font-weight:100 900;font-display:swap;src:url("../fonts/HankenGrotesk.woff2") format("woff2");}
@@ -8,11 +8,11 @@
 @font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:400 800;font-display:swap;src:url("../fonts/JetBrainsMono.woff2") format("woff2");}
 
 :root{
-  --ground:#F1F0EE;
+  --ground:#FFFFFF;
   --surface:#FFFFFF;
-  --sunk:#EAE8E5;
-  --hairline:#E4E2DF;
-  --hairline-soft:#EDEBE8;
+  --sunk:#F3F3F2;
+  --hairline:#E4E4E4;
+  --hairline-soft:#EFEFEF;
   --ink:#17191B;
   --ink-2:#5F6367;
   --ink-3:#8E9296;
@@ -79,7 +79,7 @@ h4{font-family:var(--font-body);font-size:17px;line-height:1.35;letter-spacing:-
 .textlink:hover{border-color:var(--ink);}
 
 /* ---------- masthead ---------- */
-.top{position:sticky;top:0;z-index:40;background:rgba(241,240,238,.82);-webkit-backdrop-filter:saturate(1.2) blur(12px);backdrop-filter:saturate(1.2) blur(12px);border-bottom:1px solid var(--hairline);}
+.top{position:sticky;top:0;z-index:40;background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(1.2) blur(12px);backdrop-filter:saturate(1.2) blur(12px);border-bottom:1px solid var(--hairline);}
 .top-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:16px;}
 .mark{display:flex;align-items:center;flex:none;}
 .mark img{height:30px;width:auto;display:block;}
@@ -269,13 +269,19 @@ h4{font-family:var(--font-body);font-size:17px;line-height:1.35;letter-spacing:-
 .badges .hd{padding:14px 22px;border-bottom:1px solid var(--hairline);display:flex;justify-content:space-between;align-items:center;gap:12px;}
 .badges .hd h4{font-size:13.5px;}
 .badges{display:flex;flex-direction:column;}
-.badges .cells{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:1fr;gap:1px;background:var(--hairline);flex:1;}
+/* Fifteen badges: five columns fills three rows exactly, and three columns fills five.
+   Below that the count is odd, so a lone last cell spans the row rather than leaving a hole. */
+.badges .cells{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-auto-rows:1fr;gap:1px;background:var(--hairline);flex:1;}
 .badges .cell{background:var(--surface);padding:22px 14px 20px;display:flex;flex-direction:column;align-items:center;gap:12px;text-align:center;min-height:196px;}
 .badges .cell img{height:84px;width:auto;max-width:150px;object-fit:contain;flex:none;}
 .badges .cell span{font-size:12px;color:var(--ink-2);line-height:1.4;}
 .badges .cell small{font-size:11px;color:var(--ink-3);letter-spacing:.06em;text-transform:uppercase;}
 @media (max-width:980px){.creds{grid-template-columns:1fr;}}
-@media (max-width:640px){.badges .cells{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media (max-width:1080px){.badges .cells{grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media (max-width:640px){
+  .badges .cells{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .badges .cell:last-child:nth-child(odd){grid-column:1 / -1;}
+}
 
 /* ---------- contact band: ink ---------- */
 .band{background:var(--ink);color:#FFFFFF;border-radius:var(--r-lg);padding:clamp(32px,5vw,56px);display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:stretch;overflow:hidden;}
@@ -320,8 +326,16 @@ h4{font-family:var(--font-body);font-size:17px;line-height:1.35;letter-spacing:-
 
 footer{border-top:1px solid var(--hairline);padding-block:34px 46px;color:var(--ink-3);font-size:12px;}
 .foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:center;}
-.foot .links{display:flex;gap:18px;}
+.foot .links{display:flex;gap:18px;align-items:center;}
 .foot .links a:hover{color:var(--ink);}
+/* social glyphs: same ink as the rest of the footer, boxed to a 36px tap target */
+.foot .links .soc{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;
+  margin-right:-8px;border-radius:var(--r-pill);color:var(--ink-3);
+  transition:color var(--dur-hover) var(--ease),background var(--dur-hover) var(--ease);}
+.foot .links .soc:last-of-type{margin-right:4px;}
+.foot .links .soc svg{width:18px;height:18px;display:block;}
+.foot .links .soc:hover{color:var(--ink);background:var(--sunk);}
+.foot .links .soc:focus-visible{background:var(--sunk);}
 
 /* ---------- WhatsApp widget ---------- */
 .wa{position:fixed;right:20px;bottom:20px;z-index:60;display:flex;flex-direction:column;align-items:flex-end;gap:12px;padding-bottom:env(safe-area-inset-bottom);}
