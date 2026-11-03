@@ -33,6 +33,12 @@ $clean = function ($key, $max) {
 $name    = $clean('name', 120);
 $email   = $clean('email', 200);
 $phone   = $clean('phone', 60);
+// JavaScript joins the dialling code to the number before posting; without it the two
+// arrive separately, so put them back together here rather than losing the code.
+$dial    = $clean('dial', 8);
+if ($dial !== '' && strpos($phone, '+') !== 0) {
+    $phone = $dial . ' ' . ltrim($phone, '0');
+}
 $inquiry = isset($_POST['inquiry']) ? mb_substr(trim((string) $_POST['inquiry']), 0, 5000) : '';
 
 if ($name === '' || $phone === '' || $inquiry === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {

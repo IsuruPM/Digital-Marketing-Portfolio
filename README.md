@@ -163,6 +163,17 @@ presents full-screen like a slide deck.
   shares. It is rendered from `print/og-card.html`, which lays the hero portrait beside the
   name and the headline figures; edit that file and run `npm run og` (with the local server
   running) to rebuild the JPEG and WebP.
+* **Phone field**: the inquiry form has a country dialling-code selector built from
+  `scripts/dial-codes.py` (225 countries, the common ones pinned at the top, UAE selected).
+  `assets/js/site.js` joins the code to the number before posting and drops the separate
+  `dial` field; `hosting/shared/contact.php` joins them server-side for the case where
+  JavaScript did not run. Run `python3 scripts/dial-codes.py` to check the data, and paste
+  `options()` into the select in `index.html` after editing it.
+* **Mobile navigation**: below 860px the nav becomes a panel opened by `#nav-toggle`, with
+  the services dropdown flattened into an inline list. The CSS for it has to stay **after**
+  the `.menu` dropdown rules in `site.css`, because they share specificity and the later
+  block wins. Without JavaScript the button never appears and every destination is still
+  reachable from the footer.
 * **Contact address**: the form delivers to `hello@isurumarasinghe.com`, set in
   `assets/js/site.js` (mailto fallback), `hosting/shared/contact.php` (`$to`) and the
   contact section of `index.html`. That mailbox must exist on the domain before the

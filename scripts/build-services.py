@@ -704,11 +704,12 @@ def shell(prefix, title, desc, canon, body, extra_ld, crumb_label):
 <header class="top">
   <div class="wrap top-inner">
     <a class="mark" href="{prefix}index.html" aria-label="Isuru Marasinghe, back to the home page"><img src="{prefix}assets/img/wordmark.svg" alt="Isuru Marasinghe" width="661" height="152"></a>
-    <nav class="nav" aria-label="Sections">
+    <nav class="nav" id="site-nav" aria-label="Sections">
 {nav(prefix)}
     </nav>
     <div class="top-actions">
       <a class="btn btn-primary btn-sm" href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a call</a>
+      <button class="nav-toggle" id="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu"><span></span><span></span><span></span></button>
     </div>
   </div>
 </header>

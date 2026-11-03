@@ -104,32 +104,70 @@
     }, 2800);
   }
 
+  /* ---------- mobile menu ----------
+     Above 860px the nav is always visible and this does nothing. Below it the nav is a
+     panel the button opens; without JS the button never appears, and every nav target is
+     still reachable from the footer, so nothing is stranded. */
+  var top = document.querySelector('.top');
+  var toggle = document.getElementById('nav-toggle');
+  var siteNav = document.getElementById('site-nav');
+  if (top && toggle && siteNav) {
+    function setNav(open) {
+      top.classList.toggle('nav-open', open);
+      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+    }
+    toggle.addEventListener('click', function () {
+      setNav(!top.classList.contains('nav-open'));
+    });
+    siteNav.addEventListener('click', function (e) {
+      var a = e.target.closest ? e.target.closest('a') : null;
+      if (a && !a.classList.contains('menu-top')) setNav(false);   // a real destination
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && top.classList.contains('nav-open')) { setNav(false); toggle.focus(); }
+    });
+    document.addEventListener('click', function (e) {
+      if (!top.classList.contains('nav-open')) return;
+      if (!top.contains(e.target)) setNav(false);
+    });
+    window.addEventListener('resize', function () {
+      if (window.innerWidth > 860) setNav(false);
+    });
+  }
+
   /* ---------- services menu ----------
      Hover opens it on a pointer device, CSS only. This adds what hover cannot do:
      keyboard access, a tap target on touch, and closing on Escape or an outside click.
      Without JS the "Services" label is still a plain link to the hub, so nothing is lost. */
   var menus = [].slice.call(document.querySelectorAll('.has-menu'));
   menus.forEach(function (box) {
-    var top = box.querySelector('.menu-top');
-    if (!top) return;
-    var canHover = window.matchMedia && window.matchMedia('(hover: hover)').matches;
+    var label = box.querySelector('.menu-top');
+    if (!label) return;
+    function hoverOpens() {
+      // the hover menu only exists on the wide layout; below 860px it is a flat list
+      return window.innerWidth > 860 &&
+        !!(window.matchMedia && window.matchMedia('(hover: hover)').matches);
+    }
     function open(on) {
       box.classList.toggle('open', on);
-      top.setAttribute('aria-expanded', on ? 'true' : 'false');
+      label.setAttribute('aria-expanded', on ? 'true' : 'false');
     }
-    top.setAttribute('aria-expanded', 'false');
-    top.addEventListener('click', function (e) {
-      if (canHover) return;                       // on a mouse, the label still navigates
+    label.setAttribute('aria-expanded', 'false');
+    label.addEventListener('click', function (e) {
+      if (hoverOpens()) return;                   // with a mouse, the label still navigates
       e.preventDefault();
       open(!box.classList.contains('open'));
     });
-    box.addEventListener('focusin', function () { open(true); });
+    // focus lands on mousedown, before click: opening here as well would mean the
+    // click toggled it straight back shut. Only the keyboard layout needs it.
+    box.addEventListener('focusin', function () { if (hoverOpens()) open(true); });
     box.addEventListener('focusout', function () {
       setTimeout(function () { if (!box.contains(document.activeElement)) open(false); }, 0);
     });
     document.addEventListener('click', function (e) { if (!box.contains(e.target)) open(false); });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && box.classList.contains('open')) { open(false); top.focus(); }
+      if (e.key === 'Escape' && box.classList.contains('open')) { open(false); label.focus(); }
     });
   });
 
@@ -205,6 +243,13 @@
       status.className = 'form-status';
       if (!fieldsOk()) { status.textContent = 'Please complete the highlighted fields.'; status.classList.add('err'); return; }
       var data = new FormData(form);
+      // one readable number rather than a code and a stub in separate fields
+      var dial = data.get('dial');
+      if (dial) {
+        var num = String(data.get('phone') || '').trim().replace(/^0+/, '');
+        data.set('phone', (dial + ' ' + num).trim());
+        data.delete('dial');
+      }
       submit.disabled = true; status.textContent = 'Sending…';
       var action = form.getAttribute('action') || '/';
       var isPhp = /\.php$/.test(action);
