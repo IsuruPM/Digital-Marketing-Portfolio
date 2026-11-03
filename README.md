@@ -155,6 +155,13 @@ presents full-screen like a slide deck.
   same lockup with 22% padding so Android's circular mask does not clip it. `favicon.svg` ships
   but is deliberately not linked, because it contains the full lockup and browsers would
   prefer it in the tab.
+* **Cache busting**: `netlify.toml` caches CSS and JS for an hour and images for a week,
+  and filenames do not change when their contents do. `scripts/package.mjs` therefore
+  rewrites every `assets/...` reference in the packaged HTML to `?v=<sha1 of that file>`,
+  so a changed stylesheet or a re-cropped photograph is refetched and an unchanged one is
+  not. This happens at packaging time only; the repository keeps clean paths. If you ever
+  upload files by hand instead of using `npm run package`, expect returning visitors to
+  keep the old CSS for an hour and old images for seven days.
 * **Content-Security-Policy**: `netlify.toml` and `hosting/shared/.htaccess` carry the same
   strict policy with **no `unsafe-inline`** on either script-src or style-src. Two rules keep
   it that way: the Google tag's configuration lives in `assets/js/analytics.js` rather than
