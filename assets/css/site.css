@@ -535,6 +535,13 @@ footer .foot{padding-top:26px;}
   .foot-col.wide{grid-row:span 2;}}
 @media (max-width:620px){.foot-grid{grid-template-columns:1fr;gap:28px;}
   .foot-col.wide{grid-row:auto;}}
+/* Google counts a tap target under 24px as too small, and these were 22px rows of text.
+   Padding the links rather than spacing them keeps the columns the same height. */
+@media (hover:none){
+  .foot-col{gap:0;}
+  .foot-col a{padding-block:7px;}
+  .foot-split{gap:0 24px;}
+}
 
 /* ---------- service landing pages ---------- */
 .svc-art{margin:clamp(32px,5vw,52px) 0 0;border:1px solid var(--hairline);border-radius:var(--r-md);overflow:hidden;background:var(--sunk);}

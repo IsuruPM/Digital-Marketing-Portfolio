@@ -57,9 +57,8 @@ SERVICES = [
  "eyebrow": "Facebook &amp; Instagram",
  "h1": "Meta ads management",
  "title": "Facebook &amp; Meta Ads Management | Isuru Marasinghe",
- "desc": ("Meta ads management by a Meta Certified media buyer: lead generation, Advantage+ "
-          "shopping, creative testing and the Conversions API. 5,364 leads from one account "
-          "and USD 36.6M in closed deals."),
+ "desc": ("Meta ads management by a Meta Certified media buyer: lead generation, Advantage+, "
+          "creative testing and the Conversions API. 5,364 leads from one account."),
  "lede": ("Facebook and Instagram still carry most lead generation and e-commerce budgets, and "
           "still waste most of it on cheap form fills that never close. I run Meta accounts on "
           "the outcome rather than the submission."),
@@ -114,8 +113,8 @@ SERVICES = [
  "eyebrow": "Search, Shopping &amp; Performance Max",
  "h1": "Google Ads and PPC management",
  "title": "Google Ads &amp; PPC Management | Isuru Marasinghe",
- "desc": ("PPC and Google Ads management across Search, Shopping and Performance Max, with GA4 "
-          "and server-side tracking. A 15.73x peak return held across four monthly snapshots."),
+ "desc": ("PPC and Google Ads management across Search, Shopping and Performance Max, with "
+          "GA4 and server-side tracking. A 15.73x peak return across four months."),
  "lede": ("Search catches demand that already exists, which makes it the most honest channel in "
           "the mix and the easiest to flatter with the wrong attribution window. I run it on "
           "return, read across months rather than on one good one."),
@@ -224,9 +223,8 @@ SERVICES = [
  "eyebrow": "LinkedIn Ads &amp; B2B",
  "h1": "LinkedIn ads management",
  "title": "LinkedIn Ads Management for B2B | Isuru Marasinghe",
- "desc": ("LinkedIn ads management for B2B and high-consideration services: audience targeting, "
-          "lead gen forms, offer design and the reporting that follows a lead to a signed "
-          "contract."),
+ "desc": ("LinkedIn ads management for B2B and high-consideration services: audience "
+          "targeting, lead gen forms, offer design and reporting that runs to contract value."),
  "lede": ("LinkedIn costs several times what Meta does per click, which is only a problem if the "
           "deal at the end is small. For B2B, education and high-ticket services, the maths "
           "usually works, as long as the offer is worth a professional's attention."),
@@ -278,7 +276,7 @@ SERVICES = [
  "art_alt": "A storyboard of three frames beside a stack of finished cuts and a marked winner",
  "eyebrow": "Creative strategy &amp; production",
  "h1": "Creative direction and production",
- "title": "Creative Digital Marketing &amp; Ad Production | Isuru Marasinghe",
+ "title": "Creative Digital Marketing &amp; Ads | Isuru Marasinghe",
  "desc": ("Ad creative direction and production for paid social and search: hooks, scripts, "
           "statics and video, built as a testing system rather than as a one-off campaign."),
  "lede": ("Targeting is largely automated now. What is left for a marketer to decide is what the "
@@ -330,7 +328,7 @@ SERVICES = [
  "art_alt": "A browser event passing through a tag manager and a server before reaching the ad platforms",
  "eyebrow": "Measurement &amp; tracking",
  "h1": "Conversion tracking, GA4 and the Conversions API",
- "title": "GA4, Google Analytics &amp; Conversion Tracking | Isuru Marasinghe",
+ "title": "GA4 &amp; Conversion Tracking Setup | Isuru Marasinghe",
  "desc": ("GA4, Google Tag Manager, server-side tagging and the Meta Conversions API, set up so "
           "ad platforms optimise against real conversions instead of a degraded signal."),
  "lede": ("Every bidding decision a platform makes is downstream of the events you send it. When "
@@ -386,10 +384,9 @@ SERVICES = [
  "art_alt": "A triggered email flow branching into three sends and a revenue curve",
  "eyebrow": "Lifecycle &amp; retention",
  "h1": "Email, lifecycle and retention",
- "title": "Klaviyo Email Marketing &amp; Ecommerce Lifecycle | Isuru Marasinghe",
- "desc": ("Klaviyo flows and campaigns for e-commerce: welcome, cart and browse abandonment, "
-          "post-purchase and win-back, with flows out-earning campaigns past 144,000 "
-          "recipients."),
+ "title": "Klaviyo Email &amp; Lifecycle Marketing | Isuru Marasinghe",
+ "desc": ("Klaviyo flows and campaigns for e-commerce: welcome, abandonment, post-purchase "
+          "and win-back, with flows out-earning campaigns past 144,000 recipients."),
  "lede": ("Paid media rents attention. Lifecycle owns it. On most e-commerce accounts the flows "
           "quietly out-earn the campaigns while costing nothing per send, which makes neglecting "
           "them the most expensive habit in the business."),
@@ -493,8 +490,7 @@ SERVICES = [
  "h1": "Fractional performance marketing lead",
  "title": "Fractional Performance Marketing Lead | Isuru Marasinghe",
  "desc": ("A fractional performance marketing lead owning paid acquisition: channel mix, "
-          "account oversight, creative pipeline and the CAC and ROAS forecast, across Meta, "
-          "Google, TikTok and LinkedIn."),
+          "account oversight, creative pipeline, and the CAC and ROAS forecast."),
  "lede": ("Narrower than a CMO and deeper in the accounts. This is the person who owns what "
           "paid acquisition costs and what it returns, reviews whoever is executing against "
           "that number, and is in the platforms often enough to know when the answer is "
@@ -549,10 +545,9 @@ SERVICES = [
  "art_alt": "A performance dashboard reviewed above a small team",
  "eyebrow": "Advisory &amp; leadership",
  "h1": "Fractional CMO",
- "title": "Fractional CMO &amp; Digital Marketing Strategy Consultant | Isuru Marasinghe",
- "desc": ("A fractional CMO and digital marketing strategy consultant: marketing strategy, "
-          "forecasting, account oversight and team leadership for companies with hands on the "
-          "work but nobody owning the number."),
+ "title": "Fractional CMO &amp; Strategy Consultant | Isuru Marasinghe",
+ "desc": ("A fractional CMO and strategy consultant: positioning, channel mix, budget, team "
+          "and board reporting, for companies with hands on the work and no head of growth."),
  "lede": ("A fractional CMO is senior marketing leadership without the salary: positioning, "
           "channel mix, budget, team and the numbers that go to the board. Where the need is "
           "narrower and sits inside paid acquisition, the "
@@ -977,9 +972,8 @@ def hub_page():
         {"@type": "ListItem", "position": 2, "name": "Services", "item": url}],
     }
     return shell(prefix, "Digital Marketing Services | Isuru Marasinghe",
-                 "Digital marketing services from a freelance specialist: paid media, creative "
-                 "production, conversion tracking and lifecycle marketing. Nine services, taken "
-                 "on together or separately, for clients worldwide.",
+                 "Digital marketing services: paid media, creative production, conversion tracking "
+                 "and lifecycle marketing, taken on together or separately.",
                  url, body, [item_list, crumbs], "Services")
 
 
@@ -1005,6 +999,16 @@ ABOUT_PHOTOS = [
 ]
 
 
+def dims(src):
+    """Intrinsic width and height, so the browser reserves the space before the file lands."""
+    try:
+        from PIL import Image
+        with Image.open(os.path.join(ROOT, src)) as im:
+            return ' width="%d" height="%d"' % im.size
+    except Exception:
+        return ''
+
+
 def photo_strip(prefix=""):
     out = []
     for src, alt, cap in ABOUT_PHOTOS:
@@ -1015,8 +1019,9 @@ def photo_strip(prefix=""):
                   if os.path.exists(os.path.join(ROOT, webp)) else "")
         out.append(
             '          <figure class="shot-p">'
-            '<picture>%s<img src="%s%s" alt="%s" loading="lazy" decoding="async"></picture>'
-            '<figcaption>%s</figcaption></figure>' % (source, prefix, src, html.escape(alt), cap))
+            '<picture>%s<img src="%s%s" alt="%s"%s loading="lazy" decoding="async"></picture>'
+            '<figcaption>%s</figcaption></figure>'
+            % (source, prefix, src, html.escape(alt), dims(src), cap))
     if not out:
         return ""
     return ('    <section class="svc-sec full reveal" aria-labelledby="ab-photos">\n'
@@ -1153,9 +1158,8 @@ def about_page():
         {"@type": "ListItem", "position": 2, "name": "About", "item": url}],
     }
     return shell(prefix, "About Isuru Marasinghe — Full Stack Digital Marketer",
-                 "Isuru Marasinghe is a performance-driven digital marketer working across real "
-                 "estate, education, technology and FMCG. Over USD 61.5 million in revenue "
-                 "generated for clients across Meta, Google, TikTok and LinkedIn.",
+                 "Isuru Marasinghe is a performance-driven digital marketer across real estate, "
+                 "education, technology and FMCG, with USD 61.5M+ generated for clients.",
                  url, body, [about_ld, crumbs], "About")
 
 

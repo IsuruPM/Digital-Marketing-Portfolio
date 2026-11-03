@@ -264,9 +264,19 @@ NAV = """      <div class="has-menu">
       <a href="index.html#contact">Contact</a>"""
 
 
+def dims(src):
+    """Intrinsic width and height, so the browser reserves the space before the file lands."""
+    try:
+        from PIL import Image
+        with Image.open(os.path.join(ROOT, src)) as im:
+            return ' width="%d" height="%d"' % im.size
+    except Exception:
+        return ''
+
+
 def picture(src, alt, cls="", extra=""):
     webp = os.path.splitext(src)[0] + ".webp"
-    tag = f'<img src="{src}" alt="{html.escape(alt)}" {extra} loading="lazy" decoding="async">'
+    tag = f'<img src="{src}" alt="{html.escape(alt)}"{dims(src)} {extra} loading="lazy" decoding="async">'
     if os.path.exists(os.path.join(ROOT, webp)):
         return f'<picture><source srcset="{webp}" type="image/webp">{tag}</picture>'
     return tag

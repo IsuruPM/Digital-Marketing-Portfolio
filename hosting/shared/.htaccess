@@ -28,11 +28,18 @@ AddType image/svg+xml .svg
   ExpiresByType application/javascript "access plus 1 hour"
 </IfModule>
 
-# Security headers.
+# Security headers. These match netlify.toml, so the two hosts behave the same.
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header set Cross-Origin-Opener-Policy "same-origin"
+  # script-src keeps 'unsafe-inline' on purpose: the Google tag and the JSON-LD blocks are
+  # inline, and hashing them would break structured data whenever a page is regenerated.
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
+  # Uncomment once HTTPS is live and verified.
+  # Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
 </IfModule>
 
 # Keep the source folders private if they are ever uploaded.

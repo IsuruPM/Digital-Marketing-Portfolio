@@ -27,7 +27,7 @@ if (!empty($_POST['bot-field'])) { respond(true, 'ok', $wantsJson); } // honeypo
 
 $clean = function ($key, $max) {
   $v = isset($_POST[$key]) ? trim((string) $_POST[$key]) : '';
-  $v = str_replace(["\r", "\n"], ' ', $v);
+  $v = preg_replace('/[\x00-\x1F\x7F]/u', ' ', $v);   // every control char, not just CR and LF
   return mb_substr($v, 0, $max);
 };
 $name    = $clean('name', 120);
@@ -53,7 +53,12 @@ $body .= "Sent:           " . date('Y-m-d H:i:s T') . "\n";
 $body .= "IP:             " . ($_SERVER['REMOTE_ADDR'] ?? '') . "\n\n";
 $body .= "Inquiry:\n$inquiry\n";
 
-$fromAddr = $from !== '' ? $from : ('no-reply@' . preg_replace('/^www\./', '', $_SERVER['SERVER_NAME'] ?? 'localhost'));
+// SERVER_NAME can come straight from the Host header on some configurations, so it is
+// never trusted into a mail header: anything but a plain hostname is discarded.
+$host = (string) ($_SERVER['SERVER_NAME'] ?? '');
+$host = preg_replace('/^www\./', '', $host);
+if (!preg_match('/^[A-Za-z0-9.-]{1,253}$/', $host)) { $host = 'localhost'; }
+$fromAddr = $from !== '' ? $from : ('no-reply@' . $host);
 $headers  = "From: Website inquiry <$fromAddr>\r\n";
 $headers .= "Reply-To: $name <$email>\r\n";
 $headers .= "MIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\n";

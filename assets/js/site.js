@@ -171,6 +171,19 @@
     });
   });
 
+  /* ---------- pause the logo marquee when it is off screen ----------
+     It is an infinite CSS animation, so left alone it keeps the compositor working and
+     the battery draining for the whole visit, including while someone reads the footer. */
+  var marquees = [].slice.call(document.querySelectorAll('.marquee .track'));
+  if (marquees.length && 'IntersectionObserver' in window) {
+    var mio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        e.target.style.animationPlayState = e.isIntersecting ? '' : 'paused';
+      });
+    }, { rootMargin: '120px 0px' });
+    marquees.forEach(function (el) { mio.observe(el); });
+  }
+
   /* ---------- current section in the nav ---------- */
   /* only the in-page anchors; the nav also holds links to other documents now */
   var navLinks = [].slice.call(document.querySelectorAll('.nav a')).filter(function (a) {
