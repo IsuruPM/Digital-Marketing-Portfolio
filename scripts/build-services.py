@@ -989,9 +989,9 @@ ABOUT_PHOTOS = [
      "ESM Business School", "AIPQ &middot; Certified Digital Marketing Practitioner", False),
     ("assets/img/about/graduation-esm-pair.jpg",
      "Isuru Marasinghe and his wife at the ESM Business School and AIPQ graduation ceremony",
-     "ESM Business School &middot; graduation 2026",
+     "ESM Business School",
      "Alongside my wife, an MBA Graduate of the University of Sunderland, UK and a fellow "
-     "Certified Digital Marketing Practitioner", True),
+     "Certified Digital Marketing Practitioner", False),
 ]
 
 
