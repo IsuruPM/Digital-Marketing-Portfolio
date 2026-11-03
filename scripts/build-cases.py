@@ -55,38 +55,38 @@ CASES = [
 },
 {
  "slug": "case-crm-closings",
- "stitle": "USD 22.1M closed from direct leads",
+ "stitle": "USD 36.6M closed from direct leads",
  "num": "Case 02",
  "kicker": "CRM · UAE real estate",
- "title": "From lead to closing: USD 22.1M in property sold",
+ "title": "From lead to closing: USD 36.6M in property sold",
  "tag": "CRM · Closed deals",
  "cover": "assets/img/covers/closings.svg",
- "lede": "The same real-estate pipeline followed past the lead form and into the CRM, where 75 deals closed for a combined AED 81,317,569 on roughly AED 260K of media spend.",
- "desc": "The CRM snapshot behind Isuru Marasinghe's UAE real estate media buying: 75 deals worth USD 22.1M on about USD 71K of ad spend.",
+ "lede": "The same real-estate pipeline followed past the lead form and into the CRM, where 75 deals closed for a combined AED 134,417,569 on roughly AED 260K of media spend.",
+ "desc": "The CRM snapshot behind Isuru Marasinghe's UAE real estate media buying: 75 deals worth USD 36.6M on about USD 71K of ad spend.",
  "facts": [("Source","CRM closed-deals dashboard"),
            ("Market","UAE real estate"),
            ("Media spend","Roughly AED 260,000, about USD 71K, behind the closed pipeline"),
            ("Context","Around USD 300K of lifetime UAE real-estate ad spend to date")],
  "stats": [("75","Deals closed","Recorded in the CRM"),
-           ("USD 22.1M","Closed deal value","AED 81,317,569"),
+           ("USD 36.6M","Closed deal value","AED 134,417,569"),
            ("USD 71K","Media spend","≈ AED 260,000"),
-           ("313×","Closed value per dollar","Sale value ÷ media spend")],
+           ("517×","Closed value per dollar","Sale value ÷ media spend")],
  "brief": "Cost per lead is easy to flatter and easy to argue with. The only number a developer or brokerage actually cares about is how much property the pipeline sold, so the leads from the Meta account were followed through the CRM to the closing stage.",
  "did": ["Matched CRM stages back to the ad sets and lead forms that created each record, so closings could be attributed rather than guessed.",
          "Reported on closed value alongside cost per lead every week, which changed which ad sets got budget.",
          "Fed the closing data back into targeting and creative, favouring the audiences that produced deals rather than the ones that produced cheap forms."],
  "shots": [("assets/img/results/crm-closings.jpg",
-            "CRM closed-deals snapshot from Isuru Marasinghe's UAE real estate pipeline showing AED 81,317,569 closed",
+            "CRM closed-deals snapshot from Isuru Marasinghe's UAE real estate pipeline showing AED 134,417,569 closed",
             "CRM · closed-deals snapshot",
-            "What you are looking at: the two summary cards from the CRM dashboard. The left card is the count of closed deals, 75. The right card is their combined sale value, AED 81,317,569, which is about USD 22.1M at the pegged rate. Client and project columns are cropped out because the account is under NDA.")],
+            "What you are looking at: the two summary cards from the CRM dashboard. The left card is the count of closed deals, 75. The right card is their combined sale value, AED 134,417,569, which is about USD 36.6M at the pegged rate. Client and project columns are cropped out because the account is under NDA.")],
  "table": {"head": ["Measure","Value","Notes"],
   "rows": [["Deals closed","75","Recorded as won in the CRM"],
-           ["Closed value","AED 81,317,569","About USD 22.1M at 3.6725"],
-           ["Average deal value","≈ AED 1.08M","Closed value ÷ deals"],
+           ["Closed value","AED 134,417,569","About USD 36.6M at 3.6725"],
+           ["Average deal value","≈ AED 1.79M","Closed value ÷ deals, about USD 488K"],
            ["Media spend behind the pipeline","≈ AED 260,000","About USD 71K"],
-           ["<strong>Closed value per dirham spent</strong>","<strong>313×</strong>","Sale value, not commission"]],
+           ["<strong>Closed value per dirham spent</strong>","<strong>517×</strong>","Sale value, not commission"]],
   "note": "Closed value is the sale value of the properties as recorded in the CRM, not agency revenue or commission."},
- "result": "Three hundred and thirteen dirhams of property sold for every dirham of media. That multiple is the reason the account kept scaling: the conversation with the client stopped being about cost per lead and became about how much pipeline the next AED 100K could buy.",
+ "result": "Five hundred and seventeen dirhams of property sold for every dirham of media, at an average deal value of AED 1.79M. That multiple is the reason the account kept scaling: the conversation with the client stopped being about cost per lead and became about how much pipeline the next AED 100K could buy.",
 },
 {
  "slug": "case-meta-ecom",
@@ -340,7 +340,7 @@ def build(case):
 <meta property="og:image" content="{SITE}assets/img/og-cover.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Isuru Marasinghe, full stack digital marketer, with USD 4.5M+ ad spend managed and USD 47.1M+ in closed deal value">
+<meta property="og:image:alt" content="Isuru Marasinghe, full stack digital marketer, with USD 4.5M+ ad spend managed and USD 61.5M+ in closed deal value">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{case['stitle']} — Isuru Marasinghe">
 <meta name="twitter:description" content="{html.escape(case['desc'])}">
