@@ -955,7 +955,7 @@ def about_page():
     <figure class="about-hero reveal">
       <picture><source srcset="assets/img/about/headshot.webp" type="image/webp"><img src="assets/img/about/headshot.jpg" alt="Isuru Marasinghe, full stack digital marketer" width="900" height="900" decoding="async"></picture>
       <figcaption>
-        <span class="nm">Isuru Marasinghe</span>
+        <span class="nm">Full Stack Digital Marketer</span>
         <span class="post">MBA (UK) &middot; ACIM (UK) &middot; PgDip.M (UK) &middot; AMSLIM (SL) &middot; CLSSWB &middot; CDMP (USA) &middot; BM (Hons)</span>
         <ul class="quals-rows">
           <li><em>MBA (UK)</em><span>Master of Business Administration<small>University of Gloucestershire, United Kingdom</small></span></li>
