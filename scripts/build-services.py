@@ -882,6 +882,9 @@ def hub_page():
 # Portraits for the about page. Each entry renders only if the file is on disk, so
 # dropping a new photograph at one of these paths is all it takes to add it.
 ABOUT_PHOTOS = [
+    ("assets/img/about/graduation-mba.jpg",
+     "Isuru Marasinghe graduating with an MBA from the University of Gloucestershire",
+     "University of Gloucestershire &middot; MBA"),
     ("assets/img/about/graduation-horizon.jpg",
      "Isuru Marasinghe graduating from Horizon Campus, Sri Lanka",
      "Horizon Campus &middot; BM (Hons) in Marketing, First Class"),
