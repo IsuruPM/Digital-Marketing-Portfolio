@@ -375,6 +375,38 @@ ART["services"] = (
 )
 
 
+# ------------------------------------------- Fractional performance lead
+ART["performance-lead"] = (
+    "Four paid channels converging into one forecast curve",
+    "".join(
+        frame(64, y, 150, 68, 10)
+        + '  <circle cx="%s" cy="%s" r="13" fill="%s" stroke="none"/>\n' % (98, y + 34, SUNK)
+        + '  <circle cx="98" cy="%s" r="5" fill="%s" stroke="none"/>\n' % (y + 34, MID)
+        + rows(126, y + 26, [66, 44], 15)
+        for y in (34, 118, 202, 286))
+    + '  <g stroke="%s" stroke-width="1.3">\n' % MID
+    + '    <path d="M214 68 C286 68 286 174 330 174"/>\n'
+    + '    <path d="M214 152 C286 152 286 178 330 178"/>\n'
+    + '    <path d="M214 236 C286 236 286 182 330 182"/>\n'
+    + '    <path d="M214 320 C286 320 286 186 330 186"/>\n'
+    + '  </g>\n'
+    + '  <circle cx="352" cy="180" r="22" fill="#FFFFFF" stroke="%s" stroke-width="1.8"/>\n' % INK
+    + '  <path d="M342 180 h20 M352 170 v20" stroke="%s" stroke-width="1.6"/>\n' % INK
+    + '  <g stroke="%s" stroke-width="1.3"><path d="M374 180 H430"/><path d="M420 172 l10 8 -10 8"/></g>\n' % INK
+    + frame(430, 74, 306, 212, 12)
+    + '  <path d="M430 108 H736" stroke="%s" stroke-width="1.2"/>\n' % MID
+    + rows(452, 92, [86], 12, INK, 5)
+    + '  <g stroke="%s" stroke-width="1" opacity=".6">\n' % LINE
+    + "".join('    <line x1="456" y1="%s" x2="712" y2="%s"/>\n' % (y, y) for y in (146, 188, 230))
+    + '  </g>\n'
+    # the forecast, then what actually happened against it
+    + '  <path d="M456 250 L520 232 L584 196 L648 166 L712 126" stroke="%s" stroke-width="1.4" stroke-dasharray="6 7"/>\n' % MID
+    + '  <path d="M456 254 L520 240 L584 202 L648 158 L712 112" stroke="%s" stroke-width="2.2"/>\n' % INK
+    + '  <circle cx="712" cy="112" r="7" fill="#FFFFFF" stroke="%s" stroke-width="2"/>\n' % INK
+    + '  <line x1="456" y1="262" x2="712" y2="262" stroke="%s"/>\n' % MID
+)
+
+
 if __name__ == "__main__":
     os.makedirs(OUT, exist_ok=True)
     for name, (label, body) in ART.items():

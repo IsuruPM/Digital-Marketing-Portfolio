@@ -12,6 +12,7 @@ reach the site root with ../. Run: python3 scripts/build-services.py
 
 import html
 import json
+import re
 import os
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -483,21 +484,80 @@ SERVICES = [
           "Yes, as the director and shooter inside their process.")],
 },
 {
+ "slug": "fractional-performance-lead",
+ "nav": "Performance lead",
+ "icon": "chart",
+ "art": "performance-lead",
+ "art_alt": "Four paid channels converging into one forecast curve",
+ "eyebrow": "Advisory &amp; paid media",
+ "h1": "Fractional performance marketing lead",
+ "title": "Fractional Performance Marketing Lead | Isuru Marasinghe",
+ "desc": ("A fractional performance marketing lead owning paid acquisition: channel mix, "
+          "account oversight, creative pipeline and the CAC and ROAS forecast, across Meta, "
+          "Google, TikTok and LinkedIn."),
+ "lede": ("Narrower than a CMO and deeper in the accounts. This is the person who owns what "
+          "paid acquisition costs and what it returns, reviews whoever is executing against "
+          "that number, and is in the platforms often enough to know when the answer is "
+          "structural rather than seasonal."),
+ "service_type": "Marketing consulting",
+ "why_h": "Where this differs from a fractional CMO",
+ "why": ["Scope. A <a href=\"fractional-cmo.html\">fractional CMO</a> owns the whole marketing "
+         "function, positioning and brand included. A performance lead owns paid acquisition and "
+         "the measurement under it, and reports into whoever owns the rest.",
+         "Depth. The CMO engagement is run from the plan and the review. This one goes into the "
+         "accounts: structure, bidding, creative rotation and the event setup behind them, which "
+         "is where most of the recoverable performance actually sits.",
+         "Who it suits. Companies that already have marketing leadership, or a founder who wants "
+         "to keep it, but have an agency or an in-house buyer nobody senior is checking."],
+ "does": [("chart", "CAC and ROAS forecasting", "What the spend should return by channel, stated "
+           "in advance and held to, with the variance explained each month."),
+          ("search", "Account review", "Regular audit of structure, bidding, audiences and "
+           "creative rotation across every platform in the mix."),
+          ("layers", "Channel mix and budget", "Where the next increment of spend goes, and what "
+           "has to be true for it to pay back."),
+          ("spark", "Creative pipeline", "The rate and the system behind creative supply, which "
+           "is the constraint on most accounts long before targeting is."),
+          ("flow", "Measurement oversight", "Event quality, attribution windows and the reporting "
+           "that ties spend to pipeline rather than to clicks."),
+          ("shield", "Agency and buyer accountability", "Scope, standards and the weekly review "
+           "that makes the work checkable by someone who has done it.")],
+ "proof": [("case-google-ads.html", "Performance held across four months",
+            "A 15.73x peak, and a double-digit return in three of the four snapshots."),
+           ("case-meta-ecom.html", "A test lane and a scaling set, judged apart",
+            "The structure that keeps an account learning while it scales."),
+           ("case-crm-closings.html", "Spend read against closed revenue",
+            "AED 440,000 of media against AED 134,417,569 of closed property.")],
+ "faq": [("How is this different from the fractional CMO engagement?",
+          "Scope and depth. The CMO role covers the whole marketing function including brand and "
+          "positioning; this one owns paid acquisition and the measurement under it, and goes "
+          "further into the accounts. Several clients start here and widen later."),
+         ("Do you run the accounts or oversee them?",
+          "Oversee, by default: your team or agency keeps hands on the work while the strategy, "
+          "forecast and review sit with me. Taking the accounts over is a separate arrangement."),
+         ("How much time does it take?",
+          "Usually a day a week, set by the spend and the number of channels. Agreed before it "
+          "starts rather than billed by surprise."),
+         ("What do I actually receive each week?",
+          "A written review against the forecast: what moved, what it cost, what changes next and "
+          "what I need from your side. Not a dashboard link.")],
+},
+{
  "slug": "fractional-cmo",
  "nav": "Fractional CMO",
  "icon": "compass",
  "art": "fractional-lead",
  "art_alt": "A performance dashboard reviewed above a small team",
  "eyebrow": "Advisory &amp; leadership",
- "h1": "Fractional CMO and performance lead",
+ "h1": "Fractional CMO",
  "title": "Fractional CMO &amp; Digital Marketing Strategy Consultant | Isuru Marasinghe",
  "desc": ("A fractional CMO and digital marketing strategy consultant: marketing strategy, "
           "forecasting, account oversight and team leadership for companies with hands on the "
           "work but nobody owning the number."),
- "lede": ("Plenty of companies have people who can run the ads and nobody who owns the number. A "
-          "fractional CMO is the senior layer without the salary: marketing strategy, forecasts, "
-          "account oversight, team leadership and the uncomfortable question in the weekly "
-          "review."),
+ "lede": ("A fractional CMO is senior marketing leadership without the salary: positioning, "
+          "channel mix, budget, team and the numbers that go to the board. Where the need is "
+          "narrower and sits inside paid acquisition, the "
+          "<a href=\"fractional-performance-lead.html\">performance lead</a> engagement is the "
+          "closer fit."),
  "service_type": "Marketing consulting",
  "why_h": "What the role actually covers",
  "why": ["Owning the forecast. What the spend should be, what it should return, and what has to "
@@ -527,6 +587,11 @@ SERVICES = [
  "faq": [("How much time does a fractional CMO take?",
           "Typically a day or two a week, set by the size of the team and the spend. The scope is "
           "agreed before it starts rather than billed by surprise."),
+         ("Do I need a CMO or a performance lead?",
+          "A CMO if nobody owns marketing as a whole: positioning, brand, channel mix, team and "
+          "budget. A performance lead if that is covered and the gap is a senior owner for paid "
+          "acquisition and its measurement. The two engagements are priced and scoped "
+          "separately."),
          ("Do you take over the accounts?",
           "Only if that is what the engagement calls for. The usual arrangement keeps your team "
           "or agency executing while the strategy and oversight sit with me."),
@@ -571,6 +636,13 @@ def footer_services(prefix=""):
 SOCIALS = """      <a class="soc" href="https://www.linkedin.com/in/isuru-marasinghe/" target="_blank" rel="noopener me" aria-label="Isuru Marasinghe on LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.5h4v11H3v-11Zm6.5 0h3.83v1.5h.05c.53-.95 1.84-1.95 3.78-1.95 4.04 0 4.79 2.5 4.79 5.76v5.69h-4v-5.05c0-1.2-.02-2.75-1.73-2.75-1.73 0-2 1.31-2 2.66v5.14h-4v-11Z"/></svg></a>
       <a class="soc" href="https://www.facebook.com/isurupm" target="_blank" rel="noopener me" aria-label="Isuru Marasinghe on Facebook" title="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.49-3.91 3.77-3.91 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.78-1.63 1.57v1.89h2.78l-.45 2.91h-2.33V22c4.78-.76 8.44-4.92 8.44-9.94Z"/></svg></a>
       <a class="soc" href="https://www.instagram.com/x_isuru_x/" target="_blank" rel="noopener me" aria-label="Isuru Marasinghe on Instagram" title="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.2" fill="currentColor" stroke="none"/></svg></a>"""
+
+
+def first_sentence(text):
+    """The opening sentence of a lede, with markup stripped and exactly one full stop."""
+    plain = re.sub(r"<[^>]+>", "", text)
+    cut = plain.split(". ")[0].rstrip()
+    return cut if cut.endswith(".") else cut + "."
 
 
 def strip(s):
@@ -819,16 +891,20 @@ def service_page(sv):
                  [service_ld, faq_ld, crumbs], strip(sv["h1"]))
 
 
+WORDS = {8: "Eight", 9: "Nine", 10: "Ten", 11: "Eleven", 12: "Twelve"}
+
+
 def hub_page():
     prefix = "../"
     url = SITE + "services/"
+    count_word = WORDS.get(len(SERVICES), str(len(SERVICES)))
     cards = "\n".join(
         '        <a class="svc-card" href="%s.html">\n'
         '          <span class="ic" aria-hidden="true">%s</span>\n'
         '          <h2>%s</h2>\n'
         '          <p>%s</p>\n'
         '          <span class="more">Read more<span class="arrow" aria-hidden="true">&rarr;</span></span>\n'
-        '        </a>' % (s["slug"], icon(s["icon"]), s["h1"], s["lede"].split(". ")[0] + ".")
+        '        </a>' % (s["slug"], icon(s["icon"]), s["h1"], first_sentence(s["lede"]))
         for s in SERVICES)
 
     body = f"""
@@ -842,7 +918,7 @@ def hub_page():
         <h1>Digital marketing services</h1>
       </div>
       <div class="d">
-        <p class="lede">Nine disciplines that make up one funnel: the media that buys attention, the creative that earns it, the measurement that proves it and the lifecycle work that keeps it. Taken on together or separately, for brands wherever the work can be done.</p>
+        <p class="lede">{count_word} disciplines that make up one funnel: the media that buys attention, the creative that earns it, the measurement that proves it and the lifecycle work that keeps it. Taken on together or separately, for brands wherever the work can be done.</p>
         <div class="row">
           <a class="btn btn-primary" href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
           <a class="btn btn-ghost" href="{prefix}index.html#work">See the results</a>
@@ -855,7 +931,7 @@ def hub_page():
     </figure>
 
     <section class="svc-sec wide reveal" aria-labelledby="svc-all">
-      <div class="h"><h2 id="svc-all">The nine</h2></div>
+      <div class="h"><h2 id="svc-all">{count_word} disciplines</h2></div>
       <div class="c">
         <div class="svc-cards">
 {cards}

@@ -479,13 +479,19 @@ footer .foot{padding-top:26px;}
 .svc-sec.wide{max-width:none;}
 .svc-list .ic{display:flex;width:30px;height:30px;align-items:center;justify-content:center;color:var(--ink);margin-bottom:12px;}
 .svc-list .ic svg{width:22px;height:22px;}
-.svc-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:24px;}
+/* same self-filling trick as the capability grid, so any number of services lands cleanly */
+.svc-cards{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;margin-top:24px;}
+.svc-card{grid-column:span 2;}
+.svc-cards > .svc-card:last-child:nth-child(3n+1){grid-column:span 6;}
+.svc-cards > .svc-card:nth-last-child(2):nth-child(3n+1),
+.svc-cards > .svc-card:nth-last-child(2):nth-child(3n+1) ~ .svc-card{grid-column:span 3;}
 .svc-card{border:1px solid var(--hairline);border-radius:var(--r-md);background:var(--surface);padding:24px 24px 22px;
   display:flex;flex-direction:column;gap:10px;min-width:0;transition:transform var(--dur-hover) var(--ease),box-shadow var(--dur-hover) var(--ease);}
 .svc-card:hover{transform:translateY(-2px);box-shadow:var(--lift);}
 .svc-card .ic{display:flex;width:34px;height:34px;align-items:center;justify-content:center;color:var(--ink);}
 .svc-card .ic svg{width:24px;height:24px;}
-.svc-card h2{font-family:var(--font-body);font-weight:500;font-size:16px;letter-spacing:-.005em;margin:4px 0 0;}
+.svc-cards .svc-card h2{font-family:var(--font-body);font-weight:500;font-size:16px;
+  letter-spacing:-.005em;margin:4px 0 0;position:static;line-height:1.3;}
 .svc-card p{color:var(--ink-2);font-size:14px;margin:0;}
 .svc-card .more{margin-top:auto;padding-top:12px;font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;
   text-transform:uppercase;color:var(--ink-3);display:flex;align-items:center;gap:8px;}
@@ -497,22 +503,28 @@ footer .foot{padding-top:26px;}
 .svc-next .ic{display:flex;color:var(--ink-3);flex:none;}
 .svc-next .ic svg{width:19px;height:19px;}
 .svc-next:hover .ic{color:var(--ink);}
-@media (max-width:900px){.svc-cards{grid-template-columns:repeat(2,minmax(0,1fr));}}
-@media (max-width:620px){.svc-cards,.svc-nexts{grid-template-columns:1fr;}}
+@media (max-width:900px){.svc-cards{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .svc-cards > .svc-card,
+  .svc-cards > .svc-card:last-child:nth-child(3n+1),
+  .svc-cards > .svc-card:nth-last-child(2):nth-child(3n+1),
+  .svc-cards > .svc-card:nth-last-child(2):nth-child(3n+1) ~ .svc-card{grid-column:auto;}
+  .svc-cards > .svc-card:last-child:nth-child(odd){grid-column:1 / -1;}}
+@media (max-width:620px){.svc-cards,.svc-nexts{grid-template-columns:1fr;}
+  .svc-cards > .svc-card:last-child:nth-child(odd){grid-column:auto;}}
 
 .service .svc-sec{margin-top:clamp(44px,6vw,72px);max-width:none;
   display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);gap:clamp(20px,3.2vw,56px);
   border-top:1px solid var(--hairline);padding-top:clamp(28px,3.4vw,44px);}
 .service .svc-sec > .h{min-width:0;}
 .service .svc-sec > .c{min-width:0;}
-.service .svc-sec h2{font-family:var(--font-display);font-weight:300;letter-spacing:-.02em;
+.service .svc-sec > .h h2{font-family:var(--font-display);font-weight:300;letter-spacing:-.02em;
   font-size:clamp(22px,2.4vw,30px);margin:0;position:sticky;top:104px;}
 .service .svc-sec .c > p{color:var(--ink-2);font-size:15.5px;max-width:68ch;}
 .service .svc-sec .c > p + p{margin-top:14px;}
 .service .svc-sec .c > *:first-child{margin-top:0;}
 @media (max-width:900px){
   .service .svc-sec{grid-template-columns:1fr;gap:16px;}
-  .service .svc-sec h2{position:static;}
+  .service .svc-sec > .h h2{position:static;}
 }
 /* Six columns with each cell spanning two gives three per row, and lets a short last
    row widen to fill instead of leaving the ground showing through a missing cell. */
@@ -604,7 +616,7 @@ footer .foot{padding-top:26px;}
 
 /* a section whose content wants the whole container, with the heading above it */
 .service .svc-sec.full{grid-template-columns:1fr;gap:20px;}
-.service .svc-sec.full h2{position:static;}
+.service .svc-sec.full > .h h2{position:static;}
 
 .photo-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;}
 .shot-p{margin:0;min-width:0;}
