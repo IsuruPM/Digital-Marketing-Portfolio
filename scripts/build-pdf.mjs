@@ -25,7 +25,12 @@ const server = createServer(async (req, res) => {
 await new Promise((r) => server.listen(0, '127.0.0.1', r));
 const port = server.address().port;
 
-const browser = await chromium.launch();
+// A sandbox or CI box may carry its own Chromium that does not match the version
+// Playwright downloads. Point CHROMIUM_PATH at it to use that binary instead.
+const launchOpts = process.env.CHROMIUM_PATH
+  ? { executablePath: process.env.CHROMIUM_PATH, args: ['--headless', '--no-sandbox'] }
+  : {};
+const browser = await chromium.launch(launchOpts);
 const page = await browser.newPage({ viewport: { width: 1440, height: 810 } });
 await page.goto(`http://127.0.0.1:${port}/print/deck.html`, { waitUntil: 'networkidle' });
 await page.evaluate(async () => {

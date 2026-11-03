@@ -105,6 +105,9 @@ presents full-screen like a slide deck.
 * **Client logos** run in two opposite-direction marquees on white and pause on hover.
   Logos designed for dark backgrounds had their white pixels mapped to ink so they read
   on white. Under `prefers-reduced-motion` the marquee becomes a static wrapped row.
+* **Rendering scripts**: `npm run og` and `npm run pdf` launch Playwright's own Chromium. On a machine
+  that carries a different Chromium build (a sandbox, some CI images), set `CHROMIUM_PATH` to that
+  binary, for example `CHROMIUM_PATH=/opt/pw-browsers/chromium npm run og`.
 * **Currency**: headline figures are USD; AED platform figures are converted at the
   pegged 3.6725 and the AED original is kept in the tables.
 * **SEO**: `index.html` carries the description, Open Graph and Twitter cards, a canonical
