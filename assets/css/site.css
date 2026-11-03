@@ -687,12 +687,15 @@ footer .foot{padding-top:26px;}
 .service .svc-sec.full{grid-template-columns:1fr;gap:20px;}
 .service .svc-sec.full > .h h2{position:static;}
 
-/* Four portraits on a shared head scale, then the two-up shot on a row of its own,
-   because squeezing two people into a 4:5 slot cut both of them at the edges. */
+/* Five square cards on a shared head scale, including the two-up shot, which is
+   cropped wide enough to hold both people inside the same square. */
 .photo-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;}
 .shot-p{margin:0;min-width:0;display:flex;flex-direction:column;}
 .shot-p picture{display:block;border:1px solid var(--hairline);border-radius:var(--r-md);overflow:hidden;background:var(--sunk);}
-.shot-p img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;
+/* height:auto matters: the intrinsic height attribute is a presentational hint, and with
+   no CSS height the box is definite, so aspect-ratio is ignored and the image renders at
+   its natural height. */
+.shot-p img{width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;display:block;
   transition:transform var(--dur-hover) var(--ease);}
 .shot-p:hover img{transform:scale(1.015);}
 .shot-p figcaption{margin-top:11px;display:flex;flex-direction:column;gap:3px;}
