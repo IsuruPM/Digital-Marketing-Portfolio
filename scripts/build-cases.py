@@ -252,7 +252,7 @@ NAV = """      <div class="has-menu">
           <a href="services/conversion-tracking-ga4.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="6" r="2.5"/><circle cx="12" cy="18" r="2.5"/><path d="M6 8.5v3a2 2 0 0 0 2 2h2.2M18 8.5v3a2 2 0 0 1-2 2h-2.2"/></svg>Tracking &amp; GA4</a>
           <a href="services/email-lifecycle-klaviyo.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.4 7 12 13l8.6-6"/></svg>Lifecycle &amp; email</a>
           <a href="services/photography-video-production.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5h3.2l1.6-2.4h7.4l1.6 2.4h3.2v10h-17Z"/><circle cx="12" cy="13" r="3.6"/></svg>Photo &amp; video</a>
-          <a href="services/fractional-performance-lead.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M15 9l-1.8 4.2L9 15l1.8-4.2Z"/></svg>Fractional lead</a>
+          <a href="services/fractional-cmo.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M15 9l-1.8 4.2L9 15l1.8-4.2Z"/></svg>Fractional CMO</a>
           <a class="menu-all" href="services/">All services<span class="arrow" aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
@@ -395,10 +395,14 @@ def build(case):
   <div class="wrap">
     <nav class="crumb" aria-label="Breadcrumb"><a href="index.html#work">Results</a><span aria-hidden="true">/</span><span>{case['num']}</span></nav>
 
-    <header class="cs-head reveal">
-      <span class="eyebrow">{case['num']} · {case['kicker']}</span>
-      <h1>{case['title']}</h1>
-      <p class="lede">{case['lede']}</p>
+    <header class="cs-head split-head reveal">
+      <div class="t">
+        <span class="eyebrow">{case['num']} · {case['kicker']}</span>
+        <h1>{case['title']}</h1>
+      </div>
+      <div class="d">
+        <p class="lede">{case['lede']}</p>
+      </div>
     </header>
 
     <div class="statbar case-stats reveal">
@@ -481,7 +485,7 @@ def build(case):
       <a href="services/conversion-tracking-ga4.html">Tracking & GA4</a>
       <a href="services/email-lifecycle-klaviyo.html">Lifecycle & email</a>
       <a href="services/photography-video-production.html">Photo & video</a>
-      <a href="services/fractional-performance-lead.html">Fractional lead</a>
+      <a href="services/fractional-cmo.html">Fractional CMO</a>
     </div>
     <div class="foot-col">
       <span class="h">Work</span>

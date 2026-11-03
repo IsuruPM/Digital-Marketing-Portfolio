@@ -467,19 +467,21 @@ SERVICES = [
           "Yes, as the director and shooter inside their process.")],
 },
 {
- "slug": "fractional-performance-lead",
- "nav": "Fractional lead",
+ "slug": "fractional-cmo",
+ "nav": "Fractional CMO",
  "icon": "compass",
  "art": "fractional-lead",
  "art_alt": "A performance dashboard reviewed above a small team",
- "eyebrow": "Advisory",
- "h1": "Fractional performance marketing lead",
- "title": "Digital Marketing Strategy Consultant | Isuru Marasinghe",
- "desc": ("A digital marketing strategy consultant on a fractional basis: strategy, forecasting, "
-          "account oversight and team direction for companies with hands but no head of growth."),
- "lede": ("Plenty of teams have people who can run the ads and nobody who owns the number. A "
-          "fractional lead is the senior layer without the salary: strategy, forecasts, account "
-          "oversight and the uncomfortable questions in the weekly review."),
+ "eyebrow": "Advisory &amp; leadership",
+ "h1": "Fractional CMO and performance lead",
+ "title": "Fractional CMO &amp; Digital Marketing Strategy Consultant | Isuru Marasinghe",
+ "desc": ("A fractional CMO and digital marketing strategy consultant: marketing strategy, "
+          "forecasting, account oversight and team leadership for companies with hands on the "
+          "work but nobody owning the number."),
+ "lede": ("Plenty of companies have people who can run the ads and nobody who owns the number. A "
+          "fractional CMO is the senior layer without the salary: marketing strategy, forecasts, "
+          "account oversight, team leadership and the uncomfortable question in the weekly "
+          "review."),
  "service_type": "Marketing consulting",
  "why_h": "What the role actually covers",
  "why": ["Owning the forecast. What the spend should be, what it should return, and what has to "
@@ -504,7 +506,7 @@ SERVICES = [
             "Four monthly snapshots rather than one flattering month."),
            ("case-meta-ecom.html", "Structure that keeps learning",
             "A test lane and a scaling set judged on different terms.")],
- "faq": [("How much time does a fractional lead take?",
+ "faq": [("How much time does a fractional CMO take?",
           "Typically a day or two a week, set by the size of the team and the spend. The scope is "
           "agreed before it starts rather than billed by surprise."),
          ("Do you take over the accounts?",
@@ -691,13 +693,17 @@ def service_page(sv):
   <div class="wrap">
     <nav class="crumb" aria-label="Breadcrumb"><a href="{prefix}index.html">Isuru Marasinghe</a><span aria-hidden="true">/</span><a href="./">Services</a><span aria-hidden="true">/</span><span>{strip(sv['h1'])}</span></nav>
 
-    <header class="cs-head reveal">
-      <span class="eyebrow">{sv['eyebrow']}</span>
-      <h1>{sv['h1']}</h1>
-      <p class="lede">{sv['lede']}</p>
-      <div class="row" style="margin-top:28px">
-        <a class="btn btn-primary" href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
-        <a class="btn btn-ghost" href="{prefix}index.html#work">See the results</a>
+    <header class="cs-head split-head reveal">
+      <div class="t">
+        <span class="eyebrow">{sv['eyebrow']}</span>
+        <h1>{sv['h1']}</h1>
+      </div>
+      <div class="d">
+        <p class="lede">{sv['lede']}</p>
+        <div class="row">
+          <a class="btn btn-primary" href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
+          <a class="btn btn-ghost" href="{prefix}index.html#work">See the results</a>
+        </div>
       </div>
     </header>
 
@@ -706,33 +712,43 @@ def service_page(sv):
     </figure>
 
     <section class="svc-sec reveal" aria-labelledby="svc-why">
-      <h2 id="svc-why">{sv['why_h']}</h2>
+      <div class="h"><h2 id="svc-why">{sv['why_h']}</h2></div>
+      <div class="c">
 {why}
+      </div>
     </section>
 
     <section class="svc-sec reveal" aria-labelledby="svc-does">
-      <h2 id="svc-does">What the engagement covers</h2>
-      <ul class="svc-list">
+      <div class="h"><h2 id="svc-does">What the engagement covers</h2></div>
+      <div class="c">
+        <ul class="svc-list">
 {does}
-      </ul>
+        </ul>
+      </div>
     </section>
 
     <section class="svc-sec reveal" aria-labelledby="svc-proof">
-      <h2 id="svc-proof">The accounts behind this</h2>
-      <div class="svc-proofs">
+      <div class="h"><h2 id="svc-proof">The accounts behind this</h2></div>
+      <div class="c">
+        <div class="svc-proofs">
 {proof}
+        </div>
       </div>
     </section>
 
     <section class="svc-sec reveal" aria-labelledby="svc-faq">
-      <h2 id="svc-faq">Questions I get asked</h2>
+      <div class="h"><h2 id="svc-faq">Questions I get asked</h2></div>
+      <div class="c">
 {faq}
+      </div>
     </section>
 
     <section class="svc-sec reveal" aria-labelledby="svc-next">
-      <h2 id="svc-next">Other services</h2>
-      <div class="svc-nexts">
+      <div class="h"><h2 id="svc-next">Other services</h2></div>
+      <div class="c">
+        <div class="svc-nexts">
 {siblings}
+        </div>
       </div>
     </section>
 
@@ -802,13 +818,17 @@ def hub_page():
   <div class="wrap">
     <nav class="crumb" aria-label="Breadcrumb"><a href="{prefix}index.html">Isuru Marasinghe</a><span aria-hidden="true">/</span><span>Services</span></nav>
 
-    <header class="cs-head reveal">
-      <span class="eyebrow">What I do</span>
-      <h1>Digital marketing services</h1>
-      <p class="lede">Nine disciplines that make up one funnel: the media that buys the attention, the creative that earns it, the measurement that proves it and the lifecycle work that keeps it. Taken on together or separately, for clients in the UAE, Sri Lanka and anywhere the work can be done remotely.</p>
-      <div class="row" style="margin-top:28px">
-        <a class="btn btn-primary" href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
-        <a class="btn btn-ghost" href="{prefix}index.html#work">See the results</a>
+    <header class="cs-head split-head reveal">
+      <div class="t">
+        <span class="eyebrow">What I do</span>
+        <h1>Digital marketing services</h1>
+      </div>
+      <div class="d">
+        <p class="lede">Nine disciplines that make up one funnel: the media that buys attention, the creative that earns it, the measurement that proves it and the lifecycle work that keeps it. Taken on together or separately, for brands wherever the work can be done.</p>
+        <div class="row">
+          <a class="btn btn-primary" href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
+          <a class="btn btn-ghost" href="{prefix}index.html#work">See the results</a>
+        </div>
       </div>
     </header>
 
@@ -817,9 +837,11 @@ def hub_page():
     </figure>
 
     <section class="svc-sec wide reveal" aria-labelledby="svc-all">
-      <h2 id="svc-all">The nine</h2>
-      <div class="svc-cards">
+      <div class="h"><h2 id="svc-all">The nine</h2></div>
+      <div class="c">
+        <div class="svc-cards">
 {cards}
+        </div>
       </div>
     </section>
 
@@ -860,47 +882,87 @@ def hub_page():
 def about_page():
     prefix = ""
     url = SITE + "about.html"
+    comps = ["Performance marketing", "Paid media: Meta, Google, TikTok, LinkedIn, Snapchat",
+             "Marketing strategy", "SEO and SEM", "CRM and funnel optimisation", "Branding",
+             "Marketing automation", "Influencer and content marketing", "Analytics and GA4",
+             "Team leadership", "Digital transformation"]
+    comp_tags = "\n".join('          <span class="tag">%s</span>' % c for c in comps)
+
     body = f"""
 <article class="casestudy service">
   <div class="wrap">
     <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Isuru Marasinghe</a><span aria-hidden="true">/</span><span>About</span></nav>
 
-    <header class="cs-head reveal">
-      <span class="eyebrow">About</span>
-      <h1>Isuru Marasinghe, digital marketer</h1>
-      <p class="lede">Sri Lankan, based in Dubai, working with clients across the Emirates, in Sri Lanka and remotely further afield. Eight years running paid media and the creative and measurement work around it, across roughly USD 4.5M of managed spend.</p>
+    <header class="cs-head split-head reveal">
+      <div class="t">
+        <span class="eyebrow">About</span>
+        <h1>Isuru Marasinghe</h1>
+      </div>
+      <div class="d">
+        <p class="lede">A strategic, performance-driven marketer who builds and scales data-driven digital ecosystems. Over USD 30 million in performance-driven revenue generated for clients to date, across real estate, education, technology and FMCG.</p>
+        <div class="row">
+          <a class="btn btn-primary" href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
+          <a class="btn btn-ghost" href="services/">See the services</a>
+        </div>
+      </div>
     </header>
 
     <figure class="svc-art reveal">
-      <img src="assets/img/services/sri-lanka.svg" alt="Two locations linked by a flight path above a shared performance curve" width="800" height="360" loading="lazy" decoding="async">
+      <img src="assets/img/services/sri-lanka.svg" alt="Two markets linked by a flight path above a shared performance curve" width="800" height="360" loading="lazy" decoding="async">
     </figure>
 
     <section class="svc-sec reveal" aria-labelledby="ab-who">
-      <h2 id="ab-who">Where I work</h2>
-      <p>I live and work in Dubai, which is where most of the real-estate and e-commerce accounts are. Sri Lanka is home and still a working market, particularly for education and migration brands that sell into Colombo and deliver in the UAE, the UK or Australia. Everything else runs remotely, and has done for years.</p>
-      <p>Paid media is run from the platforms rather than from a desk in a particular city, so the practical constraint is the working day rather than the map. Dubai overlaps the UK morning, the whole of South Asia, and the start of the US east coast, which covers most of where clients have been.</p>
-      <p>What does not travel is the local knowledge. Benchmarks that look strong in Colombo mean something different in Dubai, so accounts that span both are read per market rather than blended into one flattering average.</p>
+      <div class="h"><h2 id="ab-who">Full stack, by necessity</h2></div>
+      <div class="c">
+        <p>I came up doing every part of the job rather than one slice of it, which is why the work spans creative, media, measurement and lifecycle instead of stopping at the ad account. Real estate, education, technology and FMCG all turned out to need the same thing: somebody who could see the whole funnel at once and was willing to be judged on what came out of the end of it.</p>
+        <p>That perspective is the point. A media buyer who cannot direct creative is at the mercy of whatever arrives. A strategist who has never built the tracking does not know which numbers to trust. Holding all of it means the plan and the execution answer to each other.</p>
+      </div>
     </section>
 
     <section class="svc-sec reveal" aria-labelledby="ab-how">
-      <h2 id="ab-how">How I work</h2>
-      <p>The through line is that paid media only matters if the thing at the end of it closes. That sounds obvious and almost nothing in the industry is set up for it: platforms report on what they can see, agencies report on what flatters them, and the number everyone quietly avoids is what the spend turned into.</p>
-      <p>So the accounts get reported past the click. On the real-estate pipeline that meant matching CRM stages back to the ad sets that created them, which is how AED 440,000 of media could be stated against AED 134,417,569 of closed property rather than against a cost per lead.</p>
-      <p>The rest follows from that. Measurement comes before media, because an account optimising against a bad signal gets worse the more you spend. Creative comes before targeting, because targeting is largely automated now and the hook is not. And the reporting stays legible, because a founder who cannot read it cannot act on it.</p>
+      <div class="h"><h2 id="ab-how">Analytical precision, creative storytelling</h2></div>
+      <div class="c">
+        <p>I design high-converting performance funnels, run paid media across Meta, Google, TikTok, LinkedIn and Snapchat, and optimise the SEO, CRM and lead flow behind them so the account beats its ROAS and conversion benchmarks rather than explaining why it did not.</p>
+        <p>The half that gets neglected is the storytelling. Targeting is largely automated now; what is left for a marketer to decide is what the ad says and how it says it in the first three seconds. So the analysis sets the direction and the creative does the work, which is how brands end up connecting with an audience instead of merely reaching one.</p>
+        <p>Underneath both sits a bias toward measurement. An account optimising against a badly mapped event gets worse the more you spend on it, so the tracking comes first and the media second. That is unglamorous and it is where most of the recoverable performance hides.</p>
+      </div>
+    </section>
+
+    <section class="svc-sec reveal" aria-labelledby="ab-proof">
+      <div class="h"><h2 id="ab-proof">Judged on what closed</h2></div>
+      <div class="c">
+        <p>Platforms report on what they can see and agencies report on what flatters them, which leaves the number everyone quietly avoids: what the spend actually turned into. The accounts here are reported past the click.</p>
+        <p>On the real-estate pipeline that meant matching CRM stages back to the ad sets that created them, so AED 440,000 of media could be stated against AED 134,417,569 of closed property rather than against a cost per lead. It is a harder number to produce and the only one worth putting in front of a client.</p>
+        <div class="svc-proofs">
+          <a class="svc-proof" href="case-meta-leads.html"><span class="t">5,364 property leads from one Meta account</span><span class="d">AED 43.75 blended, with the cheapest ad set at AED 6.48.</span><span class="more">Read the case<span class="arrow" aria-hidden="true">&rarr;</span></span></a>
+          <a class="svc-proof" href="case-crm-closings.html"><span class="t">USD 36.6M closed from direct leads</span><span class="d">75 deals, reported on sale value rather than form fills.</span><span class="more">Read the case<span class="arrow" aria-hidden="true">&rarr;</span></span></a>
+          <a class="svc-proof" href="case-google-ads.html"><span class="t">Google Ads at a 15.73x return</span><span class="d">Four monthly snapshots rather than one good month.</span><span class="more">Read the case<span class="arrow" aria-hidden="true">&rarr;</span></span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="svc-sec reveal" aria-labelledby="ab-comp">
+      <div class="h"><h2 id="ab-comp">Core competencies</h2></div>
+      <div class="c">
+        <div class="industry-tags" style="margin-top:0">
+{comp_tags}
+        </div>
+      </div>
+    </section>
+
+    <section class="svc-sec reveal" aria-labelledby="ab-where">
+      <div class="h"><h2 id="ab-where">Where the work happens</h2></div>
+      <div class="c">
+        <p>I am Sri Lankan, I live in Dubai, and the client base has never been limited to either. Paid media runs from the platforms rather than from a desk in a particular city, so the practical constraint is the working day, not the map. Dubai overlaps the UK morning, the whole of South Asia and the start of the US east coast, which covers most of where clients have been.</p>
+        <p>What does not travel is local knowledge. A cost per lead that looks strong in Colombo means something different in Dubai, so accounts spanning both are read per market rather than blended into one flattering average. Several of the education and migration brands do exactly that: selling into one market and delivering in another.</p>
+      </div>
     </section>
 
     <section class="svc-sec reveal" aria-labelledby="ab-cred">
-      <h2 id="ab-cred">Qualifications</h2>
-      <p>MBA (UK), ACIM (UK), PgDip.M (UK), a postgraduate diploma in strategic management and leadership, AMSLIM (SL), Certified Lean Six Sigma White Belt, CDMP (USA) from the American Institute of Professional Qualification, and a first-class BM (Hons) in Marketing from Horizon Campus, Sri Lanka.</p>
-      <p>Fifteen platform and institute certifications sit alongside those, including Meta Certified Digital Marketing Associate and Creative Strategy Professional, Microsoft Advertising Search and Retail, Apple Ads, and LinkedIn Certified Marketing Insider. They are listed with the badges on the <a href="index.html#credentials">home page</a>.</p>
-    </section>
-
-    <section class="svc-sec reveal" aria-labelledby="ab-work">
-      <h2 id="ab-work">The work itself</h2>
-      <div class="svc-proofs">
-        <a class="svc-proof" href="case-meta-leads.html"><span class="t">5,364 property leads from one Meta account</span><span class="d">AED 43.75 blended, with the cheapest ad set at AED 6.48.</span><span class="more">Read the case<span class="arrow" aria-hidden="true">&rarr;</span></span></a>
-        <a class="svc-proof" href="case-crm-closings.html"><span class="t">USD 36.6M closed from direct leads</span><span class="d">75 deals, reported on sale value rather than form fills.</span><span class="more">Read the case<span class="arrow" aria-hidden="true">&rarr;</span></span></a>
-        <a class="svc-proof" href="case-google-ads.html"><span class="t">Google Ads at a 15.73x return</span><span class="d">Four monthly snapshots rather than one good month.</span><span class="more">Read the case<span class="arrow" aria-hidden="true">&rarr;</span></span></a>
+      <div class="h"><h2 id="ab-cred">Qualifications</h2></div>
+      <div class="c">
+        <p>MBA (UK), ACIM (UK), PgDip.M (UK), a postgraduate diploma in strategic management and leadership, AMSLIM (SL), Certified Lean Six Sigma White Belt, CDMP (USA) from the American Institute of Professional Qualification, and a first-class BM (Hons) in Marketing from Horizon Campus, Sri Lanka.</p>
+        <p>Fifteen platform and institute certifications sit alongside those: Meta Certified Digital Marketing Associate and Creative Strategy Professional, Microsoft Advertising Search and Retail, Apple Ads, LinkedIn Certified Marketing Insider and the rest, listed with the badges on the <a href="index.html#credentials">home page</a>.</p>
       </div>
     </section>
 
@@ -929,10 +991,10 @@ def about_page():
         {"@type": "ListItem", "position": 1, "name": "Isuru Marasinghe", "item": SITE},
         {"@type": "ListItem", "position": 2, "name": "About", "item": url}],
     }
-    return shell(prefix, "About Isuru Marasinghe — Digital Marketer in Dubai",
-                 "Isuru Marasinghe is a Sri Lankan digital marketer based in Dubai, working with "
-                 "clients across the UAE, in Sri Lanka and remotely. Eight years and roughly "
-                 "USD 4.5M of managed ad spend.",
+    return shell(prefix, "About Isuru Marasinghe — Full Stack Digital Marketer",
+                 "Isuru Marasinghe is a performance-driven digital marketer working across real "
+                 "estate, education, technology and FMCG. Over USD 30 million in performance "
+                 "revenue generated for clients.",
                  url, body, [about_ld, crumbs], "About")
 
 
