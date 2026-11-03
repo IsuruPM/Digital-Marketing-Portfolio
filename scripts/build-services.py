@@ -974,22 +974,24 @@ def hub_page():
 # Portraits for the about page. Each entry renders only if the file is on disk, so
 # dropping a new photograph at one of these paths is all it takes to add it.
 ABOUT_PHOTOS = [
+    # (file, alt, institution, award, wide)
     ("assets/img/about/graduation-mba.jpg",
      "Isuru Marasinghe graduating with an MBA from the University of Gloucestershire",
-     "University of Gloucestershire &middot; MBA"),
+     "University of Gloucestershire", "MBA", False),
     ("assets/img/about/graduation-horizon.jpg",
      "Isuru Marasinghe graduating from Horizon Campus, Sri Lanka",
-     "Horizon Campus &middot; BM (Hons) in Marketing, First Class"),
+     "Horizon Campus", "BM (Hons) Marketing, First Class", False),
     ("assets/img/about/graduation-cim.jpg",
      "Isuru Marasinghe graduating from the Chartered Institute of Marketing",
-     "Chartered Institute of Marketing &middot; PgDip.M, Level 7"),
+     "Chartered Institute of Marketing", "PgDip.M, Level 7", False),
     ("assets/img/about/graduation-esm.jpg",
      "Isuru Marasinghe at the ESM Business School and AIPQ graduation ceremony",
-     "ESM Business School &middot; AIPQ, Certified Digital Marketing Practitioner"),
+     "ESM Business School", "AIPQ &middot; Certified Digital Marketing Practitioner", False),
     ("assets/img/about/graduation-esm-pair.jpg",
      "Isuru Marasinghe and his wife at the ESM Business School and AIPQ graduation ceremony",
+     "ESM Business School &middot; graduation 2026",
      "Alongside my wife, an MBA Graduate of the University of Sunderland, UK and a fellow "
-     "Certified Digital Marketing Practitioner"),
+     "Certified Digital Marketing Practitioner", True),
 ]
 
 
@@ -1005,17 +1007,18 @@ def dims(src):
 
 def photo_strip(prefix=""):
     out = []
-    for src, alt, cap in ABOUT_PHOTOS:
+    for src, alt, where, award, wide in ABOUT_PHOTOS:
         if not os.path.exists(os.path.join(ROOT, src)):
             continue
         webp = os.path.splitext(src)[0] + ".webp"
         source = ('<source srcset="%s%s" type="image/webp">' % (prefix, webp)
                   if os.path.exists(os.path.join(ROOT, webp)) else "")
         out.append(
-            '          <figure class="shot-p">'
+            '          <figure class="shot-p%s">'
             '<picture>%s<img src="%s%s" alt="%s"%s loading="lazy" decoding="async"></picture>'
-            '<figcaption>%s</figcaption></figure>'
-            % (source, prefix, src, html.escape(alt), dims(src), cap))
+            '<figcaption><b>%s</b><span>%s</span></figcaption></figure>'
+            % (' wide' if wide else '', source, prefix, src, html.escape(alt),
+               dims(src), where, award))
     if not out:
         return ""
     return ('    <section class="svc-sec full reveal" aria-labelledby="ab-photos">\n'
