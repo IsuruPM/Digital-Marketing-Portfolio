@@ -155,8 +155,16 @@ presents full-screen like a slide deck.
   same lockup with 22% padding so Android's circular mask does not clip it. `favicon.svg` ships
   but is deliberately not linked, because it contains the full lockup and browsers would
   prefer it in the tab.
-* **Analytics**: the Google tag for `G-307CN46RYD` sits immediately after `<head>` on
-  `index.html`, every `case-*.html` and `hosting/shared/thanks.html`, one per page. The case
+* **Content-Security-Policy**: `netlify.toml` and `hosting/shared/.htaccess` carry the same
+  strict policy with **no `unsafe-inline`** on either script-src or style-src. Two rules keep
+  it that way: the Google tag's configuration lives in `assets/js/analytics.js` rather than
+  inline, and reveal delays are `data-d="60"` attributes resolved by CSS rather than
+  `style="--d:60ms"`. Adding an inline `<script>` or a `style` attribute anywhere will be
+  silently blocked in production, so add a class or a file instead. JSON-LD is unaffected:
+  a non-executable script type is not governed by script-src, which was verified against
+  this exact policy rather than assumed.
+* **Analytics**: the Google tag loader for `G-307CN46RYD` sits immediately after `<head>` on every
+  page, with its configuration in `assets/js/analytics.js`, one tag per page. The case
   pages get it from `scripts/build-cases.py`, so it survives a regeneration. The preview
   artifact does not carry it, which keeps preview traffic out of the property.
 * **Social share card**: `assets/img/og-cover.jpg` is the 1200×630 thumbnail every page

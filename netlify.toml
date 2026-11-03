@@ -37,8 +37,8 @@
     Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
     Cross-Origin-Opener-Policy = "same-origin"
     Cross-Origin-Resource-Policy = "same-origin"
-    # The site renders no user input, so the directives that matter here are the ones that
-    # stop a page being reframed, rebased or used to load a plugin. script-src keeps
-    # 'unsafe-inline' deliberately: the Google tag and every JSON-LD block are inline, and a
-    # hash list would break structured data the first time a case study is regenerated.
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://www.google-analytics.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"
+    # No 'unsafe-inline' anywhere. The Google tag's config lives in assets/js/analytics.js
+    # and reveal delays are data-d attributes, so nothing inline is left to allow. The
+    # JSON-LD blocks are unaffected: a non-executable script type is not governed by
+    # script-src, which was checked against this exact policy before it was written here.
+    Content-Security-Policy = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://www.google-analytics.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'; upgrade-insecure-requests"

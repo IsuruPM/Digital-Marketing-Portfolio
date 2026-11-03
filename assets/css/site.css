@@ -711,3 +711,17 @@ footer .foot{padding-top:26px;}
 @media (max-width:420px){.tel-combo{grid-template-columns:1fr;}}
 /* the option list is painted by the browser, not the band, so it needs its own colours */
 .inquiry select option,.inquiry select optgroup{color:var(--ink);background:#FFFFFF;}
+
+/* Reveal delays as attributes rather than inline styles, so the Content-Security-Policy
+   does not need style-src 'unsafe-inline'. */
+[data-d="0"]{--d:0ms;}
+[data-d="60"]{--d:60ms;}
+[data-d="80"]{--d:80ms;}
+[data-d="110"]{--d:110ms;}
+[data-d="120"]{--d:120ms;}
+[data-d="140"]{--d:140ms;}
+[data-d="160"]{--d:160ms;}
+[data-d="180"]{--d:180ms;}
+[data-d="220"]{--d:220ms;}
+[data-d="300"]{--d:300ms;}
+.pull-12{margin-top:12px;}

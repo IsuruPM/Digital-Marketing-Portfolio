@@ -656,13 +656,7 @@ def shell(prefix, title, desc, canon, body, extra_ld, crumb_label):
 <head>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id={GA}"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){{dataLayer.push(arguments);}}
-  gtag('js', new Date());
-
-  gtag('config', '{GA}');
-</script>
+<script src="{prefix}assets/js/analytics.js" defer></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{title}</title>
@@ -1109,7 +1103,7 @@ def about_page():
     <section class="svc-sec reveal" aria-labelledby="ab-comp">
       <div class="h"><h2 id="ab-comp">Core competencies</h2></div>
       <div class="c">
-        <div class="industry-tags" style="margin-top:0">
+        <div class="industry-tags">
 {comp_tags}
         </div>
       </div>
