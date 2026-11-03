@@ -112,8 +112,10 @@ presents full-screen like a slide deck.
   `scripts/build-services.py`. Each entry renders only if the file exists, so dropping a
   photograph at one of the named paths (`assets/img/about/graduation-1.jpg` and so on) and
   re-running the generator is all it takes to add it. A matching `.webp` beside the file is
-  used automatically when present. Photographs are black and white to hold the monochrome
-  rule; convert before adding.
+  used automatically when present. **The about page is the one place the monochrome rule steps
+  aside**: these are personal photographs and they stay in colour. Everywhere else on the site
+  is still strictly monochrome. Crops are 4:5 at 900x1125, chosen to keep photographers'
+  watermarks and event banners out of frame.
 * **Hero illustrations** for the service pages are drawn by `scripts/build-service-art.py`
   into `assets/img/services/`. Same vocabulary as the case tile covers: sunk ground, white
   fills, ink line work, a mid grey for anything secondary. Edit the drawing data and re-run.

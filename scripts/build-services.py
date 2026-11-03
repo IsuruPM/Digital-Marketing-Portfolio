@@ -894,6 +894,10 @@ ABOUT_PHOTOS = [
     ("assets/img/about/graduation-esm.jpg",
      "Isuru Marasinghe at the ESM Business School and AIPQ graduation ceremony",
      "ESM Business School &middot; AIPQ, Certified Digital Marketing Practitioner"),
+    ("assets/img/about/graduation-esm-pair.jpg",
+     "Isuru Marasinghe and his wife at the ESM Business School and AIPQ graduation ceremony",
+     "With my wife &middot; MBA, University of Sunderland, and AIPQ Certified Digital Marketing "
+     "Practitioner"),
 ]
 
 
@@ -911,7 +915,7 @@ def photo_strip(prefix=""):
             '<figcaption>%s</figcaption></figure>' % (source, prefix, src, html.escape(alt), cap))
     if not out:
         return ""
-    return ('    <section class="svc-sec reveal" aria-labelledby="ab-photos">\n'
+    return ('    <section class="svc-sec full reveal" aria-labelledby="ab-photos">\n'
             '      <div class="h"><h2 id="ab-photos">Where they came from</h2></div>\n'
             '      <div class="c">\n'
             '        <div class="photo-strip">\n' + "\n".join(out) + '\n'
