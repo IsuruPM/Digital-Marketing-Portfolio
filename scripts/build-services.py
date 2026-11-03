@@ -19,7 +19,7 @@ SITE = "https://isurumarasinghe.com/"
 GA = "G-307CN46RYD"
 VERIFY = "DIW5ROwDRpi_2F6pmTCKQRL050cAkq0UAVs_hDUr6RQ"
 OG_ALT = ("Isuru Marasinghe, full stack digital marketer, with USD 4.5M+ ad spend managed "
-          "and USD 61.5M+ in closed deal value")
+          "and USD 61.5M+ in revenue generated")
 PERSON = SITE + "#isuru"
 
 # Line icons, 24x24, drawn in the same hand as the process section on the home page.
@@ -879,6 +879,41 @@ def hub_page():
                  url, body, [item_list, crumbs], "Services")
 
 
+# Portraits for the about page. Each entry renders only if the file is on disk, so
+# dropping a new photograph at one of these paths is all it takes to add it.
+ABOUT_PHOTOS = [
+    ("assets/img/portrait-cover.jpg", "Isuru Marasinghe, studio portrait", "Studio"),
+    ("assets/img/portrait-profile.jpg", "Isuru Marasinghe in profile", "Profile"),
+    ("assets/img/portrait-contact.jpg", "Isuru Marasinghe, portrait", "Portrait"),
+    ("assets/img/about/graduation-1.jpg", "Isuru Marasinghe at his graduation", "Graduation"),
+    ("assets/img/about/graduation-2.jpg", "Isuru Marasinghe at his graduation", "Graduation"),
+    ("assets/img/about/graduation-3.jpg", "Isuru Marasinghe at his graduation", "Graduation"),
+]
+
+
+def photo_strip(prefix=""):
+    out = []
+    for src, alt, cap in ABOUT_PHOTOS:
+        if not os.path.exists(os.path.join(ROOT, src)):
+            continue
+        webp = os.path.splitext(src)[0] + ".webp"
+        source = ('<source srcset="%s%s" type="image/webp">' % (prefix, webp)
+                  if os.path.exists(os.path.join(ROOT, webp)) else "")
+        out.append(
+            '          <figure class="shot-p">'
+            '<picture>%s<img src="%s%s" alt="%s" loading="lazy" decoding="async"></picture>'
+            '<figcaption>%s</figcaption></figure>' % (source, prefix, src, html.escape(alt), cap))
+    if not out:
+        return ""
+    return ('    <section class="svc-sec reveal" aria-labelledby="ab-photos">\n'
+            '      <div class="h"><h2 id="ab-photos">In person</h2></div>\n'
+            '      <div class="c">\n'
+            '        <div class="photo-strip">\n' + "\n".join(out) + '\n'
+            '        </div>\n'
+            '      </div>\n'
+            '    </section>\n')
+
+
 def about_page():
     prefix = ""
     url = SITE + "about.html"
@@ -899,7 +934,7 @@ def about_page():
         <h1>Isuru Marasinghe</h1>
       </div>
       <div class="d">
-        <p class="lede">A strategic, performance-driven marketer who builds and scales data-driven digital ecosystems. Over USD 30 million in performance-driven revenue generated for clients to date, across real estate, education, technology and FMCG.</p>
+        <p class="lede">A strategic, performance-driven marketer who builds and scales data-driven digital ecosystems. Over USD 61.5 million in revenue generated for clients to date, across real estate, education, technology and FMCG.</p>
         <div class="row">
           <a class="btn btn-primary" href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
           <a class="btn btn-ghost" href="services/">See the services</a>
@@ -907,8 +942,12 @@ def about_page():
       </div>
     </header>
 
-    <figure class="svc-art reveal">
-      <img src="assets/img/services/sri-lanka.svg" alt="Two markets linked by a flight path above a shared performance curve" width="800" height="360" loading="lazy" decoding="async">
+    <figure class="about-hero reveal">
+      <picture><source srcset="assets/img/portrait-cover.webp" type="image/webp"><img src="assets/img/portrait-cover.jpg" alt="Isuru Marasinghe, full stack digital marketer" width="672" height="672" decoding="async"></picture>
+      <figcaption>
+        <span class="k">Isuru Marasinghe</span>
+        <span>Performance marketing, creative direction and the measurement that ties the two together.</span>
+      </figcaption>
     </figure>
 
     <section class="svc-sec reveal" aria-labelledby="ab-who">
@@ -950,6 +989,7 @@ def about_page():
       </div>
     </section>
 
+{photo_strip()}
     <section class="svc-sec reveal" aria-labelledby="ab-where">
       <div class="h"><h2 id="ab-where">Where the work happens</h2></div>
       <div class="c">
@@ -993,8 +1033,8 @@ def about_page():
     }
     return shell(prefix, "About Isuru Marasinghe — Full Stack Digital Marketer",
                  "Isuru Marasinghe is a performance-driven digital marketer working across real "
-                 "estate, education, technology and FMCG. Over USD 30 million in performance "
-                 "revenue generated for clients.",
+                 "estate, education, technology and FMCG. Over USD 61.5 million in revenue "
+                 "generated for clients across Meta, Google, TikTok and LinkedIn.",
                  url, body, [about_ld, crumbs], "About")
 
 

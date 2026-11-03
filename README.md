@@ -108,6 +108,12 @@ presents full-screen like a slide deck.
     `nav()` and `footer_services()`. `scripts/build-cases.py` imports nothing, so when that
     list changes, both generators have to be re-run and `index.html`'s nav and footer updated
     to match.
+* **About page photographs** are listed in `ABOUT_PHOTOS` at the top of
+  `scripts/build-services.py`. Each entry renders only if the file exists, so dropping a
+  photograph at one of the named paths (`assets/img/about/graduation-1.jpg` and so on) and
+  re-running the generator is all it takes to add it. A matching `.webp` beside the file is
+  used automatically when present. Photographs are black and white to hold the monochrome
+  rule; convert before adding.
 * **Hero illustrations** for the service pages are drawn by `scripts/build-service-art.py`
   into `assets/img/services/`. Same vocabulary as the case tile covers: sunk ground, white
   fills, ink line work, a mid grey for anything secondary. Edit the drawing data and re-run.

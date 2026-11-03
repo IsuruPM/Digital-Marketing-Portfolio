@@ -567,3 +567,25 @@ footer .foot{padding-top:26px;}
   .mark{padding-block:6px;}
   .cs-facts div{grid-template-columns:96px 1fr;}
 }
+
+/* ---------- about page portraits ---------- */
+.about-hero{margin:clamp(32px,5vw,52px) 0 0;display:grid;grid-template-columns:minmax(0,420px) minmax(0,1fr);
+  gap:clamp(20px,3vw,44px);align-items:center;}
+.about-hero picture{display:block;border-radius:var(--r-lg);overflow:hidden;background:var(--sunk);}
+.about-hero img{width:100%;height:auto;display:block;}
+.about-hero figcaption{display:flex;flex-direction:column;gap:12px;
+  color:var(--ink-2);font-size:17px;line-height:1.5;max-width:40ch;}
+.about-hero .k{font-family:var(--font-mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);}
+@media (max-width:760px){.about-hero{grid-template-columns:1fr;gap:18px;}}
+
+.photo-strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;}
+.shot-p{margin:0;min-width:0;}
+.shot-p picture{display:block;border-radius:var(--r-md);overflow:hidden;background:var(--sunk);}
+.shot-p img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;
+  transition:transform var(--dur-hover) var(--ease);}
+.shot-p:hover img{transform:scale(1.02);}
+.shot-p figcaption{margin-top:9px;font-family:var(--font-mono);font-size:10px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--ink-3);}
+@media (max-width:620px){.photo-strip{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .shot-p:last-child:nth-child(odd){grid-column:1 / -1;}
+  .shot-p:last-child:nth-child(odd) img{aspect-ratio:16/9;}}
