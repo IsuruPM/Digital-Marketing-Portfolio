@@ -91,6 +91,18 @@ presents full-screen like a slide deck.
   in the `.work` grid of `index.html` link to them. Every report image opens full size in a
   viewer; a case with no image yet shows a "Report image to be added" placeholder, so dropping
   the file at the path named in the generator is all that is needed to fill it.
+* **Service pages** are five standalone pages generated from the data at the top of
+  `scripts/build-services.py`: `digital-marketer-dubai`, `meta-ads-dubai`, `google-ads-dubai`,
+  `tiktok-ads-dubai` and `digital-marketer-sri-lanka`. Each one targets a search intent the
+  single-page home page cannot rank for on its own, and each carries Service, FAQPage and
+  BreadcrumbList structured data. Run `python3 scripts/build-services.py` after editing.
+  Every figure quoted on them comes from the case studies; if one changes there it has to
+  change here too. They are linked from the services row in the process section.
+* **Entity markup**: the Person node at `#isuru` is the canonical entity for the whole site.
+  The case pages reference it as their author, the service pages as their provider, and the
+  ProfilePage as its `mainEntity`. Keep the name, job title, location and `sameAs` profile
+  list identical to what the LinkedIn, Facebook and Instagram profiles say, because a
+  knowledge panel is built out of agreement between those sources.
 * **Screenshots** in `assets/img/results/` are cropped to exactly what the original deck
   showed (campaign names and client columns stay hidden). Replace a file with the same name
   to update both the site and the deck.

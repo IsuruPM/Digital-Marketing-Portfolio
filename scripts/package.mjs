@@ -11,7 +11,7 @@ const dist = join(root, 'dist');
 rmSync(dist, { recursive: true, force: true });
 
 const html = readFileSync(join(root, 'index.html'), 'utf8');
-const caseFiles = readdirSync(root).filter((f) => /^case-[a-z-]+\.html$/.test(f));
+const caseFiles = readdirSync(root).filter((f) => /^(case-|digital-marketer-|meta-ads-|google-ads-|tiktok-ads-)[a-z-]+\.html$/.test(f));
 
 function base(dir) {
   mkdirSync(dir, { recursive: true });
