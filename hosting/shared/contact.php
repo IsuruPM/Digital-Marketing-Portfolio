@@ -17,7 +17,7 @@ function respond($ok, $message, $wantsJson) {
     header('Content-Type: application/json; charset=utf-8');
     echo json_encode(['ok' => $ok, 'message' => $message]);
   } else {
-    header('Location: ' . ($ok ? 'thanks.html' : 'index.html#contact'));
+    header('Location: ' . ($ok ? '/thanks' : '/#contact'));
   }
   exit;
 }

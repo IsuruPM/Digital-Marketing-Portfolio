@@ -34,9 +34,9 @@ function assetHash(dir, rel) {
 
 function bust(dir, text) {
   return text.replace(
-    /((?:\.\.\/)?assets\/[A-Za-z0-9._\/-]+\.(?:css|js|jpg|jpeg|png|webp|svg|ico))/g,
+    /(?<![\w:])((?:\.\.\/|\/)?assets\/[A-Za-z0-9._\/-]+\.(?:css|js|jpg|jpeg|png|webp|svg|ico))/g,
     (match) => {
-      const rel = match.replace(/^(?:\.\.\/)+/, '');
+      const rel = match.replace(/^(?:\.\.\/)+|^\//, '');
       const h = assetHash(dir, rel);
       return h ? match + '?v=' + h : match;
     });
@@ -73,6 +73,9 @@ writeFileSync(join(netlify, 'index.html'), html);
 for (const f of caseFiles) cpSync(join(root, f), join(netlify, f));
 cpSync(join(root, 'services'), join(netlify, 'services'), { recursive: true });
 cpSync(join(root, 'netlify.toml'), join(netlify, 'netlify.toml'));
+// Netlify serves 404.html automatically for unmatched paths, and its Pretty URLs
+// already hide the .html, so the extensionless canonicals hold on both hosts.
+cpSync(join(root, 'hosting', 'shared', '404.html'), join(netlify, '404.html'));
 
 // 2. Shared hosting: form posts to contact.php; Netlify attributes removed.
 const shared = join(dist, 'shared-hosting');
@@ -84,7 +87,7 @@ if (sharedHtml === html) throw new Error('form markup not found; packaging abort
 writeFileSync(join(shared, 'index.html'), sharedHtml);
 for (const f of caseFiles) cpSync(join(root, f), join(shared, f));
 cpSync(join(root, 'services'), join(shared, 'services'), { recursive: true });
-for (const f of ['contact.php', 'thanks.html', '.htaccess']) cpSync(join(root, 'hosting', 'shared', f), join(shared, f));
+for (const f of ['contact.php', 'thanks.html', '404.html', '.htaccess']) cpSync(join(root, 'hosting', 'shared', f), join(shared, f));
 
 for (const dir of [netlify, shared]) console.log('cache-busted ' + bustHtmlIn(dir) + ' pages in ' + dir.split('/').pop());
 

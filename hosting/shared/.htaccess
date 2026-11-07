@@ -8,10 +8,43 @@ DirectoryIndex index.html
 Options -Indexes
 ServerSignature Off
 
-# Force HTTPS once an SSL certificate is installed (uncomment the three lines below).
-# RewriteEngine On
+RewriteEngine On
+
+# Force HTTPS once an SSL certificate is installed (uncomment the two lines below).
 # RewriteCond %{HTTPS} !=on
 # RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ---- Clean URLs ----------------------------------------------------------
+# The pages are real files (about.html, services/meta-ads-management.html), but
+# every link, canonical and sitemap entry uses the extensionless address. These
+# rules make that address the only one a visitor or a crawler ever sees.
+
+# 1. Anything still asking for a .html address is sent to the clean one, once.
+#    This covers old links, bookmarks and anything already in Google's index.
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^ / [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+(.+?)/index\.html[\s?] [NC]
+RewriteRule ^ /%1/ [R=301,L,NE]
+
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L,NE]
+
+# 2. Serve the clean address from the file on disk, with no further redirect.
+#    THE_REQUEST still holds the original request line, so rule 1 does not
+#    re-fire on this internal rewrite and there is no loop.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+?)/?$ /$1.html [L]
+
+# 3. /services and /services/ both serve services/index.html directly, rather
+#    than letting mod_dir bounce /services to /services/ with a redirect.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+RewriteRule ^(.+?)/?$ /$1/index.html [L]
+
+# A branded 404 instead of the bare LiteSpeed page.
+ErrorDocument 404 /404.html
 
 # Correct MIME types for fonts and SVG.
 AddType font/woff2 .woff2

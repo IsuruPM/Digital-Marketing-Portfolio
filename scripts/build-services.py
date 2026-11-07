@@ -84,11 +84,11 @@ SERVICES = [
            "retargeting stop bidding against each other."),
           ("chart", "Budget structure and scaling", "Consolidation, campaign budget decisions and "
            "a scaling cadence that adds spend without resetting the learning.")],
- "proof": [("case-meta-leads.html", "5,364 property leads from one account",
+ "proof": [("/case-meta-leads", "5,364 property leads from one account",
             "An eight-times spread between the best and worst ad set, at AED 43.75 blended."),
-           ("case-meta-ecom.html", "Purchase-optimised growth on Meta",
+           ("/case-meta-ecom", "Purchase-optimised growth on Meta",
             "3.55x top ad-set ROAS, 3.02% click-through rate, USD 0.35 cost per click."),
-           ("case-crm-closings.html", "USD 36.6M closed from those leads",
+           ("/case-crm-closings", "USD 36.6M closed from those leads",
             "75 deals, followed past the form and into the CRM.")],
  "faq": [("Are you Meta certified?",
           "Yes. Meta Certified Digital Marketing Associate and Meta Certified Creative Strategy "
@@ -139,11 +139,11 @@ SERVICES = [
            "ever landed."),
           ("globe", "Auction analysis", "Impression share, and share lost to budget against share "
            "lost to rank, read before any bid moves.")],
- "proof": [("case-google-ads.html", "Google Ads at a 15.73x return",
+ "proof": [("/case-google-ads", "Google Ads at a 15.73x return",
             "Four monthly snapshots, double digits held in three of them."),
-           ("case-meta-ecom.html", "The Meta half of the same funnel",
+           ("/case-meta-ecom", "The Meta half of the same funnel",
             "Purchase-optimised campaigns on a seven-day click window."),
-           ("case-klaviyo.html", "What happens after the purchase",
+           ("/case-klaviyo", "What happens after the purchase",
             "Flows out-earning campaigns past 144,000 recipients.")],
  "faq": [("Do you handle Shopping feeds as well as campaigns?",
           "Yes, and usually first. Titles, attributes and segmentation decide what Shopping can "
@@ -194,11 +194,11 @@ SERVICES = [
            "that beats brand-handle delivery."),
           ("chart", "Budget allocation", "Moving spend toward the markets and ad groups the cost "
            "spread actually favours, rather than holding an even split.")],
- "proof": [("case-tiktok-leads.html", "TikTok lead generation across 35 campaigns",
+ "proof": [("/case-tiktok-leads", "TikTok lead generation across 35 campaigns",
             "AED 143.73 blended cost per lead, best market at AED 3.50."),
-           ("case-meta-leads.html", "The same offer on Meta",
+           ("/case-meta-leads", "The same offer on Meta",
             "5,364 leads, for a cross-platform comparison."),
-           ("case-crm-closings.html", "Where those leads ended up",
+           ("/case-crm-closings", "Where those leads ended up",
             "75 closed deals worth AED 134,417,569.")],
  "faq": [("Does TikTok work for lead generation?",
           "It did on the account shown, at a blended AED 143.73 and far less in the strongest "
@@ -249,11 +249,11 @@ SERVICES = [
            "openers."),
           ("mail", "Conversation and message ads", "Direct formats, where the offer and the "
            "sender are strong enough to earn the inbox.")],
- "proof": [("case-crm-closings.html", "Reporting that runs to closed value",
+ "proof": [("/case-crm-closings", "Reporting that runs to closed value",
             "The method, shown on a real-estate pipeline: USD 36.6M closed, tracked by stage."),
-           ("case-meta-leads.html", "Lead quality scored past the form",
+           ("/case-meta-leads", "Lead quality scored past the form",
             "5,364 leads, judged on what closed rather than on what submitted."),
-           ("case-google-ads.html", "High-intent demand capture",
+           ("/case-google-ads", "High-intent demand capture",
             "Search and Shopping at a 15.73x return.")],
  "faq": [("Is LinkedIn worth it for a small budget?",
           "Only if the deal size justifies it. Below a certain contract value the maths does not "
@@ -302,11 +302,11 @@ SERVICES = [
            "round starts from evidence."),
           ("layers", "Placement versions", "One idea cut for every placement it has to run in, "
            "framed on set rather than rescued in the edit.")],
- "proof": [("case-meta-ecom.html", "A dedicated test lane against a scaling set",
+ "proof": [("/case-meta-ecom", "A dedicated test lane against a scaling set",
             "The test set beat scaling on return while losing on click-through rate."),
-           ("case-tiktok-leads.html", "Native production at platform pace",
+           ("/case-tiktok-leads", "Native production at platform pace",
             "35 campaigns, with the best market at AED 3.50 per lead."),
-           ("case-meta-leads.html", "Eight-times spread between mechanics",
+           ("/case-meta-leads", "Eight-times spread between mechanics",
             "The argument for running ideas against each other rather than picking one.")],
  "faq": [("Do you shoot, or only direct?",
           "Both. Photography and video direction is a service in its own right, and on most paid "
@@ -356,11 +356,11 @@ SERVICES = [
            "optimisation aims at revenue instead of form fills."),
           ("shield", "Consent Mode and privacy", "Compliant collection set up so modelling stays "
            "usable rather than collapsing at the first consent banner.")],
- "proof": [("case-crm-closings.html", "CRM stages matched back to ad sets",
+ "proof": [("/case-crm-closings", "CRM stages matched back to ad sets",
             "Which is how closings became attributable rather than guessed."),
-           ("case-meta-leads.html", "Lead quality read past the form",
+           ("/case-meta-leads", "Lead quality read past the form",
             "5,364 leads scored on what they became."),
-           ("case-meta-ecom.html", "Attribution held steady on purpose",
+           ("/case-meta-ecom", "Attribution held steady on purpose",
             "A seven-day click window kept constant so comparisons meant something.")],
  "faq": [("Can you audit our existing setup rather than rebuild it?",
           "Yes, and that is usually the first step. Most setups have two or three specific faults "
@@ -411,11 +411,11 @@ SERVICES = [
            "paid media rather than beside it."),
           ("target", "List growth", "Pop-ups, forms and incentives that build the list without "
            "training everyone to wait for a discount.")],
- "proof": [("case-klaviyo.html", "Flows out-earning campaigns on placed orders",
+ "proof": [("/case-klaviyo", "Flows out-earning campaigns on placed orders",
             "Recipients past 144,000 without revenue per send collapsing."),
-           ("case-meta-ecom.html", "The acquisition side of the same store",
+           ("/case-meta-ecom", "The acquisition side of the same store",
             "Purchase-optimised Meta campaigns at a 3.55x top ad-set return."),
-           ("case-google-ads.html", "And the demand capture",
+           ("/case-google-ads", "And the demand capture",
             "Search and Shopping at a 15.73x peak return.")],
  "faq": [("Do you work with Klaviyo only?",
           "Klaviyo is where the account evidence sits and where Shopify stores are best served. "
@@ -464,11 +464,11 @@ SERVICES = [
            "angles the account is testing."),
           ("spark", "Post-production", "Edit, grade and sound, delivered in the formats each "
            "placement takes rather than as one master to cut down later.")],
- "proof": [("case-tiktok-leads.html", "Native vertical production at pace",
+ "proof": [("/case-tiktok-leads", "Native vertical production at pace",
             "35 campaigns, produced for the platform rather than cropped to it."),
-           ("case-meta-ecom.html", "Creative lane feeding the scaling set",
+           ("/case-meta-ecom", "Creative lane feeding the scaling set",
             "Test creative judged separately and promoted on merit."),
-           ("case-meta-leads.html", "Creative variety behind the volume",
+           ("/case-meta-leads", "Creative variety behind the volume",
             "5,364 leads across mechanics run against each other.")],
  "faq": [("Do you travel for shoots?",
           "Yes, across the UAE, to Sri Lanka and further where the production justifies it."),
@@ -497,7 +497,7 @@ SERVICES = [
           "structural rather than seasonal."),
  "service_type": "Marketing consulting",
  "why_h": "Where this differs from a fractional CMO",
- "why": ["Scope. A <a href=\"fractional-cmo.html\">fractional CMO</a> owns the whole marketing "
+ "why": ["Scope. A <a href=\"/services/fractional-cmo\">fractional CMO</a> owns the whole marketing "
          "function, positioning and brand included. A performance lead owns paid acquisition and "
          "the measurement under it, and reports into whoever owns the rest.",
          "Depth. The CMO engagement is run from the plan and the review. This one goes into the "
@@ -517,11 +517,11 @@ SERVICES = [
            "that ties spend to pipeline rather than to clicks."),
           ("shield", "Agency and buyer accountability", "Scope, standards and the weekly review "
            "that makes the work checkable by someone who has done it.")],
- "proof": [("case-google-ads.html", "Performance held across four months",
+ "proof": [("/case-google-ads", "Performance held across four months",
             "A 15.73x peak, and a double-digit return in three of the four snapshots."),
-           ("case-meta-ecom.html", "A test lane and a scaling set, judged apart",
+           ("/case-meta-ecom", "A test lane and a scaling set, judged apart",
             "The structure that keeps an account learning while it scales."),
-           ("case-crm-closings.html", "Spend read against closed revenue",
+           ("/case-crm-closings", "Spend read against closed revenue",
             "AED 440,000 of media against AED 134,417,569 of closed property.")],
  "faq": [("How is this different from the fractional CMO engagement?",
           "Scope and depth. The CMO role covers the whole marketing function including brand and "
@@ -551,7 +551,7 @@ SERVICES = [
  "lede": ("A fractional CMO is senior marketing leadership without the salary: positioning, "
           "channel mix, budget, team and the numbers that go to the board. Where the need is "
           "narrower and sits inside paid acquisition, the "
-          "<a href=\"fractional-performance-lead.html\">performance lead</a> engagement is the "
+          "<a href=\"/services/fractional-performance-lead\">performance lead</a> engagement is the "
           "closer fit."),
  "service_type": "Marketing consulting",
  "why_h": "What the role actually covers",
@@ -573,11 +573,11 @@ SERVICES = [
            "board meeting."),
           ("layers", "Martech and tooling", "What to buy, what to drop and what to integrate, "
            "judged on what the team will actually use.")],
- "proof": [("case-crm-closings.html", "Reporting that runs to revenue",
+ "proof": [("/case-crm-closings", "Reporting that runs to revenue",
             "Media spend read against USD 36.6M of closed deals."),
-           ("case-google-ads.html", "Performance held over time",
+           ("/case-google-ads", "Performance held over time",
             "Four monthly snapshots rather than one flattering month."),
-           ("case-meta-ecom.html", "Structure that keeps learning",
+           ("/case-meta-ecom", "Structure that keeps learning",
             "A test lane and a scaling set judged on different terms.")],
  "faq": [("How much time does a fractional CMO take?",
           "Typically a day or two a week, set by the size of the team and the spend. The scope is "
@@ -606,28 +606,28 @@ NAV_LINKS = [(s["slug"], s["nav"], s["icon"]) for s in SERVICES]
 def nav(prefix=""):
     """Site navigation. prefix is '../' for pages inside services/."""
     items = "\n".join(
-        '          <a href="%sservices/%s.html">%s%s</a>' % (prefix, slug, icon(ic), label)
+        '          <a href="/services/%s">%s%s</a>' % (slug, icon(ic), label)
         for slug, label, ic in NAV_LINKS)
     return f"""      <div class="has-menu">
-        <a class="menu-top" href="{prefix}services/">Services</a>
+        <a class="menu-top" href="/services/">Services</a>
         <div class="menu" role="group" aria-label="Services">
 {items}
-          <a class="menu-all" href="{prefix}services/">All services<span class="arrow" aria-hidden="true">&rarr;</span></a>
+          <a class="menu-all" href="/services/">All services<span class="arrow" aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
-      <a href="{prefix}index.html#work">Results</a>
-      <a href="{prefix}index.html#clients">Clients</a>
-      <a href="{prefix}index.html#credentials">Credentials</a>
-      <a href="{prefix}about.html">About</a>
-      <a href="{prefix}index.html#contact">Contact</a>"""
+      <a href="/#work">Results</a>
+      <a href="/#clients">Clients</a>
+      <a href="/#credentials">Credentials</a>
+      <a href="/about">About</a>
+      <a href="/#contact">Contact</a>"""
 
 
 def footer_services(prefix=""):
     """Ten services plus the hub: eleven flows as six and five in two sub-columns,
     which matches the other footer columns instead of ending well above them."""
-    links = ['      <a href="%sservices/%s.html">%s</a>' % (prefix, s["slug"], strip(s["nav"]))
+    links = ['      <a href="/services/%s">%s</a>' % (s["slug"], strip(s["nav"]))
              for s in SERVICES]
-    links.append('      <a href="%sservices/">All services</a>' % prefix)
+    links.append('      <a href="/services/">All services</a>')
     return "\n".join(links)
 
 
@@ -695,7 +695,7 @@ def shell(prefix, title, desc, canon, body, extra_ld, crumb_label):
 
 <header class="top">
   <div class="wrap top-inner">
-    <a class="mark" href="{prefix}index.html" aria-label="Isuru Marasinghe, back to the home page"><img src="{prefix}assets/img/wordmark.svg" alt="Isuru Marasinghe" width="661" height="152"></a>
+    <a class="mark" href="/" aria-label="Isuru Marasinghe, back to the home page"><img src="{prefix}assets/img/wordmark.svg" alt="Isuru Marasinghe" width="661" height="152"></a>
     <nav class="nav" id="site-nav" aria-label="Sections">
 {nav(prefix)}
     </nav>
@@ -726,12 +726,12 @@ def shell(prefix, title, desc, canon, body, extra_ld, crumb_label):
     </div>
     <div class="foot-col">
       <span class="h">Work</span>
-      <a href="{prefix}index.html#work">Case studies</a>
-      <a href="{prefix}index.html#clients">Clients</a>
-      <a href="{prefix}index.html#testimonials">Testimonials</a>
-      <a href="{prefix}index.html#credentials">Credentials</a>
-      <a href="{prefix}index.html#process">How I work</a>
-      <a href="{prefix}about.html">About Isuru</a>
+      <a href="/#work">Case studies</a>
+      <a href="/#clients">Clients</a>
+      <a href="/#testimonials">Testimonials</a>
+      <a href="/#credentials">Credentials</a>
+      <a href="/#process">How I work</a>
+      <a href="/about">About Isuru</a>
     </div>
     <div class="foot-col">
       <span class="h">Contact</span>
@@ -739,7 +739,7 @@ def shell(prefix, title, desc, canon, body, extra_ld, crumb_label):
       <a href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
       <a href="https://wa.me/971529127002" target="_blank" rel="noopener">WhatsApp &middot; +971 52 912 7002</a>
       <a href="https://www.linkedin.com/in/isuru-marasinghe/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="{prefix}index.html#contact">Send an inquiry</a>
+      <a href="/#contact">Send an inquiry</a>
       <span class="q">Dubai, UAE &middot; working worldwide</span>
     </div>
   </div>
@@ -747,7 +747,7 @@ def shell(prefix, title, desc, canon, body, extra_ld, crumb_label):
     <span>&copy; 2026 Isuru Marasinghe &middot; Full Stack Digital Marketer</span>
     <span class="links">
 {SOCIALS}
-      <a href="{prefix}index.html">Home</a></span>
+      <a href="/">Home</a></span>
   </div>
 </footer>
 
@@ -759,7 +759,7 @@ def shell(prefix, title, desc, canon, body, extra_ld, crumb_label):
 
 def service_page(sv):
     prefix = "../"
-    url = SITE + "services/" + sv["slug"] + ".html"
+    url = SITE + "services/" + sv["slug"]
     others = [s for s in SERVICES if s["slug"] != sv["slug"]][:4]
 
     why = "\n".join('      <p>%s</p>' % p for p in sv["why"])
@@ -767,20 +767,20 @@ def service_page(sv):
         '        <li><span class="ic" aria-hidden="true">%s</span><h3>%s</h3><p>%s</p></li>'
         % (icon(ic), h, b) for ic, h, b in sv["does"])
     proof = "\n".join(
-        '        <a class="svc-proof" href="%s%s"><span class="t">%s</span><span class="d">%s</span>'
+        '        <a class="svc-proof" href="%s"><span class="t">%s</span><span class="d">%s</span>'
         '<span class="more">Read the case<span class="arrow" aria-hidden="true">&rarr;</span></span></a>'
-        % (prefix, href, t, d) for href, t, d in sv["proof"])
+        % (href, t, d) for href, t, d in sv["proof"])
     faq = "\n".join(
         '      <details class="faq"><summary>%s</summary><p>%s</p></details>' % (q, a)
         for q, a in sv["faq"])
     siblings = "\n".join(
-        '        <a class="svc-next" href="%s.html"><span class="ic" aria-hidden="true">%s</span>'
+        '        <a class="svc-next" href="/services/%s"><span class="ic" aria-hidden="true">%s</span>'
         '<span>%s</span></a>' % (o["slug"], icon(o["icon"]), strip(o["h1"])) for o in others)
 
     body = f"""
 <article class="casestudy service">
   <div class="wrap">
-    <nav class="crumb" aria-label="Breadcrumb"><a href="{prefix}index.html">Isuru Marasinghe</a><span aria-hidden="true">/</span><a href="./">Services</a><span aria-hidden="true">/</span><span>{strip(sv['h1'])}</span></nav>
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Isuru Marasinghe</a><span aria-hidden="true">/</span><a href="./">Services</a><span aria-hidden="true">/</span><span>{strip(sv['h1'])}</span></nav>
 
     <header class="cs-head split-head reveal">
       <div class="t">
@@ -791,7 +791,7 @@ def service_page(sv):
         <p class="lede">{sv['lede']}</p>
         <div class="row">
           <a class="btn btn-primary" href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
-          <a class="btn btn-ghost" href="{prefix}index.html#work">See the results</a>
+          <a class="btn btn-ghost" href="/#work">See the results</a>
         </div>
       </div>
     </header>
@@ -848,7 +848,7 @@ def service_page(sv):
       </div>
       <div class="row">
         <a class="btn btn-primary" href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
-        <a class="btn btn-ghost" href="{prefix}index.html#contact">Send an inquiry</a>
+        <a class="btn btn-ghost" href="/#contact">Send an inquiry</a>
       </div>
     </div>
   </div>
@@ -898,7 +898,7 @@ def hub_page():
     url = SITE + "services/"
     count_word = WORDS.get(len(SERVICES), str(len(SERVICES)))
     cards = "\n".join(
-        '        <a class="svc-card" href="%s.html">\n'
+        '        <a class="svc-card" href="/services/%s">\n'
         '          <span class="ic" aria-hidden="true">%s</span>\n'
         '          <h2>%s</h2>\n'
         '          <p>%s</p>\n'
@@ -909,7 +909,7 @@ def hub_page():
     body = f"""
 <article class="casestudy service">
   <div class="wrap">
-    <nav class="crumb" aria-label="Breadcrumb"><a href="{prefix}index.html">Isuru Marasinghe</a><span aria-hidden="true">/</span><span>Services</span></nav>
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Isuru Marasinghe</a><span aria-hidden="true">/</span><span>Services</span></nav>
 
     <header class="cs-head split-head reveal">
       <div class="t">
@@ -920,7 +920,7 @@ def hub_page():
         <p class="lede">{count_word} disciplines that make up one funnel: the media that buys attention, the creative that earns it, the measurement that proves it and the lifecycle work that keeps it. Taken on together or separately, for brands wherever the work can be done.</p>
         <div class="row">
           <a class="btn btn-primary" href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
-          <a class="btn btn-ghost" href="{prefix}index.html#work">See the results</a>
+          <a class="btn btn-ghost" href="/#work">See the results</a>
         </div>
       </div>
     </header>
@@ -945,7 +945,7 @@ def hub_page():
       </div>
       <div class="row">
         <a class="btn btn-primary" href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
-        <a class="btn btn-ghost" href="{prefix}about.html">About Isuru</a>
+        <a class="btn btn-ghost" href="/about">About Isuru</a>
       </div>
     </div>
   </div>
@@ -956,7 +956,7 @@ def hub_page():
       "name": "Digital marketing services by Isuru Marasinghe",
       "itemListElement": [
         {"@type": "ListItem", "position": i + 1, "name": strip(s["h1"]),
-         "url": SITE + "services/" + s["slug"] + ".html"}
+         "url": SITE + "services/" + s["slug"]}
         for i, s in enumerate(SERVICES)],
     }
     crumbs = {
@@ -1032,7 +1032,7 @@ def photo_strip(prefix=""):
 
 def about_page():
     prefix = ""
-    url = SITE + "about.html"
+    url = SITE + "about"
     comps = ["Performance marketing", "Paid media: Meta, Google, TikTok, LinkedIn, Snapchat",
              "Marketing strategy", "SEO and SEM", "CRM and funnel optimisation", "Branding",
              "Marketing automation", "Influencer and content marketing", "Analytics and GA4",
@@ -1042,7 +1042,7 @@ def about_page():
     body = f"""
 <article class="casestudy service">
   <div class="wrap">
-    <nav class="crumb" aria-label="Breadcrumb"><a href="index.html">Isuru Marasinghe</a><span aria-hidden="true">/</span><span>About</span></nav>
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/">Isuru Marasinghe</a><span aria-hidden="true">/</span><span>About</span></nav>
 
     <header class="cs-head split-head reveal">
       <div class="t">
@@ -1053,7 +1053,7 @@ def about_page():
         <p class="lede">A strategic, performance-driven marketer who builds and scales data-driven digital ecosystems. Over USD 61.5 million in revenue generated for clients to date, across real estate, education, technology and FMCG.</p>
         <div class="row">
           <a class="btn btn-primary" href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
-          <a class="btn btn-ghost" href="services/">See the services</a>
+          <a class="btn btn-ghost" href="/services/">See the services</a>
         </div>
       </div>
     </header>
@@ -1096,9 +1096,9 @@ def about_page():
         <p>Platforms report on what they can see and agencies report on what flatters them, which leaves the number everyone quietly avoids: what the spend actually turned into. The accounts here are reported past the click.</p>
         <p>On the real-estate pipeline that meant matching CRM stages back to the ad sets that created them, so AED 440,000 of media could be stated against AED 134,417,569 of closed property rather than against a cost per lead. It is a harder number to produce and the only one worth putting in front of a client.</p>
         <div class="svc-proofs">
-          <a class="svc-proof" href="case-meta-leads.html"><span class="t">5,364 property leads from one Meta account</span><span class="d">AED 43.75 blended, with the cheapest ad set at AED 6.48.</span><span class="more">Read the case<span class="arrow" aria-hidden="true">&rarr;</span></span></a>
-          <a class="svc-proof" href="case-crm-closings.html"><span class="t">USD 36.6M closed from direct leads</span><span class="d">75 deals, reported on sale value rather than form fills.</span><span class="more">Read the case<span class="arrow" aria-hidden="true">&rarr;</span></span></a>
-          <a class="svc-proof" href="case-google-ads.html"><span class="t">Google Ads at a 15.73x return</span><span class="d">Four monthly snapshots rather than one good month.</span><span class="more">Read the case<span class="arrow" aria-hidden="true">&rarr;</span></span></a>
+          <a class="svc-proof" href="/case-meta-leads"><span class="t">5,364 property leads from one Meta account</span><span class="d">AED 43.75 blended, with the cheapest ad set at AED 6.48.</span><span class="more">Read the case<span class="arrow" aria-hidden="true">&rarr;</span></span></a>
+          <a class="svc-proof" href="/case-crm-closings"><span class="t">USD 36.6M closed from direct leads</span><span class="d">75 deals, reported on sale value rather than form fills.</span><span class="more">Read the case<span class="arrow" aria-hidden="true">&rarr;</span></span></a>
+          <a class="svc-proof" href="/case-google-ads"><span class="t">Google Ads at a 15.73x return</span><span class="d">Four monthly snapshots rather than one good month.</span><span class="more">Read the case<span class="arrow" aria-hidden="true">&rarr;</span></span></a>
         </div>
       </div>
     </section>
@@ -1124,7 +1124,7 @@ def about_page():
       <div class="h"><h2 id="ab-cred">Qualifications</h2></div>
       <div class="c">
         <p>MBA (UK), ACIM (UK), PgDip.M (UK), a postgraduate diploma in strategic management and leadership, AMSLIM (SL), Certified Lean Six Sigma White Belt, CDMP (USA) from the American Institute of Professional Qualification, and a first-class BM (Hons) in Marketing from Horizon Campus, Sri Lanka.</p>
-        <p>Fifteen platform and institute certifications sit alongside those: Meta Certified Digital Marketing Associate and Creative Strategy Professional, Microsoft Advertising Search and Retail, Apple Ads, LinkedIn Certified Marketing Insider and the rest, listed with the badges on the <a href="index.html#credentials">home page</a>.</p>
+        <p>Fifteen platform and institute certifications sit alongside those: Meta Certified Digital Marketing Associate and Creative Strategy Professional, Microsoft Advertising Search and Retail, Apple Ads, LinkedIn Certified Marketing Insider and the rest, listed with the badges on the <a href="/#credentials">home page</a>.</p>
       </div>
     </section>
 
@@ -1136,7 +1136,7 @@ def about_page():
       </div>
       <div class="row">
         <a class="btn btn-primary" href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
-        <a class="btn btn-ghost" href="services/">See the services</a>
+        <a class="btn btn-ghost" href="/services/">See the services</a>
       </div>
     </div>
   </div>
