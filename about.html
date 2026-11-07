@@ -39,13 +39,231 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "url": "https://isurumarasinghe.com/about",
-  "name": "About Isuru Marasinghe",
-  "mainEntity": {
-    "@id": "https://isurumarasinghe.com/#isuru"
-  },
-  "inLanguage": "en"
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": "https://isurumarasinghe.com/about#aboutpage",
+      "url": "https://isurumarasinghe.com/about",
+      "name": "About Isuru Marasinghe",
+      "mainEntity": {
+        "@id": "https://isurumarasinghe.com/#isuru"
+      },
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://isurumarasinghe.com/assets/img/about/headshot.jpg",
+        "caption": "Isuru Marasinghe, full stack digital marketer"
+      },
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Person",
+      "@id": "https://isurumarasinghe.com/#isuru",
+      "name": "Isuru Marasinghe",
+      "givenName": "Isuru",
+      "familyName": "Marasinghe",
+      "alternateName": "Isuru PM",
+      "identifier": "isuru-marasinghe",
+      "url": "https://isurumarasinghe.com/",
+      "mainEntityOfPage": {
+        "@id": "https://isurumarasinghe.com/about#aboutpage"
+      },
+      "jobTitle": "Full Stack Digital Marketer",
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Digital marketer",
+        "occupationLocation": {
+          "@type": "City",
+          "name": "Dubai"
+        },
+        "skills": "Paid media buying, creative strategy, conversion tracking and lifecycle marketing"
+      },
+      "description": "Isuru Marasinghe is a Sri Lankan digital marketer based in Dubai. He manages paid media across Meta, Google, TikTok and LinkedIn, directs the creative behind it, and builds the tracking and lifecycle work that turns spend into pipeline.",
+      "disambiguatingDescription": "Freelance performance marketer and media buyer in Dubai, United Arab Emirates.",
+      "image": [
+        {
+          "@type": "ImageObject",
+          "url": "https://isurumarasinghe.com/assets/img/portrait-profile.jpg",
+          "width": 614,
+          "height": 614,
+          "caption": "Isuru Marasinghe, digital marketer in Dubai"
+        },
+        {
+          "@type": "ImageObject",
+          "url": "https://isurumarasinghe.com/assets/img/about/headshot.jpg",
+          "caption": "Isuru Marasinghe, full stack digital marketer",
+          "width": 836,
+          "height": 836
+        },
+        {
+          "@type": "ImageObject",
+          "url": "https://isurumarasinghe.com/assets/img/about/graduation-mba.jpg",
+          "caption": "Isuru Marasinghe graduating with an MBA from the University of Gloucestershire",
+          "width": 712,
+          "height": 890
+        },
+        {
+          "@type": "ImageObject",
+          "url": "https://isurumarasinghe.com/assets/img/about/graduation-horizon.jpg",
+          "caption": "Isuru Marasinghe graduating from Horizon Campus, Sri Lanka",
+          "width": 712,
+          "height": 890
+        },
+        {
+          "@type": "ImageObject",
+          "url": "https://isurumarasinghe.com/assets/img/about/graduation-cim.jpg",
+          "caption": "Isuru Marasinghe graduating from the Chartered Institute of Marketing",
+          "width": 712,
+          "height": 890
+        },
+        {
+          "@type": "ImageObject",
+          "url": "https://isurumarasinghe.com/assets/img/about/graduation-esm.jpg",
+          "caption": "Isuru Marasinghe at the ESM Business School and AIPQ graduation ceremony",
+          "width": 712,
+          "height": 890
+        },
+        {
+          "@type": "ImageObject",
+          "url": "https://isurumarasinghe.com/assets/img/about/graduation-esm-pair.jpg",
+          "caption": "Isuru Marasinghe and his wife at the ESM Business School and AIPQ graduation ceremony",
+          "width": 712,
+          "height": 890
+        }
+      ],
+      "email": "mailto:hello@isurumarasinghe.com",
+      "telephone": "+971529127002",
+      "nationality": {
+        "@type": "Country",
+        "name": "Sri Lanka"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Dubai",
+        "addressCountry": "AE"
+      },
+      "homeLocation": {
+        "@type": "Place",
+        "name": "Dubai, United Arab Emirates"
+      },
+      "workLocation": [
+        {
+          "@type": "Place",
+          "name": "Dubai, United Arab Emirates"
+        },
+        {
+          "@type": "Place",
+          "name": "Sri Lanka"
+        }
+      ],
+      "worksFor": {
+        "@id": "https://isurumarasinghe.com/#practice"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/isuru-marasinghe/",
+        "https://www.facebook.com/isurupm",
+        "https://www.instagram.com/x_isuru_x/"
+      ],
+      "knowsAbout": [
+        "Performance marketing",
+        "Media buying",
+        "Meta Ads",
+        "Google Ads",
+        "TikTok Ads",
+        "LinkedIn Ads",
+        "Programmatic advertising",
+        "Creative strategy",
+        "Conversion rate optimisation",
+        "GA4 and Google Tag Manager",
+        "Klaviyo lifecycle marketing",
+        "Shopify"
+      ],
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "University of Gloucestershire"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "Chartered Institute of Marketing"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "Qualifi Ltd"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "Horizon Campus"
+        }
+      ],
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Certified Digital Marketing Practitioner",
+          "credentialCategory": "certification",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "American Institute of Professional Qualification",
+            "url": "https://aipqusa.com/"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Certified Digital Marketing Associate",
+          "credentialCategory": "certification",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Meta"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Certified Creative Strategy Professional",
+          "credentialCategory": "certification",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Meta"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Apple Ads Certified Professional",
+          "credentialCategory": "certification",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Apple Inc."
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Microsoft Advertising Search Certification",
+          "credentialCategory": "certification",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Microsoft Advertising"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Microsoft Advertising Retail Certification",
+          "credentialCategory": "certification",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Microsoft Advertising"
+          }
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Postgraduate Diploma in Professional Marketing",
+          "credentialCategory": "degree",
+          "recognizedBy": {
+            "@type": "Organization",
+            "name": "Chartered Institute of Marketing"
+          }
+        }
+      ],
+      "knowsLanguage": "en"
+    }
+  ]
 }
 </script>
 <script type="application/ld+json">

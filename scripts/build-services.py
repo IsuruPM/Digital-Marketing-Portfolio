@@ -995,6 +995,59 @@ ABOUT_PHOTOS = [
 ]
 
 
+def image_size(src):
+    """Intrinsic pixel size of an asset, for ImageObject width/height."""
+    try:
+        from PIL import Image
+        with Image.open(os.path.join(ROOT, src)) as im:
+            return im.size
+    except Exception:
+        return None
+
+
+def person_node():
+    """The full Person entity, read from index.html so there is one source of truth.
+
+    The About page previously declared mainEntity as a bare {"@id": ...} pointing at
+    a node defined only on the home page. The page a search engine is most likely to
+    treat as the authoritative description of the person therefore described nobody.
+    Emitting the whole node here, under the same @id, lets the two be merged.
+    """
+    import copy
+    try:
+        src = open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()
+    except OSError:
+        return None
+    for m in re.finditer(r'<script type="application/ld\+json">(.*?)</script>', src, re.S):
+        try:
+            data = json.loads(m.group(1))
+        except ValueError:
+            continue
+        for node in (data.get("@graph") or [data]):
+            if node.get("@type") == "Person" and node.get("@id") == PERSON:
+                node = copy.deepcopy(node)
+                node.pop("@context", None)
+                # Every photograph of him on the site, tied to the entity. Captions are
+                # the same text as the alt attributes, so the two never disagree.
+                images = node.get("image")
+                images = images if isinstance(images, list) else ([images] if images else [])
+                extra = [("assets/img/about/headshot.jpg",
+                          "Isuru Marasinghe, full stack digital marketer", "", "", False)]
+                for src_rel, alt, _where, _award, _wide in extra + ABOUT_PHOTOS:
+                    if not os.path.exists(os.path.join(ROOT, src_rel)):
+                        continue
+                    obj = {"@type": "ImageObject", "url": SITE + src_rel,
+                           "caption": html.unescape(alt)}
+                    size = image_size(src_rel)
+                    if size:
+                        obj["width"], obj["height"] = size
+                    images.append(obj)
+                if images:
+                    node["image"] = images
+                return node
+    return None
+
+
 def dims(src):
     """Intrinsic width and height, so the browser reserves the space before the file lands."""
     try:
@@ -1142,12 +1195,21 @@ def about_page():
   </div>
 </article>
 """
-    about_ld = {
-      "@context": "https://schema.org", "@type": "AboutPage",
+    page_node = {
+      "@type": "AboutPage",
+      "@id": url + "#aboutpage",
       "url": url, "name": "About Isuru Marasinghe",
       "mainEntity": {"@id": PERSON},
+      "primaryImageOfPage": {"@type": "ImageObject", "url": SITE + "assets/img/about/headshot.jpg",
+                             "caption": "Isuru Marasinghe, full stack digital marketer"},
       "inLanguage": "en",
     }
+    graph = [page_node]
+    who = person_node()
+    if who:
+        who["mainEntityOfPage"] = {"@id": url + "#aboutpage"}
+        graph.append(who)
+    about_ld = {"@context": "https://schema.org", "@graph": graph}
     crumbs = {
       "@context": "https://schema.org", "@type": "BreadcrumbList",
       "itemListElement": [
