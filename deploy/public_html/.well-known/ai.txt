@@ -1,0 +1,18 @@
+# ai.txt — how AI systems may use the content of isurumarasinghe.com
+# Contact: hello@isurumarasinghe.com
+
+User-Agent: *
+
+# Permitted: reading a page to answer a question, with attribution and a link.
+Allow: /
+
+# Not permitted without written permission: using this site's text, images,
+# case-study figures or photographs as training data for a generative model.
+Disallow-Training: /
+
+# The photographs of Isuru Marasinghe and his family are not licensed for any
+# synthetic or generative use.
+Disallow-Training: /assets/img/about/
+Disallow-Training: /assets/img/portrait-hero.jpg
+Disallow-Training: /assets/img/portrait-contact.jpg
+Disallow-Training: /assets/img/portrait-profile.jpg

@@ -1,0 +1,118 @@
+# Apache settings for shared hosting.
+
+# Serve index.html at the root and keep clean URLs.
+DirectoryIndex index.html
+
+# Never list a directory that has no index file, and keep the Apache version
+# out of generated error pages.
+Options -Indexes
+ServerSignature Off
+
+RewriteEngine On
+
+# ---- One canonical origin -------------------------------------------------
+# https://isurumarasinghe.com, no www. Both www and non-www were answering 200,
+# which is duplicate content: the same page on two hostnames.
+#
+# The www rule forces https at the same time, so http://www.… reaches the
+# canonical origin in a single hop rather than two.
+#
+# Skipped entirely for localhost, so the same file works on a staging copy.
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L,NE]
+
+# http -> https. X-Forwarded-Proto and -SSL are checked as well, because a host
+# that terminates TLS at a proxy leaves %{HTTPS} off on an https request, and
+# redirecting those would loop.
+RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)(:[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteCond %{HTTP:X-Forwarded-SSL} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE]
+
+# ---- Clean URLs ----------------------------------------------------------
+# The pages are real files (about.html, services/meta-ads-management.html), but
+# every link, canonical and sitemap entry uses the extensionless address. These
+# rules make that address the only one a visitor or a crawler ever sees.
+
+# 1. Anything still asking for a .html address is sent to the clean one, once.
+#    This covers old links, bookmarks and anything already in Google's index.
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
+RewriteRule ^ / [R=301,L]
+
+RewriteCond %{THE_REQUEST} \s/+(.+?)/index\.html[\s?] [NC]
+RewriteRule ^ /%1/ [R=301,L,NE]
+
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L,NE]
+
+# 2. Serve the clean address from the file on disk, with no further redirect.
+#    THE_REQUEST still holds the original request line, so rule 1 does not
+#    re-fire on this internal rewrite and there is no loop.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+?)/?$ /$1.html [L]
+
+# 3. /services and /services/ both serve services/index.html directly, rather
+#    than letting mod_dir bounce /services to /services/ with a redirect.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{DOCUMENT_ROOT}/$1/index.html -f
+RewriteRule ^(.+?)/?$ /$1/index.html [L]
+
+# A branded 404 instead of the bare LiteSpeed page.
+ErrorDocument 404 /404.html
+
+# Correct MIME types for fonts and SVG.
+AddType font/woff2 .woff2
+AddType image/webp .webp
+AddType image/svg+xml .svg
+
+# Compression.
+<IfModule mod_deflate.c>
+  # Apache serves .js as text/javascript, so listing only application/javascript
+  # left every script uncompressed.
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml text/javascript \
+    application/javascript application/json application/xml application/rss+xml \
+    image/svg+xml font/woff2
+</IfModule>
+
+# Browser caching.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  # Images carry ?v=<content hash> too, so a year is safe and nothing goes stale.
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+  # Every CSS/JS reference in the HTML carries a ?v=<content hash>, so a changed
+  # file is a different URL and a long TTL can never serve a stale asset.
+  ExpiresByType text/css "access plus 30 days"
+  ExpiresByType application/javascript "access plus 30 days"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+# Security headers. These match netlify.toml, so the two hosts behave the same.
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+  Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
+  Header set Cross-Origin-Opener-Policy "same-origin"
+  Header set Cross-Origin-Resource-Policy "same-origin"
+  # No 'unsafe-inline': the Google tag config is in assets/js/analytics.js and reveal
+  # delays are data-d attributes, so no inline script or style remains to allow.
+  Header set Content-Security-Policy "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://www.google-analytics.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
+  # Uncomment once HTTPS is live and verified.
+  # Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+</IfModule>
+
+# Keep the source folders private if they are ever uploaded.
+RedirectMatch 404 ^/(print|scripts|node_modules|dist)(/|$)
+
+# Never serve a dotfile or a repository/build file, even if one is uploaded by
+# mistake. .htaccess and .well-known are handled by Apache itself.
+RedirectMatch 404 ^/\.(?!well-known)
+RedirectMatch 404 (?i)\.(md|py|mjs|sh|log|bak|sql|zip|yml|yaml|lock|ini|env)$
+RedirectMatch 404 (?i)^/(package(-lock)?\.json|netlify\.toml)$

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" fill="none" stroke="#17191B" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+  <rect width="400" height="300" fill="#EAE8E5" stroke="none"/>
+  <rect x="140" y="52" width="120" height="82" rx="6" fill="#FFFFFF"/>
+  <path d="M140 62 L200 104 L260 62"/>
+  <g stroke="#8E9296" stroke-width="1">
+    <path d="M200 134 V166"/><path d="M200 166 H100 V196"/><path d="M200 166 V196"/><path d="M200 166 H300 V196"/>
+  </g>
+  <g fill="#FFFFFF">
+    <rect x="62" y="196" width="76" height="52" rx="6"/><rect x="162" y="196" width="76" height="52" rx="6"/><rect x="262" y="196" width="76" height="52" rx="6"/>
+  </g>
+  <g stroke="#8E9296" stroke-width="1.25">
+    <line x1="74" y1="212" x2="126" y2="212"/><line x1="74" y1="224" x2="110" y2="224"/>
+    <line x1="174" y1="212" x2="226" y2="212"/><line x1="174" y1="224" x2="210" y2="224"/>
+    <line x1="274" y1="212" x2="326" y2="212"/><line x1="274" y1="224" x2="310" y2="224"/>
+  </g>
+  <g fill="#17191B" stroke="none">
+    <rect x="74" y="232" width="24" height="6" rx="3"/><rect x="174" y="232" width="24" height="6" rx="3"/><rect x="274" y="232" width="24" height="6" rx="3"/>
+  </g>
+</svg>
