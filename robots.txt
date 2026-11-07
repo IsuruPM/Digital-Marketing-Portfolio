@@ -1,4 +1,11 @@
+# Content-Signal states how this site may be used, separately from crawling.
+#   search=yes     appear in search results  (wanted)
+#   ai-input=yes   may be quoted in AI answers, with attribution  (wanted: visibility)
+#   ai-train=no    not for training generative models
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+
 User-agent: *
+Content-Signal: search=yes, ai-input=yes, ai-train=no
 Allow: /
 Disallow: /print/
 Disallow: /scripts/

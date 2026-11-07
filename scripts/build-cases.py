@@ -13,7 +13,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CASES = [
 {
  "slug": "case-meta-leads",
- "stitle": "5,364 property leads from one Meta account",
+ "stitle": "5,364 property leads from a Meta account",
  "num": "Case 01",
  "kicker": "Meta Ads · UAE real estate",
  "title": "5,364 property leads from one Meta account",
@@ -131,7 +131,7 @@ CASES = [
 },
 {
  "slug": "case-google-ads",
- "stitle": "Google Ads at a 15.73x return",
+ "stitle": "Google Ads at a 15.73x return on spend",
  "num": "Case 04",
  "kicker": "Google Ads · E-commerce",
  "title": "Search and Shopping that paid for itself fifteen times over",
@@ -166,7 +166,7 @@ CASES = [
 },
 {
  "slug": "case-tiktok-leads",
- "stitle": "857 property leads from TikTok",
+ "stitle": "857 property leads from TikTok Ads",
  "num": "Case 06",
  "kicker": "TikTok Ads · UAE real estate",
  "title": "857 property leads from TikTok at USD 39 each",
@@ -319,7 +319,7 @@ def build(case):
       "itemListElement": [
         {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE},
         {"@type": "ListItem", "position": 2, "name": "Results", "item": SITE + "#work"},
-        {"@type": "ListItem", "position": 3, "name": case["stitle"], "item": SITE + case["slug"] + ".html"}
+        {"@type": "ListItem", "position": 3, "name": case["stitle"], "item": SITE + case["slug"]}
       ]
     }
     ld = {
@@ -330,7 +330,7 @@ def build(case):
       "author": {"@type": "Person", "@id": SITE + "#isuru", "name": "Isuru Marasinghe", "url": SITE},
       "publisher": {"@type": "Person", "@id": SITE + "#isuru", "name": "Isuru Marasinghe", "url": SITE},
       "image": SITE + "assets/img/og-cover.jpg",
-      "mainEntityOfPage": SITE + case["slug"] + ".html",
+      "mainEntityOfPage": SITE + case["slug"],
       "inLanguage": "en",
       "about": [case["kicker"].split(" · ")[0], case["kicker"].split(" · ")[-1]],
     }

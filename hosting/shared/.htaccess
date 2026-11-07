@@ -10,9 +10,25 @@ ServerSignature Off
 
 RewriteEngine On
 
-# Force HTTPS once an SSL certificate is installed (uncomment the two lines below).
-# RewriteCond %{HTTPS} !=on
-# RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# ---- One canonical origin -------------------------------------------------
+# https://isurumarasinghe.com, no www. Both www and non-www were answering 200,
+# which is duplicate content: the same page on two hostnames.
+#
+# The www rule forces https at the same time, so http://www.… reaches the
+# canonical origin in a single hop rather than two.
+#
+# Skipped entirely for localhost, so the same file works on a staging copy.
+RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L,NE]
+
+# http -> https. X-Forwarded-Proto and -SSL are checked as well, because a host
+# that terminates TLS at a proxy leaves %{HTTPS} off on an https request, and
+# redirecting those would loop.
+RewriteCond %{HTTP_HOST} !^(localhost|127\.0\.0\.1)(:[0-9]+)?$ [NC]
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+RewriteCond %{HTTP:X-Forwarded-SSL} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L,NE]
 
 # ---- Clean URLs ----------------------------------------------------------
 # The pages are real files (about.html, services/meta-ads-management.html), but
@@ -48,19 +64,27 @@ ErrorDocument 404 /404.html
 
 # Correct MIME types for fonts and SVG.
 AddType font/woff2 .woff2
+AddType image/webp .webp
 AddType image/svg+xml .svg
 
 # Compression.
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml font/woff2
+  # Apache serves .js as text/javascript, so listing only application/javascript
+  # left every script uncompressed.
+  AddOutputFilterByType DEFLATE text/html text/css text/plain text/xml text/javascript \
+    application/javascript application/json application/xml application/rss+xml \
+    image/svg+xml font/woff2
 </IfModule>
 
 # Browser caching.
 <IfModule mod_expires.c>
   ExpiresActive On
-  ExpiresByType image/jpeg "access plus 7 days"
-  ExpiresByType image/png "access plus 7 days"
-  ExpiresByType image/svg+xml "access plus 7 days"
+  # Images carry ?v=<content hash> too, so a year is safe and nothing goes stale.
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
   ExpiresByType font/woff2 "access plus 1 year"
   # Every CSS/JS reference in the HTML carries a ?v=<content hash>, so a changed
   # file is a different URL and a long TTL can never serve a stale asset.

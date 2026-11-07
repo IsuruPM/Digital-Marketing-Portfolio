@@ -56,7 +56,7 @@ SERVICES = [
  "art_alt": "Two phone screens running a lead form, beside a funnel resolving into leads",
  "eyebrow": "Facebook &amp; Instagram",
  "h1": "Meta ads management",
- "title": "Facebook &amp; Meta Ads Management | Isuru Marasinghe",
+ "title": "Facebook &amp; Meta Ads Management Services | Isuru Marasinghe",
  "desc": ("Meta ads management by a Meta Certified media buyer: lead generation, Advantage+, "
           "creative testing and the Conversions API. 5,364 leads from one account."),
  "lede": ("Facebook and Instagram still carry most lead generation and e-commerce budgets, and "
@@ -112,7 +112,7 @@ SERVICES = [
  "art_alt": "A search bar above sponsored results, beside a rising return curve",
  "eyebrow": "Search, Shopping &amp; Performance Max",
  "h1": "Google Ads and PPC management",
- "title": "Google Ads &amp; PPC Management | Isuru Marasinghe",
+ "title": "Google Ads &amp; PPC Campaign Management | Isuru Marasinghe",
  "desc": ("PPC and Google Ads management across Search, Shopping and Performance Max, with "
           "GA4 and server-side tracking. A 15.73x peak return across four months."),
  "lede": ("Search catches demand that already exists, which makes it the most honest channel in "
@@ -167,7 +167,7 @@ SERVICES = [
  "art_alt": "Three vertical video frames beside cost per lead falling across markets",
  "eyebrow": "TikTok Ads",
  "h1": "TikTok ads management",
- "title": "TikTok Ads Management | Isuru Marasinghe",
+ "title": "TikTok Ads Management & Strategy | Isuru Marasinghe",
  "desc": ("TikTok ads management and native creative production: 35 campaigns, AED 143.73 "
           "blended cost per lead and AED 3.50 in the strongest market."),
  "lede": ("TikTok rewards creative volume more than any other platform and punishes repurposed "
@@ -965,7 +965,7 @@ def hub_page():
         {"@type": "ListItem", "position": 1, "name": "Isuru Marasinghe", "item": SITE},
         {"@type": "ListItem", "position": 2, "name": "Services", "item": url}],
     }
-    return shell(prefix, "Digital Marketing Services | Isuru Marasinghe",
+    return shell(prefix, "Digital Marketing Services & Consulting | Isuru Marasinghe",
                  "Digital marketing services: paid media, creative production, conversion tracking "
                  "and lifecycle marketing, taken on together or separately.",
                  url, body, [item_list, crumbs], "Services")
@@ -1154,7 +1154,7 @@ def about_page():
         {"@type": "ListItem", "position": 1, "name": "Isuru Marasinghe", "item": SITE},
         {"@type": "ListItem", "position": 2, "name": "About", "item": url}],
     }
-    return shell(prefix, "About Isuru Marasinghe — Full Stack Digital Marketer",
+    return shell(prefix, "About Isuru Marasinghe — Digital Marketer & Strategist",
                  "Isuru Marasinghe is a performance-driven digital marketer across real estate, "
                  "education, technology and FMCG, with USD 61.5M+ generated for clients.",
                  url, body, [about_ld, crumbs], "About")

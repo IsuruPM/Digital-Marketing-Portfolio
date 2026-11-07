@@ -209,12 +209,15 @@
   if (zoomers.length) {
     var box = document.createElement('div');
     box.className = 'lightbox';
-    box.innerHTML = '<div class="frame"><img alt=""></div><span class="hint">Scroll to read · Esc to close</span><button class="close" type="button" aria-label="Close">\u2715</button>';
+    box.innerHTML = '<div class="frame"></div><span class="hint">Scroll to read · Esc to close</span><button class="close" type="button" aria-label="Close">\u2715</button>';
     document.body.appendChild(box);
-    var bimg = box.querySelector('img'), lastZoom = null;
+    // The image is built on first open. A placeholder <img> with no src sits in
+    // the DOM as a broken image with an empty alt, which auditors flag on every page.
+    var frame = box.querySelector('.frame'), bimg = null, lastZoom = null;
     function openZoom(btn) {
       var src = btn.getAttribute('data-zoom');
       var inner = btn.querySelector('img');
+      if (!bimg) { bimg = document.createElement('img'); frame.appendChild(bimg); }
       bimg.src = src;
       bimg.alt = inner ? inner.alt : '';
       box.classList.add('on');

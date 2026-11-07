@@ -63,6 +63,8 @@ function base(dir) {
   cpSync(join(root, 'assets'), join(dir, 'assets'), { recursive: true, filter: (src) => !src.endsWith('.gitkeep') });
   cpSync(join(root, 'robots.txt'), join(dir, 'robots.txt'));
   cpSync(join(root, 'sitemap.xml'), join(dir, 'sitemap.xml'));
+  cpSync(join(root, 'llms.txt'), join(dir, 'llms.txt'));
+  cpSync(join(root, 'hosting', 'shared', '.well-known'), join(dir, '.well-known'), { recursive: true });
   for (const f of ['favicon.ico','favicon-16x16.png','favicon-32x32.png','favicon-96x96.png','favicon.svg','apple-touch-icon.png','icon-192.png','icon-512.png','icon-maskable-512.png','site.webmanifest']) cpSync(join(root, f), join(dir, f));
 }
 
