@@ -17,15 +17,17 @@
   [headers.values]
     Cache-Control = "public, max-age=604800"
 
+# Every CSS/JS reference in the HTML carries a ?v=<content hash>, so a changed file
+# is a different URL and a long TTL can never serve a stale asset.
 [[headers]]
   for = "/assets/css/*"
   [headers.values]
-    Cache-Control = "public, max-age=3600, must-revalidate"
+    Cache-Control = "public, max-age=2592000"
 
 [[headers]]
   for = "/assets/js/*"
   [headers.values]
-    Cache-Control = "public, max-age=3600, must-revalidate"
+    Cache-Control = "public, max-age=2592000"
 
 [[headers]]
   for = "/*"

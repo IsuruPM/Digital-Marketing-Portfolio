@@ -28,6 +28,9 @@ if (!empty($_POST['bot-field'])) { respond(true, 'ok', $wantsJson); } // honeypo
 $clean = function ($key, $max) {
   $v = isset($_POST[$key]) ? trim((string) $_POST[$key]) : '';
   $v = preg_replace('/[\x00-\x1F\x7F]/u', ' ', $v);   // every control char, not just CR and LF
+  // Invalid UTF-8 makes the /u pattern return null; treat that as empty so the field
+  // fails validation instead of reaching a mail header.
+  if ($v === null) { $v = ''; }
   return mb_substr($v, 0, $max);
 };
 $name    = $clean('name', 120);
@@ -45,6 +48,26 @@ if ($name === '' || $phone === '' || $inquiry === '' || !filter_var($email, FILT
   respond(false, 'Please complete every field with a valid email address.', $wantsJson);
 }
 
+// Light per-IP throttle: five accepted messages in ten minutes. It is applied after
+// validation so a visitor who mistypes their email is never locked out, and it fails
+// open if the temp directory is not writable, because losing a real inquiry is worse
+// than letting one extra through.
+$ip = (string) ($_SERVER['REMOTE_ADDR'] ?? '');
+if ($ip !== '') {
+    $slot = sys_get_temp_dir() . '/inq_' . sha1($ip);
+    $hits = @file_exists($slot) ? @json_decode((string) @file_get_contents($slot), true) : [];
+    if (!is_array($hits)) { $hits = []; }
+    $now  = time();
+    $hits = array_values(array_filter($hits, function ($t) use ($now) {
+        return is_int($t) && $now - $t < 600;
+    }));
+    if (count($hits) >= 5) {
+        respond(false, 'Too many messages from this address. Please try again shortly.', $wantsJson);
+    }
+    $hits[] = $now;
+    @file_put_contents($slot, json_encode($hits), LOCK_EX);
+}
+
 $body  = "New inquiry from the website\n\n";
 $body .= "Name:           $name\n";
 $body .= "Email:          $email\n";
@@ -59,9 +82,23 @@ $host = (string) ($_SERVER['SERVER_NAME'] ?? '');
 $host = preg_replace('/^www\./', '', $host);
 if (!preg_match('/^[A-Za-z0-9.-]{1,253}$/', $host)) { $host = 'localhost'; }
 $fromAddr = $from !== '' ? $from : ('no-reply@' . $host);
+
+// A display name belongs in a quoted string, and anything outside plain ASCII belongs in
+// an encoded word. Control characters are already gone; this stops a name containing ":"
+// or "@" from being read as structure by a strict MTA.
+$headerText = function ($v) {
+    if (preg_match('/^[\x20-\x7E]*$/', $v)) {
+        return '"' . addcslashes($v, '"\\') . '"';
+    }
+    return '=?UTF-8?B?' . base64_encode($v) . '?=';
+};
 $headers  = "From: Website inquiry <$fromAddr>\r\n";
-$headers .= "Reply-To: $name <$email>\r\n";
+$headers .= 'Reply-To: ' . $headerText($name) . " <$email>\r\n";
 $headers .= "MIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\n";
 
-$sent = @mail($to, $subject . ' from ' . $name, $body, $headers);
+$subjectLine = $subject . ' from ' . $name;
+if (!preg_match('/^[\x20-\x7E]*$/', $subjectLine)) {
+    $subjectLine = '=?UTF-8?B?' . base64_encode($subjectLine) . '?=';
+}
+$sent = @mail($to, $subjectLine, $body, $headers);
 respond((bool) $sent, $sent ? 'sent' : 'The server could not send the email.', $wantsJson);

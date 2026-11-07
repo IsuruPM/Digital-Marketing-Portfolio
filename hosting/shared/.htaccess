@@ -3,6 +3,11 @@
 # Serve index.html at the root and keep clean URLs.
 DirectoryIndex index.html
 
+# Never list a directory that has no index file, and keep the Apache version
+# out of generated error pages.
+Options -Indexes
+ServerSignature Off
+
 # Force HTTPS once an SSL certificate is installed (uncomment the three lines below).
 # RewriteEngine On
 # RewriteCond %{HTTPS} !=on
@@ -24,8 +29,11 @@ AddType image/svg+xml .svg
   ExpiresByType image/png "access plus 7 days"
   ExpiresByType image/svg+xml "access plus 7 days"
   ExpiresByType font/woff2 "access plus 1 year"
-  ExpiresByType text/css "access plus 1 hour"
-  ExpiresByType application/javascript "access plus 1 hour"
+  # Every CSS/JS reference in the HTML carries a ?v=<content hash>, so a changed
+  # file is a different URL and a long TTL can never serve a stale asset.
+  ExpiresByType text/css "access plus 30 days"
+  ExpiresByType application/javascript "access plus 30 days"
+  ExpiresByType text/html "access plus 0 seconds"
 </IfModule>
 
 # Security headers. These match netlify.toml, so the two hosts behave the same.
@@ -35,6 +43,7 @@ AddType image/svg+xml .svg
   Header set Referrer-Policy "strict-origin-when-cross-origin"
   Header set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
   Header set Cross-Origin-Opener-Policy "same-origin"
+  Header set Cross-Origin-Resource-Policy "same-origin"
   # No 'unsafe-inline': the Google tag config is in assets/js/analytics.js and reveal
   # delays are data-d attributes, so no inline script or style remains to allow.
   Header set Content-Security-Policy "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self'; img-src 'self' data: https://www.google-analytics.com; font-src 'self'; connect-src 'self' https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; form-action 'self'; frame-ancestors 'self'; base-uri 'self'; object-src 'none'"
@@ -43,4 +52,10 @@ AddType image/svg+xml .svg
 </IfModule>
 
 # Keep the source folders private if they are ever uploaded.
-RedirectMatch 404 ^/(print|scripts)(/|$)
+RedirectMatch 404 ^/(print|scripts|node_modules|dist)(/|$)
+
+# Never serve a dotfile or a repository/build file, even if one is uploaded by
+# mistake. .htaccess and .well-known are handled by Apache itself.
+RedirectMatch 404 ^/\.(?!well-known)
+RedirectMatch 404 (?i)\.(md|py|mjs|sh|log|bak|sql|zip|yml|yaml|lock|ini|env)$
+RedirectMatch 404 (?i)^/(package(-lock)?\.json|netlify\.toml)$

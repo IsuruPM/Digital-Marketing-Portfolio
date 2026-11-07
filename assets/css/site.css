@@ -732,3 +732,10 @@ footer .foot{padding-top:26px;}
 [data-d="220"]{--d:220ms;}
 [data-d="300"]{--d:300ms;}
 .pull-12{margin-top:12px;}
+
+/* Thank-you page. Its own class rather than style attributes, so the strict
+   Content-Security-Policy needs no 'unsafe-inline' for style-src. */
+.thanks{padding-block:96px 128px;max-width:640px;}
+.thanks h1{margin-top:14px;font-size:clamp(36px,6vw,56px);}
+.thanks .lede{margin-top:20px;}
+.thanks .act{margin-top:32px;}
