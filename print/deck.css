@@ -129,3 +129,25 @@ body{background:var(--ground);}
 .contact-page .contact-list{margin-top:auto;}
 .contact-page .right{position:relative;background:#25282B;}
 .contact-page .right img{width:100%;height:100%;object-fit:cover;object-position:50% 20%;}
+
+/* education */
+.edu-page .edu-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,8fr);gap:16px;flex:1;min-height:0;margin-bottom:34px;}
+.edu-page .edu li{padding:9px 20px;font-size:13px;}
+.edu-page .edu-side{display:flex;flex-direction:column;gap:14px;min-height:0;}
+.edu-page .grads{flex:1;min-height:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;}
+.edu-page .grads figure{margin:0;display:flex;flex-direction:column;min-height:0;}
+.edu-page .grads img{flex:1;min-height:0;width:100%;object-fit:cover;object-position:50% 18%;border:1px solid var(--hairline);border-radius:var(--r-md);display:block;}
+.edu-page .grads figcaption{margin-top:9px;display:flex;flex-direction:column;gap:3px;min-height:44px;}
+.edu-page .grads figcaption b{font-size:12px;font-weight:500;line-height:1.3;}
+.edu-page .grads figcaption span{font-family:var(--font-mono);font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);line-height:1.4;}
+.edu-page .platforms{grid-template-columns:repeat(12,minmax(0,1fr));flex:none;}
+.edu-page .platforms li{padding:12px 4px 10px;min-height:0;gap:8px;}
+.edu-page .platforms img,.edu-page .platforms .glyph{width:20px;height:20px;}
+.edu-page .platforms span{font-size:9px;line-height:1.3;}
+
+/* certifications */
+.cert-page .badges{flex:1;min-height:0;margin-bottom:34px;}
+.cert-page .badges .cell{min-height:0;padding:14px 12px;gap:9px;justify-content:center;}
+.cert-page .badges .cell img{height:72px;max-width:140px;}
+.cert-page .badges .cell span{font-size:12px;}
+.cert-page .badges .cell small{font-size:10px;}
