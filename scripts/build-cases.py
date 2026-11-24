@@ -294,7 +294,7 @@ CASES = [
 },
 {
  "slug": "case-fitness-leads",
- "stitle": "Lean-budget membership leads",
+ "stitle": "Lean-budget gym membership leads in Dubai",
  "num": "Case 09",
  "kicker": "Meta Ads \u00b7 UAE fitness and personal training",
  "title": "Lean-budget membership leads for a fitness studio",
@@ -461,6 +461,8 @@ def build(case):
       "inLanguage": "en",
       "about": [case["kicker"].split(" · ")[0], case["kicker"].split(" · ")[-1]],
     }
+    _market = next((v for k, v in case["facts"] if k.startswith("Market")), "United Arab Emirates")
+    ld["contentLocation"] = {"@type": "Place", "name": _market}
 
     return f"""<!doctype html>
 <html lang="en">
@@ -697,8 +699,8 @@ def work_hub():
         {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE},
         {"@type": "ListItem", "position": 2, "name": "Work", "item": SITE + "work"}]}
 
-    desc = ("Ten digital marketing case studies from live Meta, Google, TikTok and Klaviyo "
-            "accounts and a CRM: lead generation, e-commerce purchases and lifecycle, each with the platform report behind it.")
+    desc = ("Ten digital marketing case studies by Isuru Marasinghe from live Meta, Google, TikTok and "
+            "Klaviyo accounts and a CRM in Dubai and the UAE: lead generation, e-commerce purchases and lifecycle, each with the platform report.")
     ld1 = json.dumps(items, indent=2)
     ld2 = json.dumps(crumbs, indent=2)
     return f"""<!doctype html>
@@ -753,7 +755,7 @@ def work_hub():
   <div class="wrap">
     <div class="sec-head reveal">
       <div class="t"><span class="num">Case studies</span><h1 id="work-title">Selected work and results</h1></div>
-      <p class="lede">Ten cases from live Meta, Google, TikTok and Klaviyo accounts and a CRM, across lead generation, e-commerce and lifecycle. Each opens a full write-up with the platform report behind it. Figures in USD unless marked AED, converted at the pegged 3.6725; client, account and campaign names are withheld or blurred for confidentiality.</p>
+      <p class="lede">Ten digital marketing case studies from live Meta, Google, TikTok and Klaviyo accounts and a CRM, mostly for brands in Dubai and across the UAE, spanning lead generation, e-commerce and lifecycle. Each opens a full write-up with the platform report behind it. Figures in USD unless marked AED, converted at the pegged 3.6725; client, account and campaign names are withheld or blurred for confidentiality.</p>
     </div>
     <div class="work">
 {tiles}
