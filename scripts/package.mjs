@@ -12,7 +12,7 @@ const dist = join(root, 'dist');
 rmSync(dist, { recursive: true, force: true });
 
 const html = readFileSync(join(root, 'index.html'), 'utf8');
-const caseFiles = readdirSync(root).filter((f) => /^(case-[a-z-]+|about)\.html$/.test(f));
+const caseFiles = readdirSync(root).filter((f) => /^(case-[a-z-]+|about|work)\.html$/.test(f));
 
 // ---- cache busting -------------------------------------------------------
 // netlify.toml caches CSS and JS for an hour and images for a week. Filenames do not

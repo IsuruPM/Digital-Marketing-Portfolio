@@ -5,7 +5,7 @@ Each page is a normal static HTML file in the repository root, so it can be
 edited by hand afterwards; re-running this script overwrites them.
     python3 scripts/build-cases.py
 """
-import html, os, json
+import html, os, json, re
 
 SITE = "https://isurumarasinghe.com/"
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -236,9 +236,121 @@ CASES = [
   "note": "Klaviyo attribution, matched against Shopify orders for the same period."},
  "result": "Flows out-earned campaigns on placed orders while campaigns did the wider reaching. Recipients grew past 144,000 without the revenue per send collapsing, which is the part that usually breaks when a list scales.",
 },
+{
+ "slug": "case-highered-leads",
+ "stitle": "902 enrolment enquiries at USD 5.11 each",
+ "num": "Case 07",
+ "kicker": "Meta Ads \u00b7 UAE higher education",
+ "title": "902 enrolment enquiries for a study provider",
+ "tag": "Meta Ads \u00b7 Lead generation",
+ "cover": "assets/img/covers/lead-gen.svg",
+ "lede": "Student-recruitment lead campaigns for an international MBA and professional-qualification provider, run across the UK, the GCC and South Asia. Forty campaigns held a blended cost per lead of USD 5.11. Account and campaign names are blurred for client confidentiality.",
+ "desc": "902 enrolment enquiries at USD 5.11 cost per lead across 40 higher-education campaigns on Meta, with the Ads Manager report shown with names blurred.",
+ "facts": [("Platform","Meta Ads, lead forms"),
+           ("Sector","Higher education, international recruitment"),
+           ("Markets","United Kingdom, GCC and South Asia"),
+           ("Confidentiality","Account and campaign names blurred")],
+ "stats": [("902","Qualified enquiries","Across 40 campaigns"),
+           ("USD 5.11","Cost per lead","Blended, all campaigns"),
+           ("2.66M","Impressions","995,807 accounts reached"),
+           ("12,183","Link clicks","USD 0.38 per click")],
+ "brief": "An international study provider needed a steady, affordable flow of prospective-student enquiries across several markets, for programmes ranging from MBAs to teaching diplomas, without the cost per lead drifting as the campaigns scaled.",
+ "did": ["Ran a separate lead-form campaign per market and programme, so cost per lead could be read by audience rather than averaged across everything.",
+         "Held a blended USD 5.11 cost per lead across forty campaigns over the period.",
+         "Matched creative and offers to each region intake calendar, so spend followed the application windows."],
+ "shots": [("assets/img/results/highered-leads.jpg",
+            "Meta Ads Manager campaigns view for a higher-education account, forty lead campaigns, 902 leads at USD 5.11, account and campaign names blurred",
+            "Meta Ads Manager, campaigns sorted by leads",
+            "What you are looking at: forty lead-generation campaigns with the account and campaign names blurred for confidentiality. The totals row reads 902 leads at USD 5.11 each, 2,662,641 impressions, 995,807 accounts reached and 12,183 link clicks at USD 0.38.")],
+ "result": "Forty campaigns across three regions settling at USD 5.11 a lead is the argument for structuring recruitment by market rather than running one global campaign: each intake could be read, funded and timed on its own numbers instead of an average that hides the expensive markets behind the cheap ones.",
+},
+{
+ "slug": "case-fitout-whatsapp",
+ "stitle": "WhatsApp demand for a fit-out studio",
+ "num": "Case 08",
+ "kicker": "Meta Ads \u00b7 UAE interior design and fit-out",
+ "title": "WhatsApp demand for an interior fit-out studio",
+ "tag": "Meta Ads \u00b7 Click to WhatsApp",
+ "cover": "assets/img/covers/lead-gen.svg",
+ "lede": "Always-on click-to-WhatsApp and lead campaigns for an interior design, fit-out and landscaping business, spanning villa renovation, office interiors and landscaping. Thirty campaigns reached 315,185 people for AED 63.4K. Names are blurred for client confidentiality.",
+ "desc": "Thirty click-to-WhatsApp interior fit-out campaigns on Meta reaching 315,185 people for AED 63.4K, with the Ads Manager report shown with names blurred.",
+ "facts": [("Platform","Meta Ads, click-to-WhatsApp and lead forms"),
+           ("Sector","Interior design, fit-out and landscaping"),
+           ("Market","United Arab Emirates"),
+           ("Confidentiality","Account and campaign names blurred")],
+ "stats": [("30","Campaigns","Always-on"),
+           ("315,185","Accounts reached","986,775 impressions"),
+           ("AED 63.4K","Ad spend","Across the period"),
+           ("AED 8.41","Cost per click","7,533 link clicks")],
+ "brief": "A fit-out and landscaping studio needed a dependable stream of qualified enquiries straight into WhatsApp, where its sales conversations actually happen, across villa renovation, office interiors and landscaping work.",
+ "did": ["Built click-to-WhatsApp campaigns alongside lead forms, so the cheaper mechanic could be found per service line rather than assumed.",
+         "Ran thirty always-on campaigns covering villa renovation, office interiors and landscaping.",
+         "Held link clicks at AED 8.41 across 986,775 impressions, with the strongest single campaign opening 562 WhatsApp conversations."],
+ "shots": [("assets/img/results/fitout-whatsapp.jpg",
+            "Meta Ads Manager campaigns view for an interior fit-out account, thirty click-to-WhatsApp campaigns, 315,185 reach, account and campaign names blurred",
+            "Meta Ads Manager, messaging campaigns",
+            "What you are looking at: thirty click-to-WhatsApp and lead campaigns with names blurred for confidentiality. The totals row reads 315,185 accounts reached, AED 63,355.93 spent, 986,775 impressions and 7,533 link clicks at AED 8.41.")],
+ "result": "For a business that closes in chat, the win is conversations started, not clicks banked. Keeping thirty campaigns live across every service line meant the studio always had enquiries landing in WhatsApp at AED 8.41 a click, rather than the feast-and-famine of one campaign at a time.",
+},
+{
+ "slug": "case-fitness-leads",
+ "stitle": "Lean-budget membership leads",
+ "num": "Case 09",
+ "kicker": "Meta Ads \u00b7 UAE fitness and personal training",
+ "title": "Lean-budget membership leads for a fitness studio",
+ "tag": "Meta Ads \u00b7 Lead generation",
+ "cover": "assets/img/covers/lead-gen.svg",
+ "lede": "Lead-form and click-to-WhatsApp campaigns for a Dubai fitness and personal-training studio, promoting membership and transformation offers. Fourteen campaigns on a lean AED 3.9K budget reached 66,817 people. Names are blurred for client confidentiality.",
+ "desc": "Fourteen fitness lead campaigns on Meta reaching 66,817 people on an AED 3.9K budget, with the Ads Manager report shown with names blurred.",
+ "facts": [("Platform","Meta Ads, lead forms and click-to-WhatsApp"),
+           ("Sector","Fitness and personal training"),
+           ("Market","Dubai, United Arab Emirates"),
+           ("Confidentiality","Account and campaign names blurred")],
+ "stats": [("14","Campaigns","Membership and offers"),
+           ("66,817","Accounts reached","111,314 impressions"),
+           ("AED 3.9K","Ad spend","Lean, always-on"),
+           ("AED 7.17","Cost per click","538 link clicks")],
+ "brief": "A boutique fitness and personal-training studio needed membership and transformation-offer leads on a small, steady budget, without a large monthly commitment, in a city where every gym is advertising the same offer.",
+ "did": ["Ran lead forms and click-to-WhatsApp side by side to keep acquisition costs down on a deliberately small budget.",
+         "Kept fourteen campaigns always-on around membership and transformation offers rather than burning budget on short bursts.",
+         "Reached 66,817 people across 111,314 impressions, the strongest campaign bringing 55 form leads."],
+ "shots": [("assets/img/results/fitness-leads.jpg",
+            "Meta Ads Manager campaigns view for a fitness studio account, fourteen lead campaigns, 66,817 reach, account and campaign names blurred",
+            "Meta Ads Manager, campaigns view",
+            "What you are looking at: fourteen lead and messaging campaigns with names blurred for confidentiality. The totals row reads 66,817 accounts reached, 111,314 impressions and 538 link clicks at AED 7.17, on AED 3,855.03 of spend.")],
+ "result": "Not every account is a big-budget account, and the discipline is the same. On under AED 4K, keeping the lead forms and WhatsApp running steadily beat spending the same money in a single push, and the studio kept a usable flow of membership enquiries all month.",
+},
+{
+ "slug": "case-fragrance-ecom",
+ "stitle": "Purchase-scaled fragrance e-commerce",
+ "num": "Case 10",
+ "kicker": "Meta Ads \u00b7 UAE fragrance and personal care",
+ "title": "Purchase-scaled Meta campaigns for a fragrance brand",
+ "tag": "Meta Ads \u00b7 Purchases",
+ "cover": "assets/img/covers/ecom-meta.svg",
+ "lede": "Purchase-optimised prospecting and retargeting for a fragrance and personal-care e-commerce brand. Forty-three campaigns at AED 55.5K spend held a 2.24x average ROAS, the best ad set at 5.47x. The source export is lower-resolution, though its totals row stays legible. Names are blurred for client confidentiality.",
+ "desc": "Forty-three purchase campaigns for a fragrance e-commerce brand on Meta at a 2.24x average ROAS and 360 website purchases, with the report shown with names blurred.",
+ "facts": [("Platform","Meta Ads, purchase optimisation"),
+           ("Sector","Fragrance and personal care, e-commerce"),
+           ("Market","United Arab Emirates"),
+           ("Confidentiality","Account and campaign names blurred")],
+ "stats": [("2.24&times;","Average ROAS","Across 43 campaigns"),
+           ("5.47&times;","Top ad set","Best performer"),
+           ("360","Website purchases","2,964 adds to cart"),
+           ("AED 55.5K","Ad spend","Prospecting and retargeting")],
+ "brief": "A fragrance and personal-care store needed purchase volume scaled across many campaigns without the return collapsing, in a category where creative and offer, not the media settings, drive most of the result.",
+ "did": ["Ran purchase-optimised prospecting and retargeting across forty-three campaigns rather than a single catch-all campaign.",
+         "Held a 2.24x average ROAS across the account, with the best ad set reaching 5.47x.",
+         "Drove 360 website purchases and 2,964 adds to cart, reading return on a seven-day click window."],
+ "shots": [("assets/img/results/fragrance-ecom.jpg",
+            "Meta Ads Manager campaigns view for a fragrance e-commerce account, forty-three purchase campaigns, 2.24x average ROAS, account and campaign names blurred",
+            "Meta Ads Manager, purchase campaigns",
+            "What you are looking at: forty-three purchase campaigns with names blurred for confidentiality. The totals row reads AED 55,534.52 spent, a 2.24x average ROAS, 2,964 adds to cart and 360 website purchases. The export is lower-resolution, but the totals row stays legible.")],
+ "result": "Forty-three campaigns holding a 2.24x average return is a portfolio result, not a single lucky winner: the spread from 2.0x to 5.47x is what lets spend move toward the sets that earn it. In fragrance, that discipline on creative and offer is the whole game.",
+},
 ]
 
-ORDER = ["case-meta-leads","case-crm-closings","case-meta-ecom","case-google-ads","case-klaviyo","case-tiktok-leads"]
+ORDER = ["case-meta-leads","case-crm-closings","case-meta-ecom","case-google-ads","case-klaviyo","case-tiktok-leads","case-highered-leads","case-fitout-whatsapp","case-fitness-leads","case-fragrance-ecom"]
 BY_SLUG = {c["slug"]: c for c in CASES}
 
 NAV = """      <div class="has-menu">
@@ -257,7 +369,7 @@ NAV = """      <div class="has-menu">
           <a class="menu-all" href="/services/">All services<span class="arrow" aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
-      <a href="/#work">Results</a>
+      <a href="/work">Work</a>
       <a href="/#clients">Clients</a>
       <a href="/#credentials">Credentials</a>
       <a href="/about">About</a>
@@ -307,11 +419,26 @@ def build(case):
       </figure>""")
     shots = "\n".join(shots)
 
-    t = case["table"]
-    NC = ' class="n"'
-    head = "".join("<th%s>%s</th>" % (NC if i else "", h) for i, h in enumerate(t["head"]))
-    rows = "\n".join("<tr>" + "".join(
-        "<td%s>%s</td>" % (NC if i else "", c) for i, c in enumerate(r)) + "</tr>" for r in t["rows"])
+    numbers_section = ""
+    if case.get("table"):
+        t = case["table"]
+        NC = ' class="n"'
+        head = "".join("<th%s>%s</th>" % (NC if i else "", h) for i, h in enumerate(t["head"]))
+        rows = "\n".join("<tr>" + "".join(
+            "<td%s>%s</td>" % (NC if i else "", c) for i, c in enumerate(r)) + "</tr>" for r in t["rows"])
+        numbers_section = f"""    <section class="cs-numbers reveal" aria-labelledby="numbers-{case['slug']}">
+      <h2 id="numbers-{case['slug']}">The numbers</h2>
+      <div class="table-wrap">
+        <table class="case-table">
+          <thead><tr>{head}</tr></thead>
+          <tbody>
+{rows}
+          </tbody>
+        </table>
+      </div>
+      <p class="small">{t['note']}</p>
+    </section>
+"""
 
     crumbs = {
       "@context": "https://schema.org",
@@ -399,7 +526,7 @@ def build(case):
 
 <article class="casestudy">
   <div class="wrap">
-    <nav class="crumb" aria-label="Breadcrumb"><a href="/#work">Results</a><span aria-hidden="true">/</span><span>{case['num']}</span></nav>
+    <nav class="crumb" aria-label="Breadcrumb"><a href="/work">Work</a><span aria-hidden="true">/</span><span>{case['num']}</span></nav>
 
     <header class="cs-head split-head reveal">
       <div class="t">
@@ -435,19 +562,7 @@ def build(case):
 {shots}
     </section>
 
-    <section class="cs-numbers reveal" aria-labelledby="numbers-{case['slug']}">
-      <h2 id="numbers-{case['slug']}">The numbers</h2>
-      <div class="table-wrap">
-        <table class="case-table">
-          <thead><tr>{head}</tr></thead>
-          <tbody>
-{rows}
-          </tbody>
-        </table>
-      </div>
-      <p class="small">{t['note']}</p>
-    </section>
-
+{numbers_section}
     <section class="cs-result reveal">
       <h2>What it means</h2>
       <p>{case['result']}</p>
@@ -465,7 +580,7 @@ def build(case):
       </div>
       <div class="row">
         <a class="btn btn-primary" href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
-        <a class="btn btn-ghost" href="/#work">All six cases</a>
+        <a class="btn btn-ghost" href="/work">All case studies</a>
       </div>
     </div>
   </div>
@@ -499,7 +614,7 @@ def build(case):
     </div>
     <div class="foot-col">
       <span class="h">Work</span>
-      <a href="/#work">Case studies</a>
+      <a href="/work">Case studies</a>
       <a href="/#clients">Clients</a>
       <a href="/#testimonials">Testimonials</a>
       <a href="/#credentials">Credentials</a>
@@ -532,9 +647,139 @@ def build(case):
 """
 
 
+def _first_sentence(t):
+    m = re.split(r"(?<=[.!?])\s", t, 1)
+    return m[0]
+
+
+def work_hub():
+    """A hub page listing every case, reusing the real header and footer."""
+    sample = build(CASES[0])
+    header = sample[sample.index('<header class="top">'):sample.index('</header>') + len('</header>')]
+    tail = sample[sample.index('<div class="wa"'):]
+
+    tiles = []
+    for d, slug in enumerate(ORDER):
+        c = BY_SLUG[slug]
+        sector = c["kicker"].split(" · ")[-1]
+        kpis = "".join(
+            f'<div><div class="v metric">{v}</div><div class="l">{l}</div></div>'
+            for v, l, _c in c["stats"][:3])
+        dd = f' data-d="{(d % 4) * 60}"' if d % 4 else ""
+        tiles.append(
+            f'      <a class="tile reveal" href="/{slug}"{dd}>\n'
+            f'        <div class="cover"><img loading="lazy" src="{c["cover"]}" '
+            f'alt="{html.escape(sector)} case study by Isuru Marasinghe" width="400" height="300" decoding="async">'
+            f'<span class="tag">{c["tag"]}</span></div>\n'
+            f'        <div class="body">\n'
+            f'          <div class="kicker"><span class="eyebrow">{sector}</span><span class="num">{c["num"]}</span></div>\n'
+            f'          <h3>{c["title"]}</h3>\n'
+            f'          <p>{html.escape(_first_sentence(c["lede"]))}</p>\n'
+            f'          <div class="kpis">{kpis}</div>\n'
+            f'          <div class="more"><span>Read the case study</span><span class="arrow" aria-hidden="true">&rarr;</span></div>\n'
+            f'        </div>\n'
+            f'      </a>')
+    tiles = "\n".join(tiles)
+
+    items = {
+      "@context": "https://schema.org", "@type": "CollectionPage",
+      "@id": SITE + "work#page", "url": SITE + "work",
+      "name": "Case studies and results — Isuru Marasinghe",
+      "about": {"@id": SITE + "#isuru"},
+      "mainEntity": {"@type": "ItemList", "numberOfItems": len(ORDER),
+        "itemListElement": [
+          {"@type": "ListItem", "position": i + 1, "url": SITE + s_,
+           "name": BY_SLUG[s_]["title"]} for i, s_ in enumerate(ORDER)]},
+    }
+    crumbs = {
+      "@context": "https://schema.org", "@type": "BreadcrumbList",
+      "itemListElement": [
+        {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE},
+        {"@type": "ListItem", "position": 2, "name": "Work", "item": SITE + "work"}]}
+
+    desc = ("Ten digital marketing case studies from live Meta, Google, TikTok and Klaviyo "
+            "accounts and a CRM: lead generation, e-commerce purchases and lifecycle, each with the platform report behind it.")
+    ld1 = json.dumps(items, indent=2)
+    ld2 = json.dumps(crumbs, indent=2)
+    return f"""<!doctype html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-307CN46RYD"></script>
+<script src="assets/js/analytics.js" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Digital Marketing Case Studies &amp; Results | Isuru Marasinghe</title>
+<meta name="google-site-verification" content="DIW5ROwDRpi_2F6pmTCKQRL050cAkq0UAVs_hDUr6RQ" />
+<meta name="description" content="{desc}">
+<meta name="author" content="Isuru Marasinghe">
+<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
+<link rel="canonical" href="{SITE}work">
+<meta property="og:url" content="{SITE}work">
+<meta property="og:site_name" content="Isuru Marasinghe">
+<meta property="og:locale" content="en_US">
+<meta property="og:title" content="Digital Marketing Case Studies &amp; Results | Isuru Marasinghe">
+<meta property="og:description" content="{desc}">
+<meta property="og:type" content="website">
+<meta property="og:image" content="{SITE}assets/img/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Digital Marketing Case Studies &amp; Results | Isuru Marasinghe">
+<meta name="twitter:description" content="{desc}">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" href="favicon.ico" sizes="48x48 32x32 16x16">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preload" href="assets/fonts/HankenGrotesk.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/InstrumentSans.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/site.css">
+<script type="application/ld+json">
+{ld1}
+</script>
+<script type="application/ld+json">
+{ld2}
+</script>
+</head>
+<body>
+
+{header}
+
+<main id="top">
+<section class="section work-hub">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <div class="t"><span class="num">Case studies</span><h1 id="work-title">Selected work and results</h1></div>
+      <p class="lede">Ten cases from live Meta, Google, TikTok and Klaviyo accounts and a CRM, across lead generation, e-commerce and lifecycle. Each opens a full write-up with the platform report behind it. Figures in USD unless marked AED, converted at the pegged 3.6725; client, account and campaign names are withheld or blurred for confidentiality.</p>
+    </div>
+    <div class="work">
+{tiles}
+    </div>
+    <div class="cs-cta reveal">
+      <div>
+        <h2>Want numbers like these on your account?</h2>
+        <p class="lede">Book a 30-minute call and I will tell you what I would change first, whether or not we work together.</p>
+      </div>
+      <div class="row">
+        <a class="btn btn-primary" href="https://calendly.com/isurumarasinghe/30min" target="_blank" rel="noopener">Book a discovery call</a>
+        <a class="btn btn-ghost" href="/about">About Isuru</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+{tail}"""
+
+
 if __name__ == "__main__":
     for c in CASES:
         path = os.path.join(ROOT, c["slug"] + ".html")
         with open(path, "w", encoding="utf-8") as f:
             f.write(build(c))
         print("wrote", c["slug"] + ".html")
+    with open(os.path.join(ROOT, "work.html"), "w", encoding="utf-8") as f:
+        f.write(work_hub())
+    print("wrote work.html")

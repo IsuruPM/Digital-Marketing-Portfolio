@@ -52,6 +52,8 @@ def pages():
         out.append((SITE + "/services/", "services/index.html", "hub"))
     if os.path.exists(os.path.join(ROOT, "about.html")):
         out.append((SITE + "/about", "about.html", "hub"))
+    if os.path.exists(os.path.join(ROOT, "work.html")):
+        out.append((SITE + "/work", "work.html", "hub"))
 
     svc_dir = os.path.join(ROOT, "services")
     if os.path.isdir(svc_dir):

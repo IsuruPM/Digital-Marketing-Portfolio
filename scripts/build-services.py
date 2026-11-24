@@ -615,7 +615,7 @@ def nav(prefix=""):
           <a class="menu-all" href="/services/">All services<span class="arrow" aria-hidden="true">&rarr;</span></a>
         </div>
       </div>
-      <a href="/#work">Results</a>
+      <a href="/work">Work</a>
       <a href="/#clients">Clients</a>
       <a href="/#credentials">Credentials</a>
       <a href="/about">About</a>
@@ -726,7 +726,7 @@ def shell(prefix, title, desc, canon, body, extra_ld, crumb_label):
     </div>
     <div class="foot-col">
       <span class="h">Work</span>
-      <a href="/#work">Case studies</a>
+      <a href="/work">Case studies</a>
       <a href="/#clients">Clients</a>
       <a href="/#testimonials">Testimonials</a>
       <a href="/#credentials">Credentials</a>
