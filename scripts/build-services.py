@@ -647,7 +647,9 @@ def strip(s):
     return html.unescape(s)
 
 
-def shell(prefix, title, desc, canon, body, extra_ld, crumb_label):
+def shell(prefix, title, desc, canon, body, extra_ld, crumb_label, og_image=None, og_w=1200, og_h=630, og_alt=None):
+    og_image = og_image or (SITE + 'assets/img/og-cover.jpg')
+    og_alt = og_alt or OG_ALT
     """One page, head to footer. prefix reaches the site root from this page."""
     ld = "\n".join('<script type="application/ld+json">\n%s\n</script>'
                    % json.dumps(b, indent=2) for b in extra_ld)
@@ -671,16 +673,17 @@ def shell(prefix, title, desc, canon, body, extra_ld, crumb_label):
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{html.escape(strip(desc))}">
 <meta property="og:type" content="website">
-<meta property="og:image" content="{SITE}assets/img/og-cover.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="{OG_ALT}">
+<meta property="og:image" content="{og_image}">
+<meta property="og:image:width" content="{og_w}">
+<meta property="og:image:height" content="{og_h}">
+<meta property="og:image:alt" content="{og_alt}">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{html.escape(strip(desc))}">
-<meta name="twitter:image" content="{SITE}assets/img/og-cover.jpg">
+<meta name="twitter:image" content="{og_image}">
 <meta name="theme-color" content="#FFFFFF">
 <link rel="icon" href="{prefix}favicon.ico" sizes="48x48 32x32 16x16">
+<link rel="icon" type="image/svg+xml" href="{prefix}favicon.svg">
 <link rel="icon" type="image/png" sizes="96x96" href="{prefix}favicon-96x96.png">
 <link rel="icon" type="image/png" sizes="32x32" href="{prefix}favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="{prefix}favicon-16x16.png">
@@ -1219,7 +1222,9 @@ def about_page():
     return shell(prefix, "About Isuru Marasinghe — Digital Marketer & Strategist",
                  "Isuru Marasinghe is a performance-driven digital marketer across real estate, "
                  "education, technology and FMCG, with USD 61.5M+ generated for clients.",
-                 url, body, [about_ld, crumbs], "About")
+                 url, body, [about_ld, crumbs], "About",
+                 og_image=SITE + "assets/img/about/headshot.jpg", og_w=900, og_h=900,
+                 og_alt="Isuru Marasinghe, full stack digital marketer and media buyer in Dubai")
 
 
 if __name__ == "__main__":

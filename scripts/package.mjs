@@ -33,13 +33,23 @@ function assetHash(dir, rel) {
 }
 
 function bust(dir, text) {
-  return text.replace(
+  text = text.replace(
     /(?<![\w:])((?:\.\.\/|\/)?assets\/[A-Za-z0-9._\/-]+\.(?:css|js|jpg|jpeg|png|webp|svg|ico))/g,
     (match) => {
       const rel = match.replace(/^(?:\.\.\/)+|^\//, '');
       const h = assetHash(dir, rel);
       return h ? match + '?v=' + h : match;
     });
+  // Root-level icons and manifest are referenced from the HTML head without an
+  // assets/ prefix; version them too so a changed favicon is a new URL and
+  // browsers stop serving the old one.
+  text = text.replace(
+    /(?<=["'])(favicon\.(?:ico|svg)|favicon-\d+x\d+\.png|apple-touch-icon\.png|icon-(?:192|512|maskable-512)\.png|site\.webmanifest)(?=["'])/g,
+    (match) => {
+      const h = assetHash(dir, match);
+      return h ? match + '?v=' + h : match;
+    });
+  return text;
 }
 
 function bustHtmlIn(dir) {

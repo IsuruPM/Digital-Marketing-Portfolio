@@ -76,6 +76,48 @@ def noindexed(rel):
         return True
 
 
+# Images to surface in Google Images, per page. His photographs are listed first
+# and with his name, so the portrait and headshot can be discovered and indexed.
+IMAGES = {
+    "index.html": [
+        ("assets/img/portrait-cover.jpg", "Isuru Marasinghe, full stack digital marketer and media buyer in Dubai"),
+        ("assets/img/portrait-profile.jpg", "Isuru Marasinghe, performance marketer and creative strategist"),
+    ],
+    "about.html": [
+        ("assets/img/about/headshot.jpg", "Isuru Marasinghe, full stack digital marketer"),
+        ("assets/img/portrait-profile.jpg", "Isuru Marasinghe, performance marketer in Dubai"),
+        ("assets/img/about/graduation-mba.jpg", "Isuru Marasinghe graduating with an MBA from the University of Gloucestershire"),
+        ("assets/img/about/graduation-cim.jpg", "Isuru Marasinghe graduating from the Chartered Institute of Marketing"),
+        ("assets/img/about/graduation-esm.jpg", "Isuru Marasinghe at the ESM Business School and AIPQ graduation"),
+        ("assets/img/about/graduation-horizon.jpg", "Isuru Marasinghe graduating from Horizon Campus, Sri Lanka"),
+    ],
+}
+CASE_SHOTS = {
+    "case-meta-leads.html": "assets/img/results/meta-leads-realestate.jpg",
+    "case-crm-closings.html": "assets/img/results/crm-closings.jpg",
+    "case-meta-ecom.html": "assets/img/results/meta-ecom-roas-1.jpg",
+    "case-google-ads.html": "assets/img/results/google-sep-2024.jpg",
+    "case-klaviyo.html": "assets/img/results/klaviyo-placed-order.jpg",
+    "case-highered-leads.html": "assets/img/results/highered-leads.jpg",
+    "case-fitout-whatsapp.html": "assets/img/results/fitout-whatsapp.jpg",
+    "case-fitness-leads.html": "assets/img/results/fitness-leads.jpg",
+    "case-fragrance-ecom.html": "assets/img/results/fragrance-ecom.jpg",
+}
+
+
+def _img_xml(rel):
+    imgs = list(IMAGES.get(rel, []))
+    if rel in CASE_SHOTS:
+        imgs.append((CASE_SHOTS[rel], "Platform report by Isuru Marasinghe (account names blurred)"))
+    out = []
+    for src, cap in imgs:
+        if os.path.exists(os.path.join(ROOT, src)):
+            out.append("    <image:image>\n      <image:loc>%s/%s</image:loc>\n"
+                       "      <image:caption>%s</image:caption>\n    </image:image>"
+                       % (SITE.rstrip("/"), src, cap))
+    return ("\n" + "\n".join(out)) if out else ""
+
+
 def main():
     rows = []
     for url, rel, kind in pages():
@@ -87,11 +129,12 @@ def main():
             "    <loc>%s</loc>\n"
             "    <lastmod>%s</lastmod>\n"
             "    <changefreq>monthly</changefreq>\n"
-            "    <priority>%s</priority>\n"
-            "  </url>" % (url, last_changed(rel), PRIORITY[kind]))
+            "    <priority>%s</priority>%s\n"
+            "  </url>" % (url, last_changed(rel), PRIORITY[kind], _img_xml(rel)))
 
     xml = ('<?xml version="1.0" encoding="UTF-8"?>\n'
-           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+           '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"\n'
+           '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n'
            + "\n".join(rows) + "\n</urlset>\n")
     with open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8") as f:
         f.write(xml)
