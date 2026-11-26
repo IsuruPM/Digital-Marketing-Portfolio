@@ -28,21 +28,29 @@ PRIORITY = {"home": "1.0", "hub": "0.9", "service": "0.8", "case": "0.7"}
 
 
 def last_changed(rel):
-    """Date of the last commit touching this file, else its mtime."""
+    """The later of the last commit date and the file's mtime.
+
+    Using the git commit date alone lags by a commit when the sitemap is built
+    from a working tree whose changes are not committed yet (package runs before
+    commit). Taking the max with the file mtime makes an edited-but-uncommitted
+    page report today, so lastmod never understates freshness.
+    """
     path = os.path.join(ROOT, rel)
+    dates = []
     try:
         out = subprocess.run(
             ["git", "-C", ROOT, "log", "-1", "--format=%cs", "--", rel],
             capture_output=True, text=True, timeout=15)
         stamp = out.stdout.strip()
         if re.fullmatch(r"\d{4}-\d{2}-\d{2}", stamp):
-            return stamp
+            dates.append(stamp)
     except Exception:
         pass
     try:
-        return datetime.date.fromtimestamp(os.path.getmtime(path)).isoformat()
+        dates.append(datetime.date.fromtimestamp(os.path.getmtime(path)).isoformat())
     except OSError:
-        return datetime.date.today().isoformat()
+        pass
+    return max(dates) if dates else datetime.date.today().isoformat()
 
 
 def pages():
